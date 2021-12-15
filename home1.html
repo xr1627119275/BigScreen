@@ -196,7 +196,7 @@
                 <div class="nav_tab_content" style="display: block">
                     <div id="AreaStatistics" class="normal_chart"></div>
                 </div>
-                <div class="nav_tab_content">
+                <div class="nav_tab_content" >
                     <div id="CurrentPeriodStatistics" class="normal_chart"></div>
                 <div>
             </div>
@@ -256,7 +256,7 @@
             , [78, 74, 63, 56, 54, 38, 35])
 
         initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-24", "11-24", "11-25", "11-26", "11-27", "11-28"]
-            , [78, 74, 63, 56, 54, 38, 35])
+            , [78, 74, 63, 56, 54, 38])
     })
 
     function initPie3DChart() {
@@ -503,35 +503,56 @@
                 }
             },
             grid:{
-                x:45,
+                x:20,
                 y:45,
-                x2:5,
+                x2:20,
                 y2:20,
                 containLabel: true,
                 borderWidth:1
             },
+
             xAxis: [
                 {
                     type: 'category',
-                    boundaryGap: false,
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    // boundaryGap: false,
+                    data: data1,
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 16,
+                            color: '#FEFFFF'
+                        }
+                    }
                 }
             ],
             yAxis: [
                 {
-                    type: 'value'
+                    type: 'value',
+                    splitLine: {
+                        lineStyle: {
+                            color: ['#36C0C5']
+                        }
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 16,
+                            color: '#FEFFFF'
+                        }
+                    }
                 }
             ],
             series: [
                 {
-                    name: 'Line 1',
+                    // name: 'Line 1',
                     type: 'line',
-                    stack: 'Total',
+                    // stack: 'Total',
                     smooth: true,
                     lineStyle: {
                         width: 0
                     },
                     showSymbol: false,
+
                     areaStyle: {
                         opacity: 0.8,
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -546,7 +567,7 @@
                         ])
                     },
 
-                    data: [140, 232, 101, 264, 90, 340, 250]
+                    data: data2
                 }
 
             ]
@@ -555,6 +576,7 @@
         option.xAxis.data = data1
         option.series[0].data = data2
         option = Object.assign(option, opt)
+
         chart.setOption(option);
         Charts[name] = chart
     }
@@ -574,6 +596,7 @@
         $(this).addClass("active")
         var parent = $(this).parent().parent()
         parent.find(".nav_tab_content").hide().eq(index).show()
+        Charts[parent.find('.normal_chart').eq(index).attr("id")].resize()
     })
 
 
