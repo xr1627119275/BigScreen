@@ -1,0 +1,231 @@
+@charset "UTF-8";
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: #0C0D21;
+  position: relative;
+  margin: 0 auto;
+}
+
+#screen {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 101px;
+  padding: 0 15px;
+  background: url("../img/header_bg.png");
+  background-size: 100% 100%;
+  display: flex;
+}
+header #date_time {
+  padding-top: 7px;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #40F3EF;
+}
+header .left, header .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+header .left .top, header .right .top {
+  height: 35px;
+}
+header .left .middle, header .right .middle {
+  display: flex;
+  width: 100%;
+}
+header .center {
+  flex: 0 0 590px;
+  display: flex;
+  flex-direction: column;
+}
+header .center .title {
+  flex: 1;
+  padding-top: 14px;
+  height: 31px;
+  font-size: 32px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 6px 10px rgba(0, 16, 45, 0.2);
+}
+header .center #countDown {
+  padding-bottom: 5px;
+  font-size: 24px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  text-align: center;
+  color: #FFFFFF;
+}
+header .center #countDown > span {
+  color: #58EBE9;
+}
+header .nav_item {
+  flex: 1 1 130px;
+  cursor: pointer;
+  padding: 0 5px;
+  height: 30px;
+  background: url("../img/nav_item.png");
+  background-size: 100% 100%;
+  line-height: 30px;
+  text-align: center;
+}
+header .nav_item.active, header .nav_item:hover {
+  background-image: url("../img/nav_item_active.png");
+}
+header .nav_item.active a, header .nav_item:hover a {
+  color: #FFFFFF;
+}
+header .nav_item a {
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #18BFBB;
+}
+header .right .top {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+header .right .top .layui-form-select {
+  width: 180px;
+}
+header .right .top .layui-form-select input {
+  height: 24px;
+  background: #0C0D21;
+  border: #0C0D21;
+  color: #fff;
+}
+header .right .top .layui-form-select input::-webkit-input-placeholder {
+  color: #fff;
+}
+header .right .top .layui-form-select .layui-edge {
+  border-top-color: #10BEBA;
+}
+header .right .top .opt_item {
+  width: 16px;
+  height: 16px;
+  margin-left: 15px;
+  cursor: pointer;
+  background-size: 100% 100%;
+}
+header .right .top .opt_item:nth-child(1) {
+  background-image: url("../img/opt_item3.png");
+}
+header .right .top .opt_item:nth-child(2) {
+  background-image: url("../img/opt_item2.png");
+}
+header .right .top .opt_item:nth-child(3) {
+  background-image: url("../img/opt_item1.png");
+}
+
+#plate_nav {
+  display: flex;
+  padding-bottom: 34px;
+}
+#plate_nav .plate_item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+#plate_nav .plate_item .plate_box {
+  position: relative;
+  width: 156px;
+  height: 104px;
+  background: url("../img/plate.png") no-repeat;
+  background-size: 100% 100%;
+}
+#plate_nav .plate_item .plate_box .plate_til {
+  font-size: 16px;
+  width: 80px;
+  text-align: center;
+  line-height: 28px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #03FFE4;
+}
+#plate_nav .plate_item .plate_box .plate_num {
+  font-size: 42px;
+  margin-top: 4px;
+  font-family: Impact;
+  text-align: center;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 4px rgba(0, 16, 45, 0.32);
+}
+#plate_nav .plate_item .plate_box .plate_num p {
+  width: 100%;
+  position: relative;
+}
+#plate_nav .plate_item .plate_box .plate_num p .unit {
+  display: block;
+  content: "/个";
+  width: 30px;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+  position: absolute;
+  top: 45%;
+  right: 4px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+main .charts_content_box {
+  width: 618px;
+  height: 405px;
+  display: flex;
+  flex-direction: column;
+  background: url("../img/charts_content_box.png");
+  background-size: 100% 100%;
+}
+main .charts_content_box .content-header {
+  width: 100%;
+  height: 30px;
+  padding-top: 3px;
+  line-height: 30px;
+}
+main .charts_content_box .content-header .ch-tit {
+  padding: 0 8px;
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FEFFFF;
+}
+main .charts_content_box .content-header .nav_tit {
+  display: inline-block;
+  cursor: pointer;
+}
+main .charts_content_box .content-header .nav_tit.active {
+  background-color: #111234;
+}
+main .charts_content_box .nav_tab_content {
+  display: none;
+  height: 100%;
+}
+main .charts_content_box .normal_chart {
+  width: 100%;
+  height: 100%;
+}
+main .charts_content_box .main_body {
+  flex: 1;
+}
+main .charts_content_box .main_body .pie_chart {
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=home.css.map */

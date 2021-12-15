@@ -1,0 +1,250 @@
+@import "common/common";
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background-color: $bg_color;
+  position: relative;
+  margin: 0 auto;
+}
+
+#screen {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  width: 100%;
+  box-sizing: border-box;
+  height: 101px;
+  padding: 0 15px;
+  background: url("../img/header_bg.png");
+  background-size: 100% 100% ;
+  display: flex;
+
+  // 右上角时间
+  #date_time {
+    padding-top: 7px;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #40F3EF;
+  }
+  .left, .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .top {
+      height: 35px;
+    }
+
+    .middle {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  // 顶部中间的部分
+  .center {
+    flex: 0 0 590px;
+    display: flex;
+    flex-direction: column;
+    .title {
+      flex: 1;
+      padding-top: 14px;
+      height: 31px;
+      font-size: 32px;
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align: center;
+      text-shadow: 0 6px 10px rgba(0, 16, 45, 0.2);
+    }
+    #countDown {
+      padding-bottom: 5px;
+      font-size: 24px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      text-align: center;
+      color: #FFFFFF;
+      & > span {
+        color: #58EBE9;
+      }
+    }
+  }
+
+  // 顶部导航的
+  .nav_item {
+    flex: 1 1 130px;
+    cursor: pointer;
+    padding: 0 5px;
+    height: 30px;
+    background: url("../img/nav_item.png");
+    background-size: 100% 100%;
+    line-height: 30px;
+    text-align: center;
+    &.active, &:hover {
+      background-image: url("../img/nav_item_active.png");
+      a {
+        color: #FFFFFF;
+      }
+    }
+
+    a {
+      font-size: 18px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #18BFBB;
+    }
+  }
+
+  .right {
+    .top {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+
+      // 切换项目组  select
+      .layui-form-select {
+        width: 180px;
+        input {
+          height: 24px;
+          background: #0C0D21;
+          border: #0C0D21;
+          color: #fff
+        }
+        input::-webkit-input-placeholder {
+          color: #fff;
+        }
+        .layui-edge {
+          border-top-color: #10BEBA;
+        }
+      }
+
+      .opt_item {
+        width: 16px;
+        height: 16px;
+        margin-left: 15px;
+        cursor: pointer;
+        background-size: 100% 100%;
+      }
+      .opt_item:nth-child(1) {
+        background-image: url("../img/opt_item3.png");
+      }
+      .opt_item:nth-child(2) {
+        background-image: url("../img/opt_item2.png") ;
+      }
+      .opt_item:nth-child(3) {
+        background-image: url("../img/opt_item1.png") ;
+      }
+    }
+  }
+}
+
+
+#plate_nav {
+  display: flex;
+  padding-bottom: 34px;
+  .plate_item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    .plate_box {
+      position: relative;
+      width: 156px;
+      height: 104px;
+      background: url("../img/plate.png") no-repeat;
+      background-size: 100% 100%;
+      &:after {
+
+      }
+      .plate_til {
+        font-size: 16px;
+        width: 80px;
+        text-align: center;
+        line-height: 28px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #03FFE4;
+      }
+      .plate_num {
+        font-size: 42px;
+        margin-top: 4px;
+        font-family: Impact;
+        text-align: center;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 4px rgba(0, 16, 45, 0.32);
+        p {
+          width: 100%;
+          position: relative;
+          .unit {
+            display: block;
+            content: '/个';
+            width: 30px;
+            font-size: 14px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FFFFFF;
+            position: absolute;
+            top: 45%;
+            right: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  .charts_content_box {
+    width: 618px;
+    height: 405px;
+    display: flex;
+    flex-direction: column;
+    background: url("../img/charts_content_box.png");
+    background-size: 100% 100%;
+    .content-header {
+      width: 100%;
+      height: 30px;
+      padding-top: 3px;
+      line-height: 30px;
+      .ch-tit {
+        padding: 0 8px;
+        font-size: 18px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #FEFFFF;
+      }
+
+      .nav_tit {
+        display: inline-block;
+        cursor: pointer;
+        &.active {
+          background-color: #111234
+        }
+      }
+    }
+
+    .nav_tab_content {
+      display: none;
+      height: 100%;
+
+    }
+    .normal_chart {
+      width: 100%;
+      height: 100%;
+    }
+    .main_body {
+      flex: 1;
+      .pie_chart {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>劳务管理</title>
+    <link rel="stylesheet" href="css/clear.css">
+    <link rel="stylesheet" href="css/home.css">
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="js/layui/dist/css/layui.css">
+    <script src="js/layui/dist/layui.js"></script>
+<!--    <script src="http://cdn.highcharts.com.cn/highcharts/9.3.2/highcharts.js"></script>-->
+<!--    <script src="http://cdn.highcharts.com.cn/highcharts/9.3.2/highcharts-3d.js"></script>-->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+</head>
+<body style="position: relative">
+<div id="screen">
+
+    <header>
+        <div class="left">
+            <div class="top">
+                <div id="date_time">
+                    2021-12-01  17:20:20  星期三
+                </div>
+            </div>
+            <div class="middle">
+                <div class="nav_item active">
+                    <a>劳务管理</a>
+                </div>
+                <div class="nav_item" style="flex: 1 1 150px;">
+                    <a>重大安全风险</a>
+                </div>
+                <div class="nav_item" style="flex: 1 1 150px;">
+                    <a>隐患排查治理</a>
+                </div>
+                <div class="nav_item">
+                    <a>设备管理</a>
+                </div>
+                <div class="nav_item">
+                    <a>技术管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="title">数字建造演示平台</div>
+            <div id="countDown">
+                安全施工<span>273</span>天<span>17</span>小时<span>28</span>分钟<span>32</span>秒
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <div class="opt_item"></div>
+                <div class="opt_item"></div>
+                <div class="opt_item"></div>
+                <div class="layui-form">
+                    <select name="quiz" >
+                        <option value="">请选择问题</option>
+                        <optgroup label="城市记忆">
+                            <option value="你工作的第一个城市">你工作的第一个城市</option>
+                        </optgroup>
+                        <optgroup label="学生时代">
+                            <option value="你的工号">你的工号</option>
+                            <option value="你最喜欢的老师">你最喜欢的老师</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="nav_item ">
+                    <a>进度管理</a>
+                </div>
+                <div class="nav_item" >
+                    <a>进度模拟</a>
+                </div>
+                <div class="nav_item" >
+                    <a>环境监测</a>
+                </div>
+                <div class="nav_item">
+                    <a>高支模监测</a>
+                </div>
+                <div class="nav_item">
+                    <a>基坑监测</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="plate_nav">
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">劳务队伍</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                        <span class="unit">/个</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">累计进场</div>
+                <div class="plate_num">
+                    <p>
+                        <span>56</span>
+                        <span class="unit">/人</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">当前在场</div>
+                <div class="plate_num">
+                    <p>
+                        <span>56</span>
+                        <span class="unit">/个</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">本月出勤</div>
+                <div class="plate_num">
+                    <p>
+                        <span>56</span>
+                        <span class="unit">/人</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">本月缺勤</div>
+                <div class="plate_num">
+                    <p>
+                        <span>0</span>
+                        <span class="unit">/人</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">本月旷工</div>
+                <div class="plate_num">
+                    <p>
+                        <span>4</span>
+                        <span class="unit">/人</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">未培训</div>
+                <div class="plate_num">
+                    <p>
+                        <span>4</span>
+                        <span class="unit">/人</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">工种统计TOP5</span>
+            </div>
+            <div class="main_body">
+                <div id="JobStatistics" class="pie_chart"></div>
+            </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">年龄统计</span>
+            </div>
+            <div class="main_body">
+                <div id="AgeStatistics" class="pie_chart"></div>
+            </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <div class="nav_tit active" >
+                    <span class="ch-tit">区域统计TOP10</span>
+                </div>
+                <div class="nav_tit ">
+                    <span class="ch-tit">本期出勤率（%）</span>
+                </div>
+            </div>
+            <div class="main_body">
+                <div class="nav_tab_content" style="display: block">
+                    <div id="AreaStatistics" class="normal_chart"></div>
+                </div>
+                <div class="nav_tab_content">
+                    <div id="CurrentPeriodStatistics" class="normal_chart"></div>
+                <div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">本期出勤劳务队伍TOP5</span>
+            </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">近30天劳务队伍进退场TOP5</span>
+            </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">劳务队伍劳务人员分布</span>
+            </div>
+        </div>
+    </main>
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="js/bg.js"></script>
+<script>
+    var form;
+    var Charts = {}
+
+    layui.use(['form'], function (){
+        form = layui.form
+        form.render('select')
+    })
+
+    $(function (){
+        // initPie3DChart()
+        initPieChart($("#JobStatistics")[0], "JobStatistics",
+            [
+                {name: '钢筋工', value: '18'},
+                {name: '木工', value: '20'},
+                {name: '普工', value: '34'},
+                {name: '防水工', value: '12'},
+                {name: '泥瓦工', value: '12'},
+            ]
+        )
+        initPieChart($("#AgeStatistics")[0], "AgeStatistics",
+            [
+                {name: '18-25岁', value: '18'},
+                {name: '26-45岁', value: '20'},
+                {name: '46-50岁', value: '34'},
+                {name: '51-55岁', value: '12'},
+                {name: '56-60岁', value: '12'},
+            ]
+        )
+
+        initCategoryChart($("#AreaStatistics")[0], 'AreaStatistics', ["安徽省", "河北省", "河南省", "山东省", "四川省", "甘肃省", "陕西省"]
+            , [78, 74, 63, 56, 54, 38, 35])
+
+        initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-24", "11-24", "11-25", "11-26", "11-27", "11-28"]
+            , [78, 74, 63, 56, 54, 38, 35])
+    })
+
+    function initPie3DChart() {
+        var chart = {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45
+            },
+            spacing: [30,120,105,-80],
+            backgroundColor: "#141540",
+            dataLabels: {
+                enabled: false
+            }
+        };
+
+        var plotOptions = {
+            pie: {
+                depth: 80
+            },
+            dataLabels: {
+                enabled: false
+            }
+        };
+        var series= [{
+            name: '配送量',
+            data: [
+                ['Bananas', 8],
+                ['Kiwi', 3],
+                ['Mixed nuts', 1],
+                ['Oranges', 6],
+                ['Apples', 8],
+                ['Pears', 4],
+                ['Clementines', 4],
+                ['Reddish (bag)', 1],
+                ['Grapes (bunch)', 1]
+            ]
+        }];
+
+        var json = {};
+        json.chart = chart;
+        json.title = '';
+        json.plotOptions = plotOptions;
+        json.series = series;
+        $('.pie_chart').highcharts(json);
+    }
+
+    function initCategoryChart(ele, name,data1, data2, opt) {
+        var option = {
+            color: ['#FF9125'],
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                textStyle: {
+                    color: "#fff"
+                },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                splitLine: {
+                    lineStyle: {
+                        color: ['#36C0C5']
+                    }
+                },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                }
+                // axisLabel: {
+                //     formatter: function (p) {
+                //         return p + '%'
+                //     }
+                // }
+            },
+            grid:{
+                x:50,
+                y:40,
+                x2:20,
+                y2:45,
+                borderWidth:1
+            },
+
+            series: [
+                {
+                    data: [120, 200, 150, 80, 70, 110, 130],
+                    type: 'bar',
+                    barWidth:30,
+                    backgroundStyle: {
+                        // color: 'rgba(180, 180, 180, 0.2)'
+                    },
+                }
+            ]
+        }
+        var chart = echarts.init(ele);
+        option.xAxis.data = data1
+        option.series[0].data = data2
+
+        option.series[0].itemStyle = {
+            normal: {
+                label: {
+                    show: true,
+                    position: 'top',
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                },
+            }
+        }
+        option = Object.assign(option, opt)
+        chart.setOption(option);
+        Charts[name] = chart
+    }
+
+    function initPieChart(ele, name,data, opt) {
+        var chart = echarts.init(ele);
+        var pieChartOption = {
+            tooltip: {
+                trigger: 'item'
+            },
+            grid:{
+                x:45,
+                y:45,
+                x2:5,
+                y2:20,
+                borderWidth:1
+            },
+            color: ['#173DAA', '#CE7525','#18A89D' ,'#BF2E4A', '#BF23CC'],
+            // 图例
+            legend: {
+                // x: 'right',
+                y: 'center',
+                right: '10%',
+                bottom: '0%',
+                orient : 'vertical',
+                textStyle: { //图例文字的样式
+                    color: '#ffffff',
+                    fontSize: 12
+                },
+                icon: 'none',
+                padding: [10, 10],
+                formatter(name){
+                    var value;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].name === name) {
+                            value = data[i].value;
+                        }
+                    }
+                    let arr = [
+                        '{icon|}\n{a|' + name + '}{b|' + value + '}'
+                    ];
+
+                    return arr.join('\n')
+                },
+                textStyle: {
+                    rich: {
+                        icon: {
+                            align: 'left',
+                            width: 40,
+                            height: 8,
+                            backgroundColor: 'path://',
+                        },
+                        a: {
+                            fontSize: 16,
+                            align: 'left',
+                            color: "#fff",
+                            padding:[10,0,0,0],
+                            width: 70,
+                        },
+                        b: {
+                            fontSize: 30,
+                            align: 'right',
+                            color: "#fff",
+                            fontWeight: 400,
+                            fontFamily: 'Impact',
+                            // padding:[0,28,0,0],
+                            width: 50
+
+                        }
+                    }
+                },
+                // backgroundColor: "#FAFAFA"
+            },
+            series: [
+                {
+                    type: 'pie',
+                    // radius: ['30%', '60%'],
+                    radius: '60%',
+                    center: ['35%', '50%'],
+                    label: {
+                        normal: {
+                            show: true,//是否显示标签
+                            position: 'left',
+                            formatter: "{c}",
+                            fontSize: 12,
+                            color: '#171717'
+                        },
+                    },
+                    // labelLine: {
+                    //     normal: {
+                    //         show: false,//是否显示引导线
+                    //     }
+                    // },
+                    data: [],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        pieChartOption.series[0].data = data
+        pieChartOption = Object.assign(pieChartOption, opt)
+
+        chart.setOption(pieChartOption);
+        Charts[name] = chart
+
+    }
+
+    function initLineChart(ele, name,data1, data2, opt) {
+        var chart = echarts.init(ele);
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            grid:{
+                x:45,
+                y:45,
+                x2:5,
+                y2:20,
+                containLabel: true,
+                borderWidth:1
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Line 1',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    lineStyle: {
+                        width: 0
+                    },
+                    showSymbol: false,
+                    areaStyle: {
+                        opacity: 0.8,
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            {
+                                offset: 0,
+                                color: '#F18A26'
+                            },
+                            {
+                                offset: 1,
+                                color: '#392939'
+                            }
+                        ])
+                    },
+
+                    data: [140, 232, 101, 264, 90, 340, 250]
+                }
+
+            ]
+        };
+
+        option.xAxis.data = data1
+        option.series[0].data = data2
+        option = Object.assign(option, opt)
+        chart.setOption(option);
+        Charts[name] = chart
+    }
+
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+
+    // 图标上标题导航 tab
+    $(".nav_tit").on("click", function() {
+        var index = $(this).index()
+        $(this).parent().children().removeClass("active")
+        $(this).addClass("active")
+        var parent = $(this).parent().parent()
+        parent.find(".nav_tab_content").hide().eq(index).show()
+    })
+
+
+</script>
+<script src="js/bigscreen.js"></script>
+</body>
+</html>
