@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <link rel="stylesheet" href="./css/head.css">
+</head>
+<body>
+<header>
+    <div class="left">
+        <div class="top">
+            <div id="date_time">
+                2021-12-01  17:20:20  星期三
+            </div>
+        </div>
+        <div class="middle">
+            <div class="nav_item active">
+                <a>劳务管理</a>
+            </div>
+            <div class="nav_item" style="flex: 1 1 150px;">
+                <a>重大安全风险</a>
+            </div>
+            <div class="nav_item" style="flex: 1 1 150px;">
+                <a>隐患排查治理</a>
+            </div>
+            <div class="nav_item">
+                <a>设备管理</a>
+            </div>
+            <div class="nav_item">
+                <a>技术管理</a>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="title">数字建造演示平台</div>
+        <div id="countDown">
+            安全施工<span>273</span>天<span>17</span>小时<span>28</span>分钟<span>32</span>秒
+        </div>
+    </div>
+    <div class="right">
+        <div class="top">
+            <div class="opt_item me-opt" id="me-opt">
+
+            </div>
+            <div class="opt_item"></div>
+            <div class="opt_item"></div>
+            <div class="layui-form">
+                <select name="quiz" >
+                    <option value="">请选择组</option>
+                    <option value="1">天恩项目组</option>
+                </select>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="nav_item ">
+                <a>进度管理</a>
+            </div>
+            <div class="nav_item" >
+                <a>进度模拟</a>
+            </div>
+            <div class="nav_item" >
+                <a>环境监测</a>
+            </div>
+            <div class="nav_item">
+                <a>高支模监测</a>
+            </div>
+            <div class="nav_item">
+                <a>基坑监测</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    var form, dropdown;
+    layui.use(['form' ,'table', 'dropdown'], function (){
+        form = layui.form
+        dropdown = layui.dropdown
+        form.render('select')
+        dropdown.render({
+            elem: '#me-opt' //可绑定在任意元素中，此处以上述按钮为例
+            ,
+            size: 'small',
+            data: [{
+                title: '我的'
+            },{
+                title: '退出'
+            }]
+        })
+    })
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@ body, html {
   background-color: #0C0D21;
   position: relative;
   margin: 0 auto;
+  font-family: MicrosoftYaHei;
 }
 
 #screen {
@@ -196,11 +197,12 @@ main .charts_content_box .content-header {
   width: 100%;
   height: 30px;
   padding-top: 3px;
+  padding-left: 2px;
   line-height: 30px;
 }
 main .charts_content_box .content-header .ch-tit {
-  padding: 0 8px;
   font-size: 18px;
+  padding: 0 8px;
   font-family: Microsoft YaHei;
   font-weight: 400;
   color: #FEFFFF;
@@ -216,16 +218,52 @@ main .charts_content_box .nav_tab_content {
   display: none;
   height: 100%;
 }
-main .charts_content_box .normal_chart {
+main .charts_content_box .normal_chart, main .charts_content_box .main_body_table {
   width: 100%;
   height: 100%;
 }
 main .charts_content_box .main_body {
   flex: 1;
+  height: 0;
 }
 main .charts_content_box .main_body .pie_chart {
   width: 100%;
   height: 100%;
+}
+main .charts_content_box .main_body .main_body_table {
+  box-sizing: border-box;
+  padding: 0 8px;
+}
+main .charts_content_box .main_body .main_body_table .layui-table tbody tr:hover, main .charts_content_box .main_body .main_body_table .layui-table thead tr, main .charts_content_box .main_body .main_body_table .layui-table-click, main .charts_content_box .main_body .main_body_table .layui-table-header, main .charts_content_box .main_body .main_body_table .layui-table-hover, main .charts_content_box .main_body .main_body_table .layui-table-mend, main .charts_content_box .main_body .main_body_table .layui-table-patch, main .charts_content_box .main_body .main_body_table .layui-table-tool, main .charts_content_box .main_body .main_body_table .layui-table[lay-even] tr:nth-child(even) {
+  background-color: transparent;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-view {
+  border-color: #2FF9F0;
+  margin: 0;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-header {
+  border-color: #2FF9F0;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-header tr {
+  background-color: #141546 !important;
+  color: #fff;
+}
+main .charts_content_box .main_body .main_body_table tr td {
+  border-color: #2FF9F0;
+  border-right: none;
+  color: #2FF9F0;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-cell {
+  font-size: 16px;
+}
+main .charts_content_box .main_body .main_body_table .layui-table {
+  background: initial !important;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-body {
+  overflow: hidden;
+}
+main .charts_content_box .main_body .main_body_table .layui-table-view .layui-table th {
+  border-right: none;
 }
 
 /*# sourceMappingURL=home.css.map */

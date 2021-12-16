@@ -3,88 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>劳务管理</title>
-    <link rel="stylesheet" href="css/clear.css">
-    <link rel="stylesheet" href="css/home.css">
-    <script src="js/jquery.min.js"></script>
-    <link rel="stylesheet" href="js/layui/dist/css/layui.css">
-    <script src="js/layui/dist/layui.js"></script>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
 <!--    <script src="http://cdn.highcharts.com.cn/highcharts/9.3.2/highcharts.js"></script>-->
 <!--    <script src="http://cdn.highcharts.com.cn/highcharts/9.3.2/highcharts-3d.js"></script>-->
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+    <script src="./js/echarts.min.js"></script>
 </head>
-<body style="position: relative">
+<body style="position: relative; overflow: hidden">
 <div id="screen">
 
-    <header>
-        <div class="left">
-            <div class="top">
-                <div id="date_time">
-                    2021-12-01  17:20:20  星期三
-                </div>
-            </div>
-            <div class="middle">
-                <div class="nav_item active">
-                    <a>劳务管理</a>
-                </div>
-                <div class="nav_item" style="flex: 1 1 150px;">
-                    <a>重大安全风险</a>
-                </div>
-                <div class="nav_item" style="flex: 1 1 150px;">
-                    <a>隐患排查治理</a>
-                </div>
-                <div class="nav_item">
-                    <a>设备管理</a>
-                </div>
-                <div class="nav_item">
-                    <a>技术管理</a>
-                </div>
-            </div>
-        </div>
-        <div class="center">
-            <div class="title">数字建造演示平台</div>
-            <div id="countDown">
-                安全施工<span>273</span>天<span>17</span>小时<span>28</span>分钟<span>32</span>秒
-            </div>
-        </div>
-        <div class="right">
-            <div class="top">
-                <div class="opt_item"></div>
-                <div class="opt_item"></div>
-                <div class="opt_item"></div>
-                <div class="layui-form">
-                    <select name="quiz" >
-                        <option value="">请选择问题</option>
-                        <optgroup label="城市记忆">
-                            <option value="你工作的第一个城市">你工作的第一个城市</option>
-                        </optgroup>
-                        <optgroup label="学生时代">
-                            <option value="你的工号">你的工号</option>
-                            <option value="你最喜欢的老师">你最喜欢的老师</option>
-                        </optgroup>
-                    </select>
-                </div>
-            </div>
-            <div class="middle">
-                <div class="nav_item ">
-                    <a>进度管理</a>
-                </div>
-                <div class="nav_item" >
-                    <a>进度模拟</a>
-                </div>
-                <div class="nav_item" >
-                    <a>环境监测</a>
-                </div>
-                <div class="nav_item">
-                    <a>高支模监测</a>
-                </div>
-                <div class="nav_item">
-                    <a>基坑监测</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
 
     <div id="plate_nav">
         <div class="plate_item">
@@ -207,30 +139,85 @@
             <div class="content-header">
                 <span class="ch-tit">本期出勤劳务队伍TOP5</span>
             </div>
+            <div class="main_body">
+                <div id="AttendanceTeamTop5" class="normal_chart"></div>
+            </div>
         </div>
         <div class="charts_content_box">
             <div class="content-header">
                 <span class="ch-tit">近30天劳务队伍进退场TOP5</span>
+            </div>
+            <div class="main_body">
+                <div id="InOutTeamTop5" class="normal_chart"></div>
             </div>
         </div>
         <div class="charts_content_box">
             <div class="content-header">
                 <span class="ch-tit">劳务队伍劳务人员分布</span>
             </div>
+            <div class="main_body">
+                <div id="TeamTable" class="main_body_table">
+                    <table id="table"></table>
+                </div>
+            </div>
         </div>
     </main>
 </div>
 <canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
-<script src="js/bg.js"></script>
+<script src="./js/bg.js"></script>
+<script src="./js/common.js"></script>
 <script>
-    var form;
+    var form, table;
     var Charts = {}
 
-    layui.use(['form'], function (){
+    $("#header").load('_header.html')
+
+    layui.use(['form' ,'table'], function (){
         form = layui.form
+        table = layui.table
         form.render('select')
+        renderTable()
     })
 
+    function renderTable() {
+
+        table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            data: [
+                { name: '东方华晨（北京）建筑工程有限公司-董永嘉', num1: 4, num2: 23 },
+                { name: '天津复原建设工程有限公司-李建', num1: 4, num2: 23 },
+                { name: '天津三和雨神工程有限公司-郭玉娟', num1: 4, num2: 23 },
+                { name: '合肥东方工程有限公司-程晓明', num1: 4, num2: 23 },
+                { name: '华东建设工程施工有限公司-李明伟', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
+                { name: '河南经开建设有限公司-胡海燕', num1: 4, num2: 23 },
+            ],
+            cols: [
+                [
+                    { field: 'name', width: '60%', title: '劳务队伍' },
+                    { field: 'num1', title: '劳务班组数' },
+                    { field: 'num2', title: '劳务人数' },
+                ]
+            ],
+            done: function() {
+                $("#TeamTable .layui-table-body").layTableScroll()
+            }
+        })
+        //
+        // Charts['_table'] = {
+        //     resize: function() {
+        //         _table.render({
+        //             height: $("#table").parent().height()
+        //         })
+        //     }
+        // }
+    }
     $(function (){
         // initPie3DChart()
         initPieChart($("#JobStatistics")[0], "JobStatistics",
@@ -257,8 +244,23 @@
 
         initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-24", "11-24", "11-25", "11-26", "11-27", "11-28"]
             , [78, 74, 63, 56, 54, 38])
-    })
 
+        initBarChart($("#AttendanceTeamTop5")[0], 'AttendanceTeamTop5', [
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+        ], { name: '出勤', data: [78,74,63,56,54] }, { name: '缺勤', data: [68, 64,53, 46, 44]})
+
+        initBarChart($("#InOutTeamTop5")[0], 'AttendanceTeamTop5', [
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+            '安徽省安品\n王帅',
+        ], { name: '进场', data: [78,74,63,56,54]},{ name: '退场', data: [68, 64,53, 46, 44]})
+    })
     function initPie3DChart() {
         var chart = {
             type: 'pie',
@@ -303,6 +305,7 @@
         json.series = series;
         $('.pie_chart').highcharts(json);
     }
+
 
     function initCategoryChart(ele, name,data1, data2, opt) {
         var option = {
@@ -387,25 +390,14 @@
             tooltip: {
                 trigger: 'item'
             },
-            grid:{
-                x:45,
-                y:45,
-                x2:5,
-                y2:20,
-                borderWidth:1
-            },
             color: ['#173DAA', '#CE7525','#18A89D' ,'#BF2E4A', '#BF23CC'],
             // 图例
             legend: {
                 // x: 'right',
                 y: 'center',
-                right: '10%',
+                right: '15%',
                 bottom: '0%',
                 orient : 'vertical',
-                textStyle: { //图例文字的样式
-                    color: '#ffffff',
-                    fontSize: 12
-                },
                 icon: 'none',
                 padding: [10, 10],
                 formatter(name){
@@ -455,7 +447,7 @@
                     type: 'pie',
                     // radius: ['30%', '60%'],
                     radius: '60%',
-                    center: ['35%', '50%'],
+                    center: ['30%', '50%'],
                     label: {
                         normal: {
                             show: true,//是否显示标签
@@ -489,7 +481,101 @@
         Charts[name] = chart
 
     }
+    function initBarChart(ele, name, xdata, data1, data2, opt) {
+        var chart = echarts.init(ele);
 
+        var emphasisStyle = {
+            itemStyle: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(0,0,0,0.3)'
+            }
+        };
+        var option = {
+            tooltip: {},
+            color: ['#37D1CE', '#FF9125'],
+            legend: {
+                top: '2%',
+                right: '5%',
+                icon: 'rect',
+                textStyle: {
+                    color: '#FEFFFF',
+                    fontSize: 16
+                }
+            },
+            xAxis: {
+                data: xdata,
+                axisLabel: {
+                    show: true,
+                    onZero: true,
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                },
+                splitLine: { show: false },
+                splitArea: { show: false }
+            },
+            yAxis: {
+
+                splitLine: {
+                    lineStyle: {
+                        color: ['#36C0C5']
+                    }
+                },
+                axisLabel: {
+                    show: true,
+                        textStyle: {
+                        fontSize: 16,
+                            color: '#FEFFFF'
+                    }
+                 }
+            },
+            grid:{
+                x:20,
+                y:60,
+                x2:20,
+                y2:20,
+                containLabel: true,
+                borderWidth:1
+            },
+            series: [
+                {
+                    name: data1.name,
+                    type: 'bar',
+                    stack: 'one',
+                    barWidth:30,
+                    emphasis: emphasisStyle,
+                    data: data1.data
+                },
+                {
+                    name:  data2.name,
+                    type: 'bar',
+                    stack: 'one',
+                    barWidth:30,
+                    emphasis: emphasisStyle,
+                    data: data2.data,
+                },
+            ]
+        };
+
+        option.series[0].itemStyle = option.series[1].itemStyle = {
+            normal: {
+                label: {
+                    show: true,
+                        position: 'top',
+                        textStyle: {
+                        fontSize: 16,
+                            color: '#FEFFFF'
+                    }
+                },
+            }
+        }
+
+        option = Object.assign(option, opt)
+
+        chart.setOption(option);
+        Charts[name] = chart
+    }
     function initLineChart(ele, name,data1, data2, opt) {
         var chart = echarts.init(ele);
         var option = {
@@ -598,9 +684,7 @@
         parent.find(".nav_tab_content").hide().eq(index).show()
         Charts[parent.find('.normal_chart').eq(index).attr("id")].resize()
     })
-
-
 </script>
-<script src="js/bigscreen.js"></script>
+<script src="./js/bigscreen.js"></script>
 </body>
 </html>
