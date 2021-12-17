@@ -149,7 +149,7 @@ header {
     flex: 1;
     display: flex;
     justify-content: center;
-    .plate_box {
+    .plate_box_long, .plate_box {
       position: relative;
       width: 156px;
       height: 104px;
@@ -193,6 +193,13 @@ header {
         }
       }
     }
+
+    .plate_box_long {
+      background-image: url("../img/plate_long.png");
+      .plate_til {
+        width: 112px;
+      }
+    }
   }
 }
 
@@ -200,9 +207,11 @@ main {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0 16px;
+  justify-content: space-between;
   align-items: center;
-  .charts_content_box {
+  .charts_content_box_280 , .charts_content_box {
     width: 618px;
     height: 405px;
     display: flex;
@@ -226,8 +235,14 @@ main {
       .nav_tit {
         display: inline-block;
         cursor: pointer;
+        .ch-tit {
+          color: #40F3EF !important;
+        }
         &.active {
-          background-color: #111234
+          background-color: #111234;
+          .ch-tit {
+            color: #FEFFFF !important;
+          }
         }
       }
     }
@@ -251,43 +266,112 @@ main {
         height: 100%;
       }
 
-      .main_body_table {
-        box-sizing: border-box;
-        padding: 0 8px;
-
-        .layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table[lay-even] tr:nth-child(even) {
-          background-color: transparent;
-        }
-        .layui-table-view {
-          border-color: #2FF9F0;
-          margin: 0;
-        }
-        .layui-table-header {
-          border-color: #2FF9F0;
-          tr {
-            background-color: #141546 !important;
-            color: #fff;
-          }
-
-        }
-        tr td{
-          border-color: #2FF9F0;
-          border-right: none;
-          color: #2FF9F0;
-        }
-        .layui-table-cell {
-          font-size: 16px;
-        }
-        .layui-table {
-          background: initial !important;
-        }
-        .layui-table-body {
-          overflow: hidden;
-        }
-        .layui-table-view .layui-table th {
-          border-right: none;
-        }
-      }
     }
+  }
+
+  .charts_content_box_280 {
+    background-image: url("../img/charts_content_box_280.png");
+  }
+  .charts_content_box_220 {
+    background-image: url("../img/charts_content_box_220.png");
+  }
+}
+
+
+.main_body_table {
+  box-sizing: border-box;
+  padding: 0 8px;
+
+  .layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table[lay-even] tr:nth-child(even) {
+    background-color: transparent;
+  }
+  .layui-table-view {
+    border-color: #2FF9F0;
+    margin: 0;
+  }
+  .layui-table-header {
+    border-color: #2FF9F0;
+    tr {
+      background-color: #141546 !important;
+      color: #fff;
+    }
+
+  }
+  tr td{
+    border-color: #2FF9F0;
+    border-right: none;
+    color: #2FF9F0;
+    word-wrap:break-word;
+  }
+  .layui-table-cell {
+    font-size: 16px;
+    height: auto;
+    white-space: inherit;
+  }
+  .layui-table {
+    width: 100% ;
+    background: initial !important;
+  }
+  .layui-table-body {
+    overflow: hidden;
+  }
+  .layui-table-init {
+    background-color: initial;
+  }
+  .layui-table-view .layui-table th {
+    border-right: none;
+  }
+}
+//#m_modal {
+//  position: fixed;
+//  width: 100vw;
+//  height: 100vh;
+//  z-index: 10;
+//  background: rgba(0,0,0, .3);
+//}
+.modal_content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1220px;
+  height: 593px;
+  background: url("../img/modal_box.png");
+  background-size: 100%;
+  filter: drop-shadow(0px 0px 50px rgba(13,251,232,0.2));
+  padding: 20px 25px 0 38px;
+
+  .modal_header {
+    //padding: 0 ;
+    span {
+      font-size: 18px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #FEFFFF;
+      float: left;
+    }
+    i {
+      float: right;
+      color: #0DFBE7;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24px;
+      cursor: pointer;
+      text-align: center;
+      width: 24px;
+      border-radius: 50%;
+      display: block;
+      background: #001C59;
+      height: 24px;
+    }
+  }
+
+  .modal_body {
+    flex: 1;
+    height: 0;
+    margin-top: 35px;
   }
 }

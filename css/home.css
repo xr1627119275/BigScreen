@@ -136,14 +136,14 @@ header .right .top .opt_item:nth-child(3) {
   display: flex;
   justify-content: center;
 }
-#plate_nav .plate_item .plate_box {
+#plate_nav .plate_item .plate_box_long, #plate_nav .plate_item .plate_box {
   position: relative;
   width: 156px;
   height: 104px;
   background: url("../img/plate.png") no-repeat;
   background-size: 100% 100%;
 }
-#plate_nav .plate_item .plate_box .plate_til {
+#plate_nav .plate_item .plate_box_long .plate_til, #plate_nav .plate_item .plate_box .plate_til {
   font-size: 16px;
   width: 80px;
   text-align: center;
@@ -152,7 +152,7 @@ header .right .top .opt_item:nth-child(3) {
   font-weight: 400;
   color: #03FFE4;
 }
-#plate_nav .plate_item .plate_box .plate_num {
+#plate_nav .plate_item .plate_box_long .plate_num, #plate_nav .plate_item .plate_box .plate_num {
   font-size: 42px;
   margin-top: 4px;
   font-family: Impact;
@@ -161,11 +161,11 @@ header .right .top .opt_item:nth-child(3) {
   color: #FFFFFF;
   text-shadow: 0px 2px 4px rgba(0, 16, 45, 0.32);
 }
-#plate_nav .plate_item .plate_box .plate_num p {
+#plate_nav .plate_item .plate_box_long .plate_num p, #plate_nav .plate_item .plate_box .plate_num p {
   width: 100%;
   position: relative;
 }
-#plate_nav .plate_item .plate_box .plate_num p .unit {
+#plate_nav .plate_item .plate_box_long .plate_num p .unit, #plate_nav .plate_item .plate_box .plate_num p .unit {
   display: block;
   content: "/个";
   width: 30px;
@@ -177,15 +177,23 @@ header .right .top .opt_item:nth-child(3) {
   top: 45%;
   right: 4px;
 }
+#plate_nav .plate_item .plate_box_long {
+  background-image: url("../img/plate_long.png");
+}
+#plate_nav .plate_item .plate_box_long .plate_til {
+  width: 112px;
+}
 
 main {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0 16px;
+  justify-content: space-between;
   align-items: center;
 }
-main .charts_content_box {
+main .charts_content_box_280, main .charts_content_box {
   width: 618px;
   height: 405px;
   display: flex;
@@ -193,77 +201,139 @@ main .charts_content_box {
   background: url("../img/charts_content_box.png");
   background-size: 100% 100%;
 }
-main .charts_content_box .content-header {
+main .charts_content_box_280 .content-header, main .charts_content_box .content-header {
   width: 100%;
   height: 30px;
   padding-top: 3px;
   padding-left: 2px;
   line-height: 30px;
 }
-main .charts_content_box .content-header .ch-tit {
+main .charts_content_box_280 .content-header .ch-tit, main .charts_content_box .content-header .ch-tit {
   font-size: 18px;
   padding: 0 8px;
   font-family: Microsoft YaHei;
   font-weight: 400;
   color: #FEFFFF;
 }
-main .charts_content_box .content-header .nav_tit {
+main .charts_content_box_280 .content-header .nav_tit, main .charts_content_box .content-header .nav_tit {
   display: inline-block;
   cursor: pointer;
 }
-main .charts_content_box .content-header .nav_tit.active {
+main .charts_content_box_280 .content-header .nav_tit .ch-tit, main .charts_content_box .content-header .nav_tit .ch-tit {
+  color: #40F3EF !important;
+}
+main .charts_content_box_280 .content-header .nav_tit.active, main .charts_content_box .content-header .nav_tit.active {
   background-color: #111234;
 }
-main .charts_content_box .nav_tab_content {
+main .charts_content_box_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box .content-header .nav_tit.active .ch-tit {
+  color: #FEFFFF !important;
+}
+main .charts_content_box_280 .nav_tab_content, main .charts_content_box .nav_tab_content {
   display: none;
   height: 100%;
 }
-main .charts_content_box .normal_chart, main .charts_content_box .main_body_table {
+main .charts_content_box_280 .normal_chart, main .charts_content_box_280 .main_body_table, main .charts_content_box .normal_chart, main .charts_content_box .main_body_table {
   width: 100%;
   height: 100%;
 }
-main .charts_content_box .main_body {
+main .charts_content_box_280 .main_body, main .charts_content_box .main_body {
   flex: 1;
   height: 0;
 }
-main .charts_content_box .main_body .pie_chart {
+main .charts_content_box_280 .main_body .pie_chart, main .charts_content_box .main_body .pie_chart {
   width: 100%;
   height: 100%;
 }
-main .charts_content_box .main_body .main_body_table {
+main .charts_content_box_280 {
+  background-image: url("../img/charts_content_box_280.png");
+}
+main .charts_content_box_220 {
+  background-image: url("../img/charts_content_box_220.png");
+}
+
+.main_body_table {
   box-sizing: border-box;
   padding: 0 8px;
 }
-main .charts_content_box .main_body .main_body_table .layui-table tbody tr:hover, main .charts_content_box .main_body .main_body_table .layui-table thead tr, main .charts_content_box .main_body .main_body_table .layui-table-click, main .charts_content_box .main_body .main_body_table .layui-table-header, main .charts_content_box .main_body .main_body_table .layui-table-hover, main .charts_content_box .main_body .main_body_table .layui-table-mend, main .charts_content_box .main_body .main_body_table .layui-table-patch, main .charts_content_box .main_body .main_body_table .layui-table-tool, main .charts_content_box .main_body .main_body_table .layui-table[lay-even] tr:nth-child(even) {
+.main_body_table .layui-table tbody tr:hover, .main_body_table .layui-table thead tr, .main_body_table .layui-table-click, .main_body_table .layui-table-header, .main_body_table .layui-table-hover, .main_body_table .layui-table-mend, .main_body_table .layui-table-patch, .main_body_table .layui-table-tool, .main_body_table .layui-table[lay-even] tr:nth-child(even) {
   background-color: transparent;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-view {
+.main_body_table .layui-table-view {
   border-color: #2FF9F0;
   margin: 0;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-header {
+.main_body_table .layui-table-header {
   border-color: #2FF9F0;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-header tr {
+.main_body_table .layui-table-header tr {
   background-color: #141546 !important;
   color: #fff;
 }
-main .charts_content_box .main_body .main_body_table tr td {
+.main_body_table tr td {
   border-color: #2FF9F0;
   border-right: none;
   color: #2FF9F0;
+  word-wrap: break-word;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-cell {
+.main_body_table .layui-table-cell {
   font-size: 16px;
+  height: auto;
+  white-space: inherit;
 }
-main .charts_content_box .main_body .main_body_table .layui-table {
+.main_body_table .layui-table {
+  width: 100%;
   background: initial !important;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-body {
+.main_body_table .layui-table-body {
   overflow: hidden;
 }
-main .charts_content_box .main_body .main_body_table .layui-table-view .layui-table th {
+.main_body_table .layui-table-init {
+  background-color: initial;
+}
+.main_body_table .layui-table-view .layui-table th {
   border-right: none;
+}
+
+.modal_content {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1220px;
+  height: 593px;
+  background: url("../img/modal_box.png");
+  background-size: 100%;
+  filter: drop-shadow(0px 0px 50px rgba(13, 251, 232, 0.2));
+  padding: 20px 25px 0 38px;
+}
+.modal_content .modal_header span {
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FEFFFF;
+  float: left;
+}
+.modal_content .modal_header i {
+  float: right;
+  color: #0DFBE7;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+  text-align: center;
+  width: 24px;
+  border-radius: 50%;
+  display: block;
+  background: #001C59;
+  height: 24px;
+}
+.modal_content .modal_body {
+  flex: 1;
+  height: 0;
+  margin-top: 35px;
 }
 
 /*# sourceMappingURL=home.css.map */

@@ -4,14 +4,16 @@ jQuery.fn.extend({
             var _this=$(this);//存储对象
             var ul = _this.find("tbody");
             var li= ul.find("tr");
-            var w= li.length * li.height();
+            var h = li.length * li.height();
+            if (h <= _this.height()) return
             li.clone().prependTo(ul);
-            ul.height(2*w);
+
+            ul.height(2*h);
             var i=1,l;
             _this.hover(function(){i=0},function(){i=1});
             function autoScroll(){
                 l = _this.scrollTop();
-                if(l>=w){
+                if(l>=h){
                     _this.scrollTop(0);
                 }else{
                     _this.scrollTop(l + i);
@@ -56,4 +58,35 @@ function screenFun(num) {
     return new Promise(function (res, rej) {
         res("返回值");
     });
+}
+
+// 加载首页
+$("#header").load('_header.html',undefined, function (response, status) {
+    if (status == 'success') {
+        var pathname = location.pathname.substring(1)
+        if (pathname == '') {
+            return
+        }
+        $("header .nav_item").siblings().removeClass("active")
+        $(`a[href='${pathname}']`).parent().addClass("active")
+        // .eq(1).addClass("active")
+    }
+})
+
+
+// 图表上标题导航 tab
+$(".nav_tit").on("click", function() {
+    var index = $(this).index()
+    $(this).parent().children().removeClass("active")
+    $(this).addClass("active")
+    var parent = $(this).parent().parent()
+    parent.find(".nav_tab_content").hide().eq(index).show()
+    Charts[parent.find('.normal_chart').eq(index).attr("id")].resize()
+})
+
+// 自定义 modal
+function Modal(opt) {
+    var options = {
+
+    }
 }
