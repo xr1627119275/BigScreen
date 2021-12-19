@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <div id="plate_nav" style="padding: 14px 0 27px 0;">
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">设备总数</div>
+                <div class="plate_num">
+                    <p>
+                        <span>123</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">租赁设备</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">分包自带</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">闲置设备</div>
+                <div class="plate_num">
+                    <p>
+                        <span>23</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">大型设备</div>
+                <div class="plate_num">
+                    <p>
+                        <span>23</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">特种设备</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">利用率</div>
+                <div class="plate_num">
+                    <p>
+                        <span>20%</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">实时风险统计</span>
+            </div>
+            <div class="main_body">
+                <div id="LiveRisk" class="pie_chart"></div>
+            </div>
+        </div>
+
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">风险消除统计</span>
+            </div>
+            <div class="main_body">
+                <div id="RiskClear" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">风险状态统计</span>
+            </div>
+            <div class="main_body">
+                <div id="RiskStatus" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">风险检查</span>
+            </div>
+            <div class="main_body">
+                <div id="RiskCheck" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">重点关注</span>
+            </div>
+            <div class="main_body">
+                <div id="Important" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">风险等级统计</span>
+            </div>
+            <div class="main_body">
+                <div id="RiskLevel" class="pie_chart"></div>
+            </div>
+        </div>
+        <div class="charts_content_box charts_content_box_220" style="width: 100%; height: 220px">
+            <div class="content-header">
+                <span class="ch-tit">风险清单一览表</span>
+            </div>
+            <div class="main_body" >
+                <div id="TeamTable" class="main_body_table">
+                        <table id="table"></table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script>
+    var form, table;
+    var Charts = {}
+
+
+
+    layui.use(['form' ,'table'], function (){
+        form = layui.form
+        table = layui.table
+        form.render('select')
+        renderTable()
+    })
+
+    function renderTable() {
+
+        window._table = table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            // height: 'full-100',
+            data: [
+                {name1: '箱梁架设1', name2: '箱梁架设', name3: '其他附厲设施', name4: '铺轨基地驻地、办公区生活用电、生产用电', name5: '桥梁倾覆、设备侧翻、设备 故障、人员伤亡', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
+                // {name1: '各安及后临时工程临时场站', name2: '普柜基地其他附属设施', name3: '其他附厲设施', name4: '铺轨基地驻地、办公区生活用电、生产用电', name5: '桥梁倾覆、设备侧翻、设备 故障、人员伤亡', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
+                // {name1: '箱梁架设3', name2: '箱梁架设', name3: '其他附厲设施', name4: '人员出点伤亡、失火', name5: '触电、人员伤亡、火灾', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
+            ],
+            cols: [
+                [
+                    { field: 'name1', title: '单位工程' },
+                    { field: 'name2', title: '分部分项工程' },
+                    { field: 'name3', title: '施工工序' },
+                    { field: 'name4', title: '风险项目名称' },
+                    { field: 'name5', title: '风险概况描述' },
+                    { field: 'name6', width: '15%', title: '计划施工时段' },
+                    { field: 'name7', title: '风险等级' },
+                    { field: 'name8', title: '风险状态' },
+                    { field: 'name9', title: '预警状态' },
+                ]
+            ],
+            done: function() {
+                $("#TeamTable .layui-table-body").layTableScroll()
+            }
+        })
+        //
+        // Charts['_table'] = {
+        //     resize: function() {
+        //         _table.render({
+        //             height: $("#table").parent().height()
+        //         })
+        //     }
+        // }
+    }
+    $(function (){
+        // initPie3DChart()
+        initPieChart($("#LiveRisk")[0], "LiveRisk",
+            [
+                {name: '一级', value: '7'},
+                {name: '二级', value: '7'},
+                {name: '三级', value: '11'},
+            ]
+        )
+
+        // initPie3DChart()
+        initPieChart($("#RiskClear")[0], "RiskClear",
+            [
+                {name: '未消除', value: '7'},
+                {name: '已消除', value: '11'},
+            ],
+            {
+                itemGap: 50
+            }
+        )
+        initPieChart($("#RiskStatus")[0], "RiskStatus",
+            [
+                {name: '施工中', value: '18'},
+                {name: '未施工', value: '20'},
+                {name: '已消除', value: '34'},
+                {name: '预警中', value: '12'},
+            ],
+            {
+                itemGap: 10
+            }
+        )
+        initPieChart($("#RiskCheck")[0], "RiskCheck",
+            [
+                {name: '项目检查', value: '6'},
+                {name: '公司检查', value: '7'},
+                {name: '局检查', value: '11'},
+            ],
+        )
+        initPieChart($("#Important")[0], "Important",
+            [
+                {name: '即有线', value: '8'},
+                {name: '有限空间', value: '10'},
+            ],
+            {
+                itemGap: 50
+            }
+        )
+        initPieChart($("#RiskLevel")[0], "RiskLevel",
+            [
+                {name: '一级', value: '6'},
+                {name: '二级', value: '7'},
+                {name: '三级', value: '11'},
+            ]
+        )
+
+
+    })
+
+    function initPieChart(ele, name,data, opt) {
+        var chart = echarts.init(ele);
+        var pieChartOption = {
+            tooltip: {
+                trigger: 'item'
+            },
+            color: ['#264ACF','#40F3EF', '#FF9125', '#ED2946' ],
+            // 图例
+            legend: {
+                // x: 'right',
+                y: 'center',
+                right: '15%',
+                bottom: '0%',
+                orient : 'vertical',
+                icon: 'none',
+                itemGap: 30,
+                formatter(name) {
+                    var value;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].name === name) {
+                            value = data[i].value;
+                        }
+                    }
+                    var arr = [
+                        '{icon|}',
+                        '{name|' + name + '}{value|' + value + '}',
+                    ];
+                    return arr.join('\n')
+                },
+                textStyle: {
+                    rich: {
+                        icon: {
+                            align: 'left',
+                            width: 40,
+                            height: 8,
+                            backgroundColor: 'inherit',
+                        },
+                        name: {
+                            fontSize: 16,
+                            align: 'left',
+                            color: "#fff",
+                            padding: [10, 0,0,0],
+                            width: 70,
+                        },
+                        value: {
+                            fontSize: 30,
+                            align: 'right',
+                            color: "#fff",
+                            fontWeight: 400,
+                            fontFamily: 'Impact',
+                            width: 50
+                        },
+                        br: {
+                            width: 10,
+                            height: 1,
+                            padding: [10, 0,0,0]
+                        }
+                    }
+                },
+                // backgroundColor: "#FAFAFA"
+            },
+            series: [
+                {
+                    type: 'pie',
+                    radius: ['55%', '80%'],
+                    center: ['30%', '50%'],
+                    label: {
+                        normal: {
+                            show: true,//是否显示标签
+                            position: 'left',
+                            formatter: "{c}",
+                            fontSize: 12,
+                            color: '#171717'
+                        },
+                    },
+                    // labelLine: {
+                    //     normal: {
+                    //         show: false,//是否显示引导线
+                    //     }
+                    // },
+                    data: [],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        if (opt && opt.itemGap) {
+            pieChartOption.legend.itemGap = opt.itemGap
+        }
+
+        pieChartOption.series[0].data = data
+        pieChartOption = Object.assign(pieChartOption, opt)
+
+        chart.setOption(pieChartOption);
+        Charts[name] = chart
+
+    }
+
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+</script>
+<script src="./js/bigscreen.js"></script>
+</body>
+</html>

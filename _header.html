@@ -12,7 +12,7 @@
     <div class="left">
         <div class="top">
             <div id="date_time">
-                2021-12-01  17:20:20  星期三
+
             </div>
         </div>
         <div class="middle">
@@ -26,7 +26,7 @@
                 <a>隐患排查治理</a>
             </div>
             <div class="nav_item">
-                <a>设备管理</a>
+                <a href="home4.html">设备管理</a>
             </div>
             <div class="nav_item">
                 <a>技术管理</a>
@@ -36,7 +36,7 @@
     <div class="center">
         <div class="title">数字建造演示平台</div>
         <div id="countDown">
-            安全施工<span>273</span>天<span>17</span>小时<span>28</span>分钟<span>32</span>秒
+            安全施工<span class="day">273</span>天<span class="hour">17</span>小时<span class="minute">28</span>分钟<span class="second">32</span>秒
         </div>
     </div>
     <div class="right">
@@ -75,10 +75,33 @@
 
 <script>
     var form, dropdown;
-    layui.use(['form' ,'table', 'dropdown'], function (){
+
+    function setDate() {
+        var currDate = (new Date()).pattern("yyyy-MM-dd hh:mm:ss EEE")
+        $("#date_time").html(currDate)
+
+        layui.util.countdown(new Date().getTime(), new Date('2021/1/1 8:00').getTime(), function(date, serverTime, timer) {
+            var str = date[0] + '天' + date[1] + '时' +  date[2] + '分' + date[3] + '秒';
+            for (var i = 0; i < date.length; i++) {
+                $("#countDown span").eq(i).text(date[i])
+            }
+            clearTimeout(timer)
+        })
+    }
+    setDate()
+    layui.use(['form' ,'table', 'dropdown', 'util'], function (){
         form = layui.form
+        util = layui.util
         dropdown = layui.dropdown
+
         form.render('select')
+
+        setInterval(function () {
+            setDate()
+        },1000)
+
+        // 头部左上角计时
+
         dropdown.render({
             elem: '#me-opt' //可绑定在任意元素中，此处以上述按钮为例
             ,
