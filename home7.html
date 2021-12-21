@@ -110,7 +110,7 @@
             width: 0;
             height: 0;
             left: 23px;
-            bottom: -32px;
+            bottom: -35px;
             border-top: 15px solid #151753;
             border-bottom: 15px solid transparent;
             border-left: 11px solid #151753;
@@ -123,7 +123,7 @@
             width: 0;
             height: 0;
             left: 0;
-            bottom: -32px;
+            bottom: -35px;
             border-top: 15px solid #2E7670;
             border-bottom: 15px solid transparent;
             border-left: 11px solid transparent;
@@ -160,6 +160,10 @@
 
         .map_wrap1 {
             right: 10px;
+        }
+
+        .amap-logo, .amap-copyright {
+            display: none !important;
         }
     </style>
 </head>
@@ -254,12 +258,10 @@
                                 </div>
                             </form>
                             <div class="search_area">
-                                <form>
-                                    <input type="text" class="inp_t" value="" id="search-value" placeholder="请输入资源名称"
-                                           onfocus="if(this.value==''){this.className='inp_t'}"
-                                           onblur="if(this.value==''){this.className='inp_t'}" autocomplete="off"/>
-                                    <div class="btn_sea" id="search-button"></div>
-                                </form>
+                                <input type="text" class="inp_t" value="" id="search-value" placeholder="请输入资源名称"
+                                       onfocus="if(this.value==''){this.className='inp_t'}"
+                                       onblur="if(this.value==''){this.className='inp_t'}" autocomplete="off"/>
+                                <div class="btn_sea" id="search-button"></div>
                                 <div class="translate_wrap" id="search-tips" style="display: none;">
                                     <ul class="scroll_box list">
                                         <li>XX油库</li>
@@ -549,13 +551,33 @@
         form = layui.form
         table = layui.table
         laydate = layui.laydate
-        form.render()
+        // form.render()
+
+
+
+        form.on('checkbox(query)', function (data) {
+            if (data.elem.checked) {
+                mapUtil.pushType(+data.value);
+            } else {
+                mapUtil.deleteType(+data.value);
+            }
+        });
+        form.on('checkbox(query2)', function (data) {
+            if (data.elem.checked) {
+                mapUtil.setShowEnclosure(true);
+            } else {
+                mapUtil.setShowEnclosure(false);
+            }
+        });
+
+
 
 
         initMap()
         initDate()
 
         renderTable()
+
     })
 
     function initMap() {
@@ -596,6 +618,7 @@
         mapUtil.refresh();
 
 
+
         //绑定地图事件
         map.on('click', function (e) {
             $("#left-tips").hide();
@@ -621,7 +644,7 @@
         }
         var value = $('#search-value').val();
         if (value !== '') {
-            searchMap = createMap();
+            searchMap = new Map();
             publicAjax(null, "sys/deskTop/queryByName", {
                 name: value,
                 types: mapUtil.getTypes()
@@ -738,7 +761,7 @@
         var info = [];
         info.push("<div class='infowindow'>")
         info.push("<div class='view head'>")
-        info.push("<p style='color: #FFFFFF;font-size: 18px; margin-left: 21px; margin-left: 21px'>" + carInfo.numberPlate + "</p>")
+        info.push("<p style='color: #FFFFFF;font-size: 18px; margin-left: 21px;'>" + carInfo.numberPlate + "</p>")
         info.push("</div>")
         info.push("<div class='view content-row' style='margin-left: 21px'>")
         info.push("<div class='view u-f1 content-row'>")
@@ -800,6 +823,84 @@
             regeocoder(carInfo.gps);
         }
     }
+
+    // 展示地图项目详情
+    function showProjectInfo(projectInfo, gpsInfo) {
+        var info = [];
+        if (projectInfo.projectStateName == "undefined" || projectInfo.projectStateName == undefined) {
+            projectInfo.projectStateName = "";
+        }
+        if (projectInfo.useStateName == "undefined" || projectInfo.useStateName == undefined) {
+            projectInfo.useStateName = "";
+        }
+        if (projectInfo.contactPerson == "undefined" || projectInfo.contactPerson == undefined) {
+            projectInfo.contactPerson = "";
+        }
+        if (projectInfo.contactPhone == "undefined" || projectInfo.contactPhone == undefined) {
+            projectInfo.contactPhone = "";
+        }
+        if (projectInfo.companyName == "undefined" || projectInfo.companyName == undefined) {
+            projectInfo.companyName = "";
+        }
+        if (projectInfo.address == "undefined" || projectInfo.address == undefined) {
+            projectInfo.address = "";
+        }
+
+        info.push("<div class='view infowindow'>")
+        info.push("<div class='view head'>")
+        info.push("<p style='color: #FFFFFF;font-size: 18px; margin-left: 21px'>" + projectInfo.name + "</p>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>项目状态：</p>")
+        info.push("<p class='row-value'>" + projectInfo.projectStateName + "</p>")
+        info.push("</div>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>使用状态：</p>")
+        info.push("<p class='row-value'>" + projectInfo.useStateName + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:6px;margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>联系人：</p>")
+        info.push("<p class='row-value'>" + projectInfo.contactPerson + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:6px;margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>联系电话：</p>")
+        info.push("<p class='row-value'>" + projectInfo.contactPhone + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:6px;margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>所属公司：</p>")
+        info.push("<p class='row-value'>" + projectInfo.companyName + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:6px;margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>地址：</p>")
+        info.push("<p class='row-value'>" + projectInfo.address + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:6px;;margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>销售订单油量：</p>")
+        info.push("<p class='row-value'>" + projectInfo.orderTotalOil + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("</div>");
+
+        infoWindow = new AMap.InfoWindow({
+            content: info.join(""),  //使用默认信息窗体框样式，显示信息内容
+            offset: new AMap.Pixel(200, -35),
+            isCustom: true
+        });
+        var gpsValues = gpsInfo.split(',');
+        infoWindow.open(map, gpsValues);
+    }
+
 
     var mapStyle = 'amap://styles/normal';
     $("[name='btn_mapType']").click(function () {

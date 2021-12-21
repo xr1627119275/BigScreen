@@ -831,7 +831,20 @@ main {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  border: 1px solid rgba(59, 223, 221, 0.7);
+  border: 1px solid #3BDFDD;
+  background: rgba(20, 21, 64, 0.7);
+  input::-webkit-input-placeholder {
+    color: #FEFFFF;
+  }
+  input:-moz-placeholder {
+    color: #FEFFFF;
+  }
+  input::-moz-placeholder {
+    color: #FEFFFF;
+  }
+  input:-ms-input-placeholder {
+    color: #FEFFFF;
+  }
 }
 
 .search_area .inp_t {
@@ -876,6 +889,8 @@ main {
 
 .translate_wrap .list li {
   padding: 5px 10px;
+  color: #FEFFFF;
+  font-size: 16px;
 }
 
 .translate_wrap .list li:hover {
