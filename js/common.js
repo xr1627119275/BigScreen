@@ -25,41 +25,6 @@ jQuery.fn.extend({
     }
 });
 
-function screenFun(num) {
-    num = num || 1;
-    num = num * 1;
-    var docElm = document.documentElement;
-
-    switch (num) {
-        case 1:
-            if (docElm.requestFullscreen) {
-                docElm.requestFullscreen();
-            } else if (docElm.mozRequestFullScreen) {
-                docElm.mozRequestFullScreen();
-            } else if (docElm.webkitRequestFullScreen) {
-                docElm.webkitRequestFullScreen();
-            } else if (docElm.msRequestFullscreen) {
-                docElm.msRequestFullscreen();
-            }
-            break;
-        case 2:
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-            break;
-    }
-
-    return new Promise(function (res, rej) {
-        res("返回值");
-    });
-}
-
 // 加载首页
 $("#header").load('_header.html',undefined, function (response, status) {
     if (status == 'success') {
@@ -117,4 +82,85 @@ Date.prototype.pattern=function(fmt) {
         }
     }
     return fmt;
+}
+
+
+
+/*获取指定日期*/
+function getDay(day) {
+    var today = new Date();
+    var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+    today.setTime(targetday_milliseconds); //注意，这行是关键代码
+    var tYear = today.getFullYear();
+    var tMonth = today.getMonth();
+    var tDate = today.getDate();
+    tMonth = doHandleMonth(tMonth + 1);
+    tDate = doHandleMonth(tDate);
+    return tYear + "-" + tMonth + "-" + tDate;
+}
+
+function getNextYearDay(day) {
+    var today = new Date();
+    var targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+    today.setTime(targetday_milliseconds); //注意，这行是关键代码
+    var tYear = today.getFullYear()+1;
+    var tMonth = today.getMonth();
+    var tDate = today.getDate();
+    tMonth = doHandleMonth(tMonth + 1);
+    tDate = doHandleMonth(tDate);
+    return tYear + "-" + tMonth + "-" + tDate;
+}
+
+function doHandleMonth(month) {
+    var m = month;
+    if (month.toString().length == 1) {
+        m = "0" + month;
+    }
+    return m;
+}
+
+publicUrl = 'http://61.190.7.13:9410/mdm/'
+var publicAjax = function (types, urls, params, asyncs, header, callback, error) {
+    var async_val = true, header_val = {"Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiMSIsImxvZ2luTmFtZSI6IkFkbWluaXN0cmF0b3IiLCJpc3MiOiJjdGNlYWRtaW5zdHJhdG9yIn0.4ztrsoEczkasFe2meS5oASG372rc8zsdFaPG8FjH8Ho"}, type_val = 'post';
+    if (asyncs != null) {
+        async_val = asyncs;
+    }
+    if (header != null) {
+        header_val = header;
+    }
+    if (types != null) {
+        type_val = types;
+    }
+    $.ajax({
+        type: type_val,
+        url: publicUrl + urls,
+        headers: header_val,
+        async: async_val,
+        data: params,
+        traditional: true,
+        dataType: 'json',
+        success: function (data) {
+            if (data.code == 1017 || data.code == 1101) {
+                laybindevent(data.msg, 2000, function () {
+                    removeData("Authorization");
+                    removeData("cacheflag");
+                    window.location.href = loginUrl;
+                });
+            } else {
+                if (data.code == 2000) {
+                    var authorization = data.refreshToken;
+                    if (authorization != null && authorization != '' && authorization != 'null') {
+                        updateData("Authorization", authorization);
+                    }
+                }
+                callback(data);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            if (error) {
+                error(XMLHttpRequest, textStatus, errorThrown);
+            }
+            layerror('内部错误，请联系管理员！');
+        }
+    });
 }

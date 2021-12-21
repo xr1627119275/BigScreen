@@ -170,6 +170,16 @@
         </div>
     </div>
 
+    <div id="mark" style="
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0, .5);
+    "></div>
+
 </div>
 
 <canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
@@ -189,11 +199,13 @@
     })
 
     function openModal() {
+        $("#mark").show()
         $("#Modal").fadeIn()
         renderModalTable()
     }
     function closeModal() {
         $("#Modal").fadeOut()
+        $("#mark").hide()
     }
     function renderModalTable() {
 

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搅拌站</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <style>
+        .map_wrap1 {
+            position: absolute;
+            z-index: 4;
+            top: 12px;
+            left: 16px;
+        }
+
+        .msg {
+            display: none;
+            background: rgba(8, 34, 73, .58);
+        }
+
+        .view {
+            display: flex;
+            flex-direction: column;
+            padding: 2px 0 ;
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+            text-align: center
+        }
+
+        .infowindow {
+            position: relative;
+            width: 400px;
+            /*height: 233px;*/
+            background-color: #000;
+            border-radius: 5px;
+            padding-bottom: 10px;
+        }
+
+        .head {
+            height: 40px;
+            margin-bottom: 5px;
+            color: #FEFFFF;
+            justify-content: center;
+            text-align: left !important;
+            background-color: rgba(64, 243, 239, 0.4);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px
+        }
+
+        .content-row {
+            flex: 1;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .text {
+            font-size: 15px;
+            color: #666
+        }
+
+        .image {
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+            margin-right: 7.5px
+        }
+
+        .row-title {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+            margin-right: 3px
+        }
+
+        .row-value {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+        }
+
+        .view-border {
+            border: solid .5px #bbb
+        }
+
+        .view-hose {
+            background-color: #f1f1f1
+        }
+
+        .view-dialog-bottom {
+            flex: 1;
+            margin-bottom: 8px;
+            height: 45px;
+            background-color: #fff;
+            align-items: center;
+            justify-content: center
+        }
+
+        .infowindow:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 23px;
+            bottom: -32px;
+            border-top: 15px solid #151753;
+            border-bottom: 15px solid transparent;
+            border-left: 11px solid #151753;
+            border-right: 11px solid transparent
+        }
+
+        .infowindow:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 0;
+            bottom: -32px;
+            border-top: 15px solid #2E7670;
+            border-bottom: 15px solid transparent;
+            border-left: 11px solid transparent;
+            border-right: 11px solid #2E7670;
+        }
+
+        .amap-marker-label {
+            position: relative;
+            border: 0;
+            padding: 5px 3px;
+            border-radius: 5px;
+            background-color: #62B2D9;
+            color: white;
+        }
+
+        .amap-marker-label:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: calc(50% - 5px);
+            bottom: -10px;
+            border-top: 5px solid #62B2D9;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .view .btn {
+            background: #0B97F6;
+            color: #FFF;
+            border-radius: 5px;
+        }
+
+        .map_wrap1 {
+            right: 10px;
+        }
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <main class="main_left_right">
+        <div class="main_left" style="display: flex; flex-direction: column">
+            <div class="top" style="display: flex; flex-direction: column; justify-content: space-between; flex: 2">
+
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">月度产值情况</span>
+                    </div>
+                    <div class="main_body">
+                        <div id="MonthOutPutValue" class="pie_chart"></div>
+                    </div>
+                </div>
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">原材料消耗动态</span>
+                    </div>
+                    <div class="main_body">
+                        <div class="custom_progress_chart">
+                            <div class="progress_chart">
+                                <div class="progress_num">123.34吨</div>
+                                <div class="progress_body">
+                                    <span class="progress_value" style="height: 50%"></span>
+                                </div>
+                                <div class="progress_desc">水泥</div>
+                            </div>
+                            <div class="progress_chart">
+                                <div class="progress_num">165.32吨</div>
+                                <div class="progress_body">
+                                    <span class="progress_value" style="height: 50%"></span>
+                                </div>
+                                <div class="progress_desc">沙子</div>
+                            </div>
+                            <div class="progress_chart">
+                                <div class="progress_num">162.30吨</div>
+                                <div class="progress_body">
+                                    <span class="progress_value" style="height: 50%"></span>
+                                </div>
+                                <div class="progress_desc">石子</div>
+                            </div>
+                            <div class="progress_chart">
+                                <div class="progress_num">456吨</div>
+                                <div class="progress_body">
+                                    <span class="progress_value" style="height: 50%"></span>
+                                </div>
+                                <div class="progress_desc">外加剂</div>
+                            </div>
+                            <div class="progress_chart">
+                                <div class="progress_num">987吨</div>
+                                <div class="progress_body">
+                                    <span class="progress_value" style="height: 50%"></span>
+                                </div>
+                                <div class="progress_desc">粉煤灰</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom" style="flex: 1; margin-top: 24px">
+
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">生产情况汇总</span>
+                        <span class="ch-tit" style="float: right; font-size: 16px; padding-right: 33px">单位：m³</span>
+                    </div>
+                    <div class="main_body">
+                        <div id="ProductState" class="pie_chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_right" style="display: flex; flex-direction: column">
+            <div class="top" style="flex: 2">
+                <div id="map_container" class="charts_content_box charts_content_box_632">
+                    <div class="map">
+                        <div class="map_wrap1">
+                            <form class="layui-form" action="" lay-filter="formDemo">
+                                <div class="layui-form-item condition">
+                                    <input type="checkbox" lay-filter="query" name="type" lay-skin="primary" class="mr5" value="20"
+                                           title="车辆" checked>
+                                    <input type="checkbox" lay-filter="query" name="type" lay-skin="primary" class="mr5" value="30"
+                                           title="项目部">
+                                    <input type="checkbox" lay-filter="query2" name="type" lay-skin="primary" class="mr5" value="40"
+                                           title="电子围栏">
+                                </div>
+                            </form>
+                            <div class="search_area">
+                                <form>
+                                    <input type="text" class="inp_t" value="" id="search-value" placeholder="请输入资源名称"
+                                           onfocus="if(this.value==''){this.className='inp_t'}"
+                                           onblur="if(this.value==''){this.className='inp_t'}" autocomplete="off"/>
+                                    <div class="btn_sea" id="search-button"></div>
+                                </form>
+                                <div class="translate_wrap" id="search-tips" style="display: none;">
+                                    <ul class="scroll_box list">
+                                        <li>XX油库</li>
+                                        <li>项目部</li>
+                                        <li>油罐</li>
+                                        <li>项目部</li>
+                                        <li>XX油库</li>
+                                        <li>DFS项目部</li>
+                                        <li>XXX油罐</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- S 地图区 -->
+                        <div class="main_map" style="width: 100%;height: 100%;">
+                            <div class="map_bg"></div>
+                            <!-- S 替换地图 -->
+                            <div class="map_area" id="map" style="width: 100%;height: 100%;"></div>
+                            <!-- E 替换地图 -->
+                        </div>
+
+                        <div class="map_type">
+                            <div class="map_figure" id="btn_mapType" name="btn_mapType" onclick="changMapType(1)"><span class="txt">卫星地图</span></div>
+                            <div class="map_figure" id="btn_mapType1" name="btn_mapType" onclick="changMapType(0)"><span class="txt">普通地图</span></div>
+                            <div class="map_figure cur" id="btn_mapType2" name="btn_mapType" onclick="changMapType(2)"><span class="txt">深色地图</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statistics">
+                        <div class="left">
+                            <div class="statistics_item">
+                                <span class="icon"></span>
+                                <div class="num_content">
+                                    <div class="h">390</div>
+                                    <div class="desc">设备总数</div>
+                                </div>
+                            </div>
+                            <div class="statistics_item">
+                                <span class="icon"></span>
+                                <div class="num_content">
+                                    <div class="h">154</div>
+                                    <div class="desc">运行中</div>
+                                </div>
+                            </div>
+                            <div class="statistics_item_noicon">
+                                <div class="num_content">
+                                    <div class="h">102</div>
+                                    <div class="desc">闲置中</div>
+                                </div>
+                            </div>
+                            <div class="statistics_item_noicon">
+                                <div class="num_content">
+                                    <div class="h">69</div>
+                                    <div class="desc">分析中</div>
+                                </div>
+                            </div>
+                            <div class="statistics_item_noicon">
+                                <div class="num_content">
+                                    <div class="h">6</div>
+                                    <div class="desc">维修中</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right" style="display: flex; flex-direction: column">
+                            <div class="filter_header">
+                                <button class="btn-search" style="margin-left: 4px">搜索</button>
+                                <div class="date-input">
+                                    <input type="text" class="layui-input" id="date">
+                                    <span class="icon"></span>
+                                </div>
+                            </div>
+                            <div class="device_list" style="flex: 1">
+                                <span class="left_btn"></span>
+                                <div class="device_list_content">
+                                    <div class="scroll_content">
+                                    <div class="device_item">
+                                        <div>
+                                            <span class="icon device_type1"></span>
+                                            <span class="device_name">装载机</span>
+                                            <span class="number">33</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">利用率：</span>
+                                            <span class="number">58.01%</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">运行时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">待机时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                    </div>
+                                    <div class="device_item">
+                                        <div>
+                                            <span class="icon device_type2"></span>
+                                            <span class="device_name">混凝土罐车</span>
+                                            <span class="number">85</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">利用率：</span>
+                                            <span class="number">58.01%</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">运行时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">待机时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                    </div>
+                                    <div class="device_item">
+                                        <div>
+                                            <span class="icon device_type3"></span>
+                                            <span class="device_name">混凝土泵车</span>
+                                            <span class="number">3</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">利用率：</span>
+                                            <span class="number">58.01%</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">运行时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">待机时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="device_item">
+                                        <div>
+                                            <span class="icon device_type1"></span>
+                                            <span class="device_name">装载机1</span>
+                                            <span class="number">33</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">利用率：</span>
+                                            <span class="number">58.01%</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">运行时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">待机时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                    </div>
+                                    <div class="device_item">
+                                        <div>
+                                            <span class="icon device_type1"></span>
+                                            <span class="device_name">装载机2</span>
+                                            <span class="number">33</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">利用率：</span>
+                                            <span class="number">58.01%</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">运行时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                        <div>
+                                            <span class="device_label">待机时长：</span>
+                                            <span class="number"> 957.04 （h）</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <span class="right_btn"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom" style="flex: 1; margin-top: 24px; display: flex; justify-content: space-between">
+                <div class="charts_content_box" style="width: 817px; height: 308px; background-image: url('img/817x308.png')">
+                    <div class="content-header">
+                        <span class="ch-tit">混淋土浇筑任务</span>
+                    </div>
+                    <div class="main_body" >
+                        <div id="TeamTable" class="main_body_table">
+                            <table id="table"></table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts_content_box" style="width: 421px; height: 308px; background-image: url('img/421x308.png')">
+                    <div class="content-header">
+                        <span class="ch-tit">实时监控</span>
+                    </div>
+                    <div class="main_body" >
+                        <div id="preview_body" class="preview_img" style="background: #5FB878">
+                            <div class="fill_screen_btn" onclick="FullScreen()"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+
+
+<script type="text/html" id="car_html_left">
+    <div class="bd">
+        <video id="myPlayer"
+               class="video-player"
+               autoplay
+               src="{{d.camera.videoUrl}}"
+               controls
+               playsInline
+               webkit-playsinline height="169" width="260">
+            您的浏览器不支持video标签。
+        </video>
+    </div>
+    <!--            <em class="icon ico_mark"></em>-->
+    <em class="icon ad_tlt"></em><em class="icon ad_trt"></em><em class="icon ad_blt"></em><em
+            class="icon ad_brt"></em>
+</script>
+<script type="text/html" id="car_html_right">
+    <div class="hd"><h2 style="width: 75%;color:#afe2fb;">{{d.numberPlate}}<em
+            class="ml10 icon ico_track btn_track" title="轨迹" data_id="{{d.id}}" data_name="{{d.numberPlate}}"
+            data_carType="{{d.temp}}"></em></h2>
+        <em class="sort">{{d.tempStr}}</em>
+    </div>
+    <div class="bd">
+        <ul class="list clearfix" style="color:#afe2fb">
+            <li>当前油量：{{d.containingFuel}}L</li>
+            <li>当日加油：{{d.dayPlusOil}}L</li>
+            <li>当日油耗：{{d.dayUseOil}}L</li>
+            <li>工作时间：{{d.dailyRunTimeDetail}}</li>
+            <li>行驶里程：{{d.dailyDistance}}km</li>
+            <li>工作状态：{{d.inControlStr}}</li>
+            <li>当前任务：暂无</li>
+            <li>位置：<span id="address"></span></li>
+        </ul>
+    </div>
+    <!--<em class="icon ico_mark"></em>-->
+    <em class="icon ad_tlt"></em><em class="icon ad_trt"></em><em class="icon ad_blt"></em><em
+            class="icon ad_brt"></em>
+</script>
+<script type="text/html" id="project_html_right">
+    <div class="hd"><h2 style="color:#afe2fb;">{{d.name}}</h2></div>
+    <div class="bd">
+        <ul class="list clearfix" style="color:#afe2fb;">
+            <!--            <li>名称：{{d.name}}</li>-->
+            <li>项目状态：{{d.stateName}}</li>
+            <li>使用状态：{{d.useStateName}}</li>
+            <li>联系人：{{d.contactPerson}}</li>
+            <li>联系电话：{{d.contactPhone}}</li>
+            <li>所属公司：{{d.companyName}}</li>
+            <li>地址：{{d.address}}</li>
+        </ul>
+        <div class="p_rel other_info">
+            <h3 style="color:#afe2fb;">销售订单油量</h3>
+            <span class="info">{{d.orderTotalOil}}T</span>
+            <!--            <li>{{d.orderTotalOil}}T</li>-->
+        </div>
+    </div>
+    <!--<em class="icon ico_mark"></em>-->
+    <em class="icon ad_tlt"></em><em class="icon ad_trt"></em><em class="icon ad_blt"></em><em
+            class="icon ad_brt"></em>
+</script>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=f676bc0d6632cdb833386a7988d0ab81&plugin=AMap.MouseTool"></script>
+<script src="https://webapi.amap.com/ui/1.0/main.js?v=1.4.15"></script>
+<script src="./js/deskTop-map.js"></script>
+<script>
+    var form, table, laydate;
+    var map, mapUtil, infoWindow, searchMap = new Map();
+    var Charts = {}
+
+
+
+    layui.use(['form' ,'table', 'laydate'], function (){
+        form = layui.form
+        table = layui.table
+        laydate = layui.laydate
+        form.render()
+
+
+        initMap()
+        initDate()
+
+        renderTable()
+    })
+
+    function initMap() {
+        map = new AMap.Map("map", {
+            gridMapForeign: true,
+            resizeEnable: true,
+            mapStyle: 'amap://styles/blue',
+            rotateEnable: true,
+            zoom: 13,
+            animateEnable: true,
+            features: ['bg', 'point', 'road', 'building']
+        });
+
+        map.on('click', function (e) {
+            if (infoWindow) {
+                infoWindow.close();
+            }
+        });
+
+        mapUtil = bigScreenMap($, window);
+        //加载图标
+        mapUtil.loadGps({
+            map: map,
+            showEnclosure: false,
+            types: [10, 20],
+            markerClick: function (obj, marker) {
+                publicAjax(null, "sys/deskTop/queryById", {id: obj.id, type: obj.type,modular:0}, false, null, function (res) {
+                    if (res.code == 2000) {
+                        leftTipsHandle(res.data, obj.type);
+                        rightTipsHandle(res.data, obj.type, obj.gps);
+                    } else {
+                        layer.msg(res.msg || '请求大屏出错');
+                    }
+                });
+            }
+        });
+
+        mapUtil.refresh();
+
+
+        //绑定地图事件
+        map.on('click', function (e) {
+            $("#left-tips").hide();
+            $("#right-tips").hide();
+            hideSearch();
+        });
+
+        $("#right-tips").on('click', '.btn_video', function () {
+            $("#left-tips").show();
+        });
+    }
+    //绑定搜索按钮
+    $('#search-button').click(function () {
+        var checkboxValue = "";
+        var types = [];
+        $("input:checkbox[name='type']:checked").each(function (index) { // 遍历checked类型
+            types.push($(this).val())
+
+        });
+        if (types.length == 0) {
+            layer.msg('请勾选类型进行查询！');
+            return false;
+        }
+        var value = $('#search-value').val();
+        if (value !== '') {
+            searchMap = createMap();
+            publicAjax(null, "sys/deskTop/queryByName", {
+                name: value,
+                types: mapUtil.getTypes()
+            }, false, null, function (res) {
+                if (res.code === 2000) {
+                    var html = [];
+                    if (res.data.length > 0) {
+                        for (var i in res.data) {
+                            var data = res.data[i];
+                            html.push(' <li onclick="chooseData(\'' + data.id + '\',\'' + data.name + '\')" data_id="' + data.id + '">' + data.name + '</li>');
+                            searchMap.set(data.id, data);
+                        }
+                    } else {
+                        html.push(' <li data_id="">暂无数据</li>');
+                    }
+                    $('#search-tips ul').html(html.join(''));
+                    showSearch();
+                } else {
+                    // console.log(res);
+                }
+            });
+        }
+        return false;
+    });
+
+    function chooseData(dataId, dataName) {
+        $("#search-value").val(dataName);
+    }
+
+    // 根据经纬度坐标获取详细地址详细
+    function regeocoder(gps) {
+        AMap.plugin('AMap.Geocoder', function () {
+            var geocoder = new AMap.Geocoder({
+                radius: 1000,
+                extensions: "all"
+            });
+            var values = gps.split(',');
+            geocoder.getAddress(values, function (status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                    $('#carAddress').text(result.regeocode.formattedAddress);
+                }
+            });
+        });
+    }
+    /**
+     * 搜索点击触发事件
+     */
+    function searchItemClick() {
+        var $this = $(this), dataId = +$this.attr('data_id');
+        if (searchMap.has(dataId)) {
+            var data = searchMap.get(dataId);
+            // 找到 obj
+            mapUtil.setCenter(data);
+            hideSearch();
+        }
+    }
+
+    function getHtmlRight(obj, type) {
+        var html = '';
+        switch (type) {
+            case 0:
+                html = laytpl($('#oil_html_right').html()).render(obj);
+                break;
+            case 10:
+                html = laytpl($('#tank_html_right').html()).render(obj);
+                break;
+            case 20:
+                html = laytpl($('#car_html_right').html()).render(obj);
+                break;
+            case 30:
+                html = laytpl($('#project_html_right').html()).render(obj);
+                break;
+        }
+        return html;
+    }
+    function getHtmlLeft(obj, type) {
+        var html = '';
+        switch (type) {
+            case 0:
+                html = laytpl($('#oil_html_left').html()).render(obj);
+                break;
+            case 10:
+                html = laytpl($('#tank_html_left').html()).render(obj);
+                break;
+            case 20:
+                html = laytpl($('#car_html_left').html()).render(obj);
+                break;
+        }
+        return html;
+    }
+
+    function leftTipsHandle(data, type) {
+        if (data.camera != null && data.camera.videoUrl !== '') {
+            var html = getHtmlLeft(data, type);
+            $("#left-tips").html(html);
+            $("#left-tips").hide();
+            var player = new EZUIKit.EZUIPlayer('myPlayer');
+            player.stop();
+        } else {
+            $("#left-tips").hide();
+        }
+    }
+
+    function rightTipsHandle(data, type, gpsInfo) {
+        if (type == 20) {
+            showCarInfo(data);
+        } else if (type == 30) {
+            showProjectInfo(data, gpsInfo);
+        }
+    }
+
+    // 展示地图车辆详情
+    function showCarInfo(carInfo) {
+        var info = [];
+        info.push("<div class='infowindow'>")
+        info.push("<div class='view head'>")
+        info.push("<p style='color: #FFFFFF;font-size: 18px; margin-left: 21px; margin-left: 21px'>" + carInfo.numberPlate + "</p>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>当前油量：</p>")
+        info.push("<p class='row-value'>" + carInfo.containingFuel + "L</p>")
+        info.push("</div>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>当日加油：</p>")
+        info.push("<p class='row-value'>" + carInfo.dayPlusOil + "L</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:5px; margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>当日油耗：</p>")
+        info.push("<p class='row-value'>" + carInfo.dayUseOil + "L</p>")
+        info.push("</div>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>工作时间：</p>")
+        info.push("<p class='row-value'>" + carInfo.dailyRunTimeDetail + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:5px; margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>行驶里程：</p>")
+        info.push("<p class='row-value'>" + carInfo.dailyDistance + "km</p>")
+        info.push("</div>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>工作状态：</p>")
+        info.push("<p class='row-value'>" + carInfo.inControlStr + "</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view content-row' style='margin-top:5px; margin-left: 21px'>")
+        info.push("<div class='view u-f1 content-row'>")
+        info.push("<p class='row-title'>当前任务：</p>")
+        info.push("<p class='row-value'>暂无</p>")
+        info.push("</div>")
+        info.push("</div>")
+        info.push("<div class='view' style='flex-direction: row;align-items: flex-start;width: 95%;margin-top: 10px;margin-left: 21px'>")
+        //info.push("<img class='image' src='../../static/map/wz.png' style='margin-right: 0px;width:6%;'/>")+
+        info.push("<p class='text row-title'  style='width:15%; text-align: left'>位置：</p>")
+        info.push("<p class='text row-value' id='carAddress' >" + carInfo.address + "</p>")
+        info.push("</div>")
+        // info.push("<div class='view'>")
+        // info.push("<div class='view view-dialog-bottom' hover-class='view-hose' onclick=" + "\"" + "gotoTrackMap(" + "'" + carInfo.id + "','" + carInfo.numberPlate + "', '" + carInfo.temp + "')" + "\"" + ">")
+        // info.push("<button class='btn text'>轨迹回放</button>")
+        // info.push("</div>")
+        info.push("</div>")
+        info.push("</div>");
+
+
+        infoWindow = new AMap.InfoWindow({
+            content: info.join(""),  //使用默认信息窗体框样式，显示信息内容
+            offset: new AMap.Pixel(200, -35),
+            isCustom: true
+        });
+        var gpsValues = carInfo.gps.split(',');
+        infoWindow.open(map, gpsValues);
+        if (carInfo.gps != undefined) {
+            regeocoder(carInfo.gps);
+        }
+    }
+
+    var mapStyle = 'amap://styles/normal';
+    $("[name='btn_mapType']").click(function () {
+        $(this).addClass("cur").siblings().removeClass("cur");
+    });
+    $("#btn_mapType").click(function () {
+        $(this).parents("body").removeClass().addClass("satellite");
+    });
+    $("#btn_mapType1").click(function () {
+        $(this).parents("body").removeClass().addClass("default");
+    });
+    $("#btn_mapType2").click(function () {
+        $(this).parents("body").removeClass();
+    });
+    function changMapType(num) {
+        var layers = [];
+        if (num == 0) {
+            mapStyle = 'amap://styles/normal';
+            map.setMapStyle(mapStyle);
+            layers = [new AMap.TileLayer()];
+        } else if (num == 1) {
+            layers = [
+                new AMap.TileLayer.Satellite(),
+                new AMap.TileLayer.RoadNet()
+            ]
+        } else {
+            mapStyle = 'amap://styles/blue';
+            map.setMapStyle(mapStyle);
+            layers = [
+                new AMap.TileLayer()
+            ]
+        }
+
+        map.setLayers(layers);
+
+    }
+
+    function initDate() {
+        var beginDate = getDay(-6);
+        var endDate = getDay(0);
+        var value = beginDate + ' ~ ' + endDate;
+        laydate.render({
+            elem: "#date",
+            type: 'date',
+            eventElem: 'rq',
+            range: '~',
+            trigger: 'click',
+            value: value,
+            done: function (value, date, endDate) {
+                console.log('value: ', value)
+            }
+        })
+    }
+
+    function scrollDevice(direction) {
+        var _content = $(".device_list_content .scroll_content")
+        var scrollWidth = _content[0].scrollWidth
+        var width = _content.width()
+        var left = Number(_content.css("left").replace('px', ''))
+        var nextPageLeft = left + (direction == 'left' ? width : -width)
+
+        if (Math.abs(nextPageLeft) > scrollWidth ||  nextPageLeft > 0) return
+
+        _content.animate({
+            left: nextPageLeft + 'px'
+        })
+    }
+
+    $(".device_list .left_btn").click(function () {
+        scrollDevice('left')
+    })
+    $(".device_list .right_btn").click(function () {
+        scrollDevice('right')
+    })
+
+    /**
+     * 显示搜索下拉框
+     */
+    function showSearch() {
+        $('#search-tips ul').on('click', 'li', searchItemClick);
+        $("#search-tips").show();
+    }
+
+    /**
+     * 隐藏搜索下拉框
+     */
+    function hideSearch() {
+        // $('#search-value').val('资源搜索');
+        $("#search-tips").hide();
+        $('#search-tips ul').off('click', 'li', searchItemClick);
+    }
+
+    function renderTable() {
+
+        window._table = table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            data: [
+                {name1: '20001', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分1' },
+                {name1: '20002', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分2' },
+                {name1: '20003', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分3' },
+                {name1: '20004', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分4' },
+                {name1: '20005', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分5' },
+            ],
+            cols: [
+                [
+                    { field: 'name1', title: '任务单号', width: '12%' },
+                    { field: 'name2', title: '强度等级', width: '12%' },
+                    { field: 'name3', title: '建筑方式', width: '19%' },
+                    { field: 'name4', title: '施工配合', width: '12%' },
+                    { field: 'name5', title: '搅拌时间', width: '20.5%'  },
+                    { field: 'name6', title: '运输车辆',width: '15%' },
+                    { field: 'name7', title: '施工部分',width: '12%' },
+                ]
+            ],
+            done: function() {
+                $("#TeamTable .layui-table-body").layTableScroll()
+            }
+        })
+    }
+    $(function (){
+        // initPie3DChart()
+        initBrokenLineChart($("#MonthOutPutValue")[0], "MonthOutPutValue")
+
+        initPieChart($("#ProductState")[0], 'ProductState',[
+            {name: 'C20', value: '18'},
+            {name: 'C30', value: '20'},
+            {name: 'C40', value: '34'},
+            {name: 'C15', value: '12'},
+        ], {
+            series: { radius: ['0' , '80%'], center: [ '50%', '50%' ] },
+            legend: {
+                show: false
+            }
+        })
+    })
+
+    function initPieChart(ele, name,data, opt) {
+        var chart = echarts.init(ele);
+        var pieChartOption = {
+            tooltip: {
+                trigger: 'item'
+            },
+            color: ['#BF23CC','#CE7525', '#173DAA', '#18A89D' ],
+            // 图例
+            legend: {
+                // x: 'right',
+                y: 'center',
+                right: '15%',
+                bottom: '0%',
+                orient : 'vertical',
+                icon: 'none',
+                itemGap: 30,
+                formatter(name) {
+                    var value;
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].name === name) {
+                            value = data[i].value;
+                        }
+                    }
+                    var arr = [
+                        '{icon|}',
+                        '{name|' + name + '}{value|' + value + '}',
+                    ];
+                    return arr.join('\n')
+                },
+                textStyle: {
+                    rich: {
+                        icon: {
+                            align: 'left',
+                            width: 40,
+                            height: 8,
+                            backgroundColor: 'inherit',
+                        },
+                        name: {
+                            fontSize: 16,
+                            align: 'left',
+                            color: "#fff",
+                            padding: [10, 0,0,0],
+                            width: 70,
+                        },
+                        value: {
+                            fontSize: 30,
+                            align: 'right',
+                            color: "#fff",
+                            fontWeight: 400,
+                            fontFamily: 'Impact',
+                            width: 50
+                        },
+                        br: {
+                            width: 10,
+                            height: 1,
+                            padding: [10, 0,0,0]
+                        }
+                    }
+                },
+                // backgroundColor: "#FAFAFA"
+            },
+            series:
+                {
+                    type: 'pie',
+                    label: {
+                        position: 'inner',
+                        fontSize: 14,
+                        // formatter: "{b}\n{c}",
+                        // normal: {
+                        //
+                        //     fontSize: 12,
+                        //     color: '#fff'
+                        // },
+                    },
+
+                    data: [],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+
+        };
+
+        if (opt && opt.itemGap) {
+            pieChartOption.legend.itemGap = opt.itemGap
+        }
+
+        pieChartOption.series.data = data
+        // pieChartOption = Object.assign(pieChartOption, opt)
+
+        chart.setOption(pieChartOption);
+
+        opt && chart.setOption(opt)
+        Charts[name] = chart
+
+    }
+
+    function initBrokenLineChart(ele, name,data1, data2, opt) {
+        var chart = echarts.init(ele);
+        var option = {
+            color: ['#40F3EF', '#F18A26'],
+            title: {
+                text: 'm³',
+                left: 5,
+                textStyle: {
+                    color: '#FEFFFF',
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                top: '3%',
+                right: '5%',
+                icon: 'rect',
+                textStyle: {
+                    color: '#FEFFFF',
+                    fontSize: 16
+                }
+            },
+            grid:{
+                x:10,
+                y:40,
+                x2:20,
+                y2:20,
+                containLabel: true,
+                borderWidth:1
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                splitLine: {
+                    lineStyle: {
+                        height: 1,
+                        color: ['#1C4760']
+                    }
+                },
+                axisLabel: {
+                    show: true,
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '1号搅拌站',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: [],
+
+                },
+                {
+                    name: '2号搅拌站',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: []
+                }
+            ]
+        };
+
+
+        // option.series[0].data1 = data1
+        // option.series[0].data2 = data2
+        option = Object.assign(option, opt)
+
+        chart.setOption(option);
+        chart.setOption({
+            series: [
+                {
+                    data: data1 || new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    data: data2 || new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        })
+        Charts[name] = chart
+
+    }
+
+    function FullScreen() {
+        screenfull.toggle(document.querySelector('#preview_body'))
+    }
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+</script>
+<script src="./js/bigscreen.js"></script>
+<script src="./js/screenfull.min.js"></script>
+</body>
+</html>
