@@ -247,7 +247,7 @@
                 <div id="map_container" class="charts_content_box charts_content_box_632">
                     <div class="map">
                         <div class="map_wrap1">
-                            <form class="layui-form" action="" lay-filter="formDemo">
+                            <form class="layui-form" lay-filter="formDemo">
                                 <div class="layui-form-item condition">
                                     <input type="checkbox" lay-filter="query" name="type" lay-skin="primary" class="mr5" value="20"
                                            title="车辆" checked>
@@ -553,23 +553,7 @@
         laydate = layui.laydate
         // form.render()
 
-
-
-        form.on('checkbox(query)', function (data) {
-            if (data.elem.checked) {
-                mapUtil.pushType(+data.value);
-            } else {
-                mapUtil.deleteType(+data.value);
-            }
-        });
-        form.on('checkbox(query2)', function (data) {
-            if (data.elem.checked) {
-                mapUtil.setShowEnclosure(true);
-            } else {
-                mapUtil.setShowEnclosure(false);
-            }
-        });
-
+        form.render('checkbox');
 
 
 
@@ -578,6 +562,26 @@
 
         renderTable()
 
+        form.on('checkbox(query)', function (data) {
+            if (infoWindow) {
+                infoWindow.close();
+            }
+            if (data.elem.checked) {
+                mapUtil.pushType(+data.value);
+            } else {
+                mapUtil.deleteType(+data.value);
+            }
+        });
+        form.on('checkbox(query2)', function (data) {
+            if (infoWindow) {
+                infoWindow.close();
+            }
+            if (data.elem.checked) {
+                mapUtil.setShowEnclosure(true);
+            } else {
+                mapUtil.setShowEnclosure(false);
+            }
+        });
     })
 
     function initMap() {
@@ -618,13 +622,13 @@
         mapUtil.refresh();
 
 
-
         //绑定地图事件
         map.on('click', function (e) {
             $("#left-tips").hide();
             $("#right-tips").hide();
             hideSearch();
         });
+
 
         $("#right-tips").on('click', '.btn_video', function () {
             $("#left-tips").show();

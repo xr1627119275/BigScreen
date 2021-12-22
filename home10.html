@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频监控</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <main class="page" >
+        <div class="nav-left close_status">
+            <div class="navDiv">
+                <div class="navName">
+                    <i class="nav_switch_btn"></i>
+                </div>
+                <div class="nav-list ">
+                    <ul>
+                        <li class="nav-tab a_active waves-effect">
+                        </li>
+                        <li class="nav-tab a_active nav-ul">
+                            <a href="javascript:void 0;" class="li-a" target="iframe">
+                                <i class='bx-layer'></i><span>C地块</span>
+                                <i class='bx-chevron-right' style="float: right;"></i>
+                            </a>
+                            <div class="nav-box">
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i><span>d-g块门岗人性通道</span>
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i><span>南围2配电房向东</span>
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i><span>西围向北</span>
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i><span>北围向南</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:void 0;" class="li-a">
+                                <i class='bx-layer'></i><span>J地块</span>
+                                <i class='bx-chevron-right' style="float: right;"></i>
+                            </a>
+                            <div class="nav-box">
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>d-g块门岗人性通道
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>南围2配电房向东
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>西围向北
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>北围向南
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:void 0;" class="li-a">
+                                <i class='bx-layer'></i><span>D、G地块</span>
+                                <i class='bx-chevron-right' style="float: right;"></i>
+                            </a>
+                            <div class="nav-box">
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>d-g块门岗人性通道
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>南围2配电房向东
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>西围向北
+                                </a>
+                                <a href="#" class="li-a-a" target="iframe">
+                                    <i class="layer-sub"></i>北围向南
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul nav-opt">
+                            <a href="javascript:void 0;" class="li-a">
+                                <i class='gird_switch'></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right" >
+            <div class="content-page video_size_4"  id="video-container">
+                <div class="video_box">
+                    <div class="bg_border bg_right_top"></div>
+                    <div class="bg_border bg_right_bottom"></div>
+                    <div class="bg_border bg_left_top"></div>
+                    <div class="bg_border bg_left_bottom"></div>
+                    <div class="header_title">
+                        <div class="til">C地块</div>
+                        <div class="video_opt">
+                            <i  class="icon28 video_top_opt camera"></i>
+                            <i  class="icon28 video_top_opt videotape"></i>
+                            <i  class="icon28 video_top_opt zoom"></i>
+                        </div>
+                    </div>
+                    <div class="video_body">
+                        <video src="" ></video>
+                    </div>
+                    <div class="video_bottom_opt">
+                        <button>高清</button>
+                        <i class="icon28 reback">
+                        </i>
+                        <i class="icon28 bigscreen"></i>
+                    </div>
+                </div>
+                <div class="video_box">
+                    <div class="bg_border bg_right_top"></div>
+                    <div class="bg_border bg_right_bottom"></div>
+                    <div class="bg_border bg_left_top"></div>
+                    <div class="bg_border bg_left_bottom"></div>
+                    <div class="header_title">
+                        <div class="til">C地块</div>
+                        <div class="video_opt">
+                            <i  class="icon28 video_top_opt camera"></i>
+                            <i  class="icon28 video_top_opt videotape"></i>
+                            <i  class="icon28 video_top_opt zoom"></i>
+                        </div>
+                    </div>
+                    <div class="video_body">
+                        <video src="" ></video>
+                    </div>
+                    <div class="video_bottom_opt">
+                        <button>高清</button>
+                        <i class="icon28 reback">
+                        </i>
+                        <i class="icon28 bigscreen"></i>
+                    </div>
+                </div>
+
+                <div class="video_box">
+                    <div class="bg_border bg_right_top"></div>
+                    <div class="bg_border bg_right_bottom"></div>
+                    <div class="bg_border bg_left_top"></div>
+                    <div class="bg_border bg_left_bottom"></div>
+                    <div class="header_title">
+                        <div class="til">C地块</div>
+                        <div class="video_opt">
+                            <i  class="icon28 video_top_opt camera"></i>
+                            <i  class="icon28 video_top_opt videotape"></i>
+                            <i  class="icon28 video_top_opt zoom"></i>
+                        </div>
+                    </div>
+                    <div class="video_body">
+                        <video src="" ></video>
+                    </div>
+                    <div class="video_bottom_opt">
+                        <button>高清</button>
+                        <i class="icon28 reback">
+                        </i>
+                        <i class="icon28 bigscreen"></i>
+                    </div>
+                </div>
+
+                <div class="video_box">
+                    <div class="bg_border bg_right_top"></div>
+                    <div class="bg_border bg_right_bottom"></div>
+                    <div class="bg_border bg_left_top"></div>
+                    <div class="bg_border bg_left_bottom"></div>
+                    <div class="header_title">
+                        <div class="til">C地块</div>
+                        <div class="video_opt">
+                            <i  class="icon28 video_top_opt camera"></i>
+                            <i  class="icon28 video_top_opt videotape"></i>
+                            <i  class="icon28 video_top_opt zoom"></i>
+                        </div>
+                    </div>
+                    <div class="video_body">
+                        <video src="" ></video>
+                    </div>
+                    <div class="video_bottom_opt">
+                        <button>高清</button>
+                        <i class="icon28 reback">
+                        </i>
+                        <i class="icon28 bigscreen"></i>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </main>
+
+
+</div>
+<script type="text/html" id="video_box_template">
+    <div class="video_box">
+        <div class="bg_border bg_right_top"></div>
+        <div class="bg_border bg_right_bottom"></div>
+        <div class="bg_border bg_left_top"></div>
+        <div class="bg_border bg_left_bottom"></div>
+        <div class="header_title">
+            <div class="til">C地块</div>
+            <div class="video_opt">
+                <i  class="icon28 video_top_opt camera"></i>
+                <i  class="icon28 video_top_opt videotape"></i>
+                <i  class="icon28 video_top_opt zoom"></i>
+            </div>
+        </div>
+        <div class="video_body">
+            <video src="" ></video>
+        </div>
+        <div class="video_bottom_opt">
+            <button>高清</button>
+            <i class="icon28 reback">
+            </i>
+            <i class="icon28 bigscreen"></i>
+        </div>
+    </div>
+</script>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script>
+    var form, table;
+
+    layui.use(['form' ,'table'], function (){
+        form = layui.form
+    })
+    function setVideoBoxNumber(num) {
+        var length = $("#video-container .video_box").length
+
+        while (num != length) {
+            if (length > num) {
+                $("#video-container .video_box")[length - 1].remove()
+                length--;
+            } else {
+                $("#video-container").append($('#video_box_template').html())
+                length++;
+            }
+        }
+    }
+    $(function (){
+        $(".gird_switch").click(function () {
+            var opts = ["video_size_9", "video_size_4"]
+            var flag = false;
+            while (true) {
+                for (var i = 0; i < opts.length; i++) {
+                    if (flag) {
+                        $("#video-container").addClass(opts[i])
+                        var cls = opts[i].split("_")
+                        setVideoBoxNumber(cls[cls.length - 1])
+                        return
+                    }
+                    if ($("#video-container").hasClass(opts[i])) {
+                        $("#video-container").removeClass(opts[i])
+                        flag = true
+                        continue
+                    }
+
+                }
+            }
+
+
+        })
+
+        $(".nav_switch_btn").click(function () {
+            $('.nav-tab').siblings().each(function() {
+                $(this).removeClass("nav-show");
+            })
+            if ($(".nav-left").hasClass('close_status') ) {
+                $(this).css('transform', 'rotateZ(0deg)')
+            } else {
+                $(this).css('transform', 'rotateZ(180deg)')
+                // $(this).css('transition', 'all .5s')
+            }
+            $(".nav-left").toggleClass("close_status")
+        })
+        $('.nav-tab').on('click', '.li-a', function(e) {
+            _curr = $(this).parent()
+            if (_curr.hasClass('nav-opt')) return
+
+            $(".nav-left").removeClass("close_status")
+
+            if (!_curr.hasClass("nav-show")) {
+                _curr.find('.bx-chevron-right').css('transform', 'rotateZ(90deg)')
+            } else {
+                _curr.find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+            }
+            _curr.toggleClass('nav-show')
+        })
+        /* 二级菜单a点击事件 */
+        $(".li-a-a").click(function() {
+            $(".li-a-a").each(function() {
+                $(this).removeClass('active-li-a');
+            })
+            $(this).addClass('active-li-a');
+        })
+    })
+</script>
+<script src="./js/bigscreen.js"></script>
+</body>
+</html>
