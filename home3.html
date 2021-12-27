@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隐患排查治理</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <div id="plate_nav" style="padding: 14px 0 27px 0;">
+        <div class="plate_item">
+            <div class="plate_box_long">
+                <div class="plate_til">项目部得分</div>
+                <div class="plate_num">
+                    <p>
+                        <span>123</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box_long">
+                <div class="plate_til">项目部排名</div>
+                <div class="plate_num">
+                    <p>
+                        <span>34</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box_long">
+                <div class="plate_til">本期隐患数量</div>
+                <div class="plate_num">
+                    <p>
+                        <span>12</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box_long">
+                <div class="plate_til">本期待整改</div>
+                <div class="plate_num">
+                    <p>
+                        <span>6</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box_long">
+                <div class="plate_til">超期未销项</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <main>
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">本月整改情况</span>
+            </div>
+            <div class="main_body">
+                <div id="MonthUpdate" class="pie_chart"></div>
+            </div>
+        </div>
+
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">隐患上报排行TOP5</span>
+            </div>
+            <div class="main_body">
+                <div id="Top5" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">隐患等级统计</span>
+            </div>
+            <div class="main_body">
+                <div id="Level" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box charts_content_box_1251" style="height: 280px; ">
+            <div class="content-header">
+                <span class="ch-tit">隐患趋势统计</span>
+
+                <div class="nav_tit nav_tit_right" data-value="30">
+                    <span class="ch-tit">月</span>
+                </div>
+                <div class="nav_tit nav_tit_right active" data-value="7">
+                    <span class="ch-tit">近7天</span>
+                </div>
+            </div>
+            <div class="main_body">
+                <div id="Statistics" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box_280" style="height: 280px">
+            <div class="content-header">
+                <span class="ch-tit">隐患专业情况</span>
+            </div>
+            <div class="main_body">
+                <div id="State" class="pie_chart"></div>
+            </div>
+        </div>
+
+        <div class="charts_content_box charts_content_box_220" style="width: 100%; height: 220px">
+            <div class="content-header">
+                <span class="ch-tit">风险清单一览表</span>
+            </div>
+            <div class="main_body" >
+                <div id="TeamTable" class="main_body_table">
+                        <table id="table"></table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script>
+    var form, table;
+    var Charts = {}
+
+
+
+    layui.use(['form' ,'table'], function (){
+        form = layui.form
+        table = layui.table
+        form.render('select')
+        renderTable()
+    })
+
+    function renderTable() {
+
+        window._table = table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            // height: 'full-100',
+            data: [
+                {name1: '1.5T架桥机对位后防溜不到位', name2: 'Ⅰ', name3: '请安质部督促整改', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30', },
+                {name1: '施工现场施工处理不当', name2: 'Ⅱ', name3: '请安质部督促综合队整改闭合', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30',  },
+                {name1: '现场施工文明施工不到位', name2: 'Ⅲ', name3: '请安质部督促综合队整改闭合', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30',  },
+            ],
+            cols: [
+                [
+                    { field: 'name1', title: '隐患内容',  },
+                    { field: 'name2', title: '隐患等级',  },
+                    { field: 'name3', title: '整改内容',  },
+                    { field: 'name4', title: '整改人', },
+                    { field: 'name5', title: '创建人',   },
+                    { field: 'name6', title: '创建时间', },
+                ]
+            ],
+            done: function() {
+                $("#TeamTable .layui-table-body").layTableScroll()
+            }
+        })
+        //
+        // Charts['_table'] = {
+        //     resize: function() {
+        //         _table.render({
+        //             height: $("#table").parent().height()
+        //         })
+        //     }
+        // }
+    }
+    $(function (){
+        // initPie3DChart()
+        initPieChart($("#MonthUpdate")[0], "MonthUpdate",
+            [
+                {name: '本月新增', value: '18'},
+                {name: '本月已整改', value: '20'},
+                {name: '本月未整改', value: '34'},
+                {name: '上月末未整改', value: '12'},
+            ],
+            {
+                series: {
+                    radius: ['55%', '80%'],
+                },
+                itemGap: 12,
+                title: {
+                    left: '29%',
+                    top: '40%',
+                    subtext: '整改率',
+                    itemGap: 10,
+                    textAlign: 'center',
+                    text:
+                        '{a|88.81%}',
+                    subtextStyle: {
+                        align: 'center',
+                        fontSize: 16,
+                        color: "#fff"
+                    },
+                    textStyle: {
+                        align: 'center',
+                        rich: {
+                            a: {
+                                fontSize: 30,
+                                padding: [0,0,0,10],
+                                fontFamily: 'Impact',
+                                color: '#40F3EF',
+                            },
+                        },
+                    },
+
+                },
+            }
+        )
+
+        initCategoryChart($("#Top5")[0], 'Top5', ["张启超", "良有志", "苏小明", "郑智超", "韩雪峰"]
+            , [78, 74, 63, 56, 54],
+            {
+                xAxis: {
+                    axisLabel: {
+                        textStyle: {
+                            color: '#40F3EF'
+                        }
+                    }
+                }
+            }
+        )
+
+        initPieChart($("#Level")[0], "Level",
+            [
+                {name: '一级', value: '6'},
+                {name: '二级', value: '7'},
+                {name: '三级', value: '11'},
+            ]
+        )
+        initPieChart($("#State")[0], "State",
+            [
+                {name: '隧道工程', value: '18'},
+                {name: '桥梁工程', value: '20'},
+                {name: '深基坑', value: '34'},
+                {name: '房屋建筑工程', value: '12'},
+            ],
+            {
+                itemGap: 12
+            }
+        )
+
+
+        initLineChart($("#Statistics")[0], 'Statistics', ["2021-11-23", "2021-11-24", "2021-11-24", "2021-11-25", "2021-11-26", "2021-11-27", "2021-11-28", "2021-11-29"]
+            , [60, 78,  63, 56, 25,84,87, 38],
+            {
+                xAxis: {
+                    axisLabel: {
+                        textStyle: {
+                            color: '#40F3EF'
+                        }
+                    }
+                }
+            }
+
+        )
+    })
+
+
+
+
+
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+</script>
+<script src="./js/bigscreen.js"></script>
+<script src="./js/echarts-component.js"></script>
+</body>
+</html>

@@ -234,7 +234,7 @@
                 <div class="charts_content_box_280" style="height: 308px">
                     <div class="content-header">
                         <span class="ch-tit">生产情况汇总</span>
-                        <span class="ch-tit" style="float: right; font-size: 16px; padding-right: 33px">单位：m³</span>
+                        <span class="ch-tit nav_tit_right_tip" >单位：m³</span>
                     </div>
                     <div class="main_body">
                         <div id="ProductState" class="pie_chart"></div>
@@ -1027,7 +1027,24 @@
     }
     $(function (){
         // initPie3DChart()
-        initBrokenLineChart($("#MonthOutPutValue")[0], "MonthOutPutValue")
+        initBrokenLineChart($("#MonthOutPutValue")[0], "MonthOutPutValue",
+            [
+                {
+                    name: '1号搅拌站',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '2号搅拌站',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        ,)
 
         initPieChart($("#ProductState")[0], 'ProductState',[
             {name: 'C20', value: '18'},
@@ -1035,20 +1052,28 @@
             {name: 'C40', value: '34'},
             {name: 'C15', value: '12'},
         ], {
-            series: { radius: ['0' , '80%'], center: [ '50%', '50%' ] },
+            color: ['#BF23CC','#CE7525', '#173DAA', '#18A89D' ],
+            series: {
+                radius: ['0', '80%'], center: ['50%', '50%'],
+                label: {
+                    show: true,
+                    position: 'inner',
+                    fontSize: 14,
+                },
+            },
             legend: {
                 show: false
             }
         })
     })
 
-    function initPieChart(ele, name,data, opt) {
+    function initPieChart1(ele, name,data, opt) {
         var chart = echarts.init(ele);
         var pieChartOption = {
             tooltip: {
                 trigger: 'item'
             },
-            color: ['#BF23CC','#CE7525', '#173DAA', '#18A89D' ],
+
             // 图例
             legend: {
                 // x: 'right',
@@ -1106,25 +1131,11 @@
             series:
                 {
                     type: 'pie',
-                    label: {
-                        position: 'inner',
-                        fontSize: 14,
-                        // formatter: "{b}\n{c}",
-                        // normal: {
-                        //
-                        //     fontSize: 12,
-                        //     color: '#fff'
-                        // },
-                    },
-
+                    // label: {
+                    //     position: 'inner',
+                    //     fontSize: 14,
+                    // },
                     data: [],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
                 }
 
         };
@@ -1134,7 +1145,7 @@
         }
 
         pieChartOption.series.data = data
-        // pieChartOption = Object.assign(pieChartOption, opt)
+        // pieChartOption = deepMerge(pieChartOption, opt)
 
         chart.setOption(pieChartOption);
 
@@ -1143,103 +1154,6 @@
 
     }
 
-    function initBrokenLineChart(ele, name,data1, data2, opt) {
-        var chart = echarts.init(ele);
-        var option = {
-            color: ['#40F3EF', '#F18A26'],
-            title: {
-                text: 'm³',
-                left: 5,
-                textStyle: {
-                    color: '#FEFFFF',
-                }
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                top: '3%',
-                right: '5%',
-                icon: 'rect',
-                textStyle: {
-                    color: '#FEFFFF',
-                    fontSize: 16
-                }
-            },
-            grid:{
-                x:10,
-                y:40,
-                x2:20,
-                y2:20,
-                containLabel: true,
-                borderWidth:1
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        fontSize: 16,
-                        color: '#FEFFFF'
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                splitLine: {
-                    lineStyle: {
-                        height: 1,
-                        color: ['#1C4760']
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    textStyle: {
-                        fontSize: 16,
-                        color: '#FEFFFF'
-                    }
-                }
-            },
-            series: [
-                {
-                    name: '1号搅拌站',
-                    type: 'line',
-                    stack: 'Total',
-                    smooth: true,
-                    data: [],
-
-                },
-                {
-                    name: '2号搅拌站',
-                    type: 'line',
-                    stack: 'Total',
-                    smooth: true,
-                    data: []
-                }
-            ]
-        };
-
-
-        // option.series[0].data1 = data1
-        // option.series[0].data2 = data2
-        option = Object.assign(option, opt)
-
-        chart.setOption(option);
-        chart.setOption({
-            series: [
-                {
-                    data: data1 || new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
-                },
-                {
-                    data: data2 || new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
-                }
-            ]
-        })
-        Charts[name] = chart
-
-    }
 
     function FullScreen() {
         screenfull.toggle(document.querySelector('#preview_body'))
@@ -1254,5 +1168,6 @@
 </script>
 <script src="./js/bigscreen.js"></script>
 <script src="./js/screenfull.min.js"></script>
+<script src="./js/echarts-component.js"></script>
 </body>
 </html>

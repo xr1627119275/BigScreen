@@ -203,7 +203,7 @@ main.main_left_right .main_left {
 main.main_left_right .main_right {
   flex: 1;
 }
-main .charts_content_box_280, main .charts_content_box_308, main .charts_content_box {
+main .charts_content_box_461_280, main .charts_content_box_280, main .charts_content_box_308, main .charts_content_box {
   width: 618px;
   height: 405px;
   display: flex;
@@ -211,58 +211,91 @@ main .charts_content_box_280, main .charts_content_box_308, main .charts_content
   background: url("../img/charts_content_box.png");
   background-size: 100% 100%;
 }
-main .charts_content_box_280 .content-header, main .charts_content_box_308 .content-header, main .charts_content_box .content-header {
+main .charts_content_box_461_280 .content-header, main .charts_content_box_280 .content-header, main .charts_content_box_308 .content-header, main .charts_content_box .content-header {
   width: 100%;
   height: 30px;
   padding-top: 3px;
   padding-left: 2px;
   line-height: 30px;
 }
-main .charts_content_box_280 .content-header .ch-tit, main .charts_content_box_308 .content-header .ch-tit, main .charts_content_box .content-header .ch-tit {
+main .charts_content_box_461_280 .content-header .ch-tit, main .charts_content_box_280 .content-header .ch-tit, main .charts_content_box_308 .content-header .ch-tit, main .charts_content_box .content-header .ch-tit {
   font-size: 18px;
   padding: 0 8px;
   font-family: Microsoft YaHei;
   font-weight: 400;
   color: #FEFFFF;
 }
-main .charts_content_box_280 .content-header .nav_tit, main .charts_content_box_308 .content-header .nav_tit, main .charts_content_box .content-header .nav_tit {
+main .charts_content_box_461_280 .content-header .nav_tit_right_tip, main .charts_content_box_280 .content-header .nav_tit_right_tip, main .charts_content_box_308 .content-header .nav_tit_right_tip, main .charts_content_box .content-header .nav_tit_right_tip {
+  float: right;
+  font-size: 16px;
+  padding-right: 33px;
+}
+main .charts_content_box_461_280 .content-header .nav_tit_right, main .charts_content_box_280 .content-header .nav_tit_right, main .charts_content_box_308 .content-header .nav_tit_right, main .charts_content_box .content-header .nav_tit_right {
+  float: right;
+  margin: 0 20px;
+}
+main .charts_content_box_461_280 .content-header .nav_tit_right span, main .charts_content_box_280 .content-header .nav_tit_right span, main .charts_content_box_308 .content-header .nav_tit_right span, main .charts_content_box .content-header .nav_tit_right span {
+  font-size: 14px !important;
+}
+main .charts_content_box_461_280 .content-header .nav_tit_right_v2, main .charts_content_box_280 .content-header .nav_tit_right_v2, main .charts_content_box_308 .content-header .nav_tit_right_v2, main .charts_content_box .content-header .nav_tit_right_v2 {
+  float: right;
+  margin: 0 10px;
+  font-size: 16px;
+}
+main .charts_content_box_461_280 .content-header .nav_tit, main .charts_content_box_280 .content-header .nav_tit, main .charts_content_box_308 .content-header .nav_tit, main .charts_content_box .content-header .nav_tit {
   display: inline-block;
   cursor: pointer;
 }
-main .charts_content_box_280 .content-header .nav_tit .ch-tit, main .charts_content_box_308 .content-header .nav_tit .ch-tit, main .charts_content_box .content-header .nav_tit .ch-tit {
-  color: #40F3EF !important;
+main .charts_content_box_461_280 .content-header .nav_tit .ch-tit, main .charts_content_box_280 .content-header .nav_tit .ch-tit, main .charts_content_box_308 .content-header .nav_tit .ch-tit, main .charts_content_box .content-header .nav_tit .ch-tit {
+  color: #FEFFFF;
 }
-main .charts_content_box_280 .content-header .nav_tit.active, main .charts_content_box_308 .content-header .nav_tit.active, main .charts_content_box .content-header .nav_tit.active {
-  background-color: #111234;
+main .charts_content_box_461_280 .content-header .nav_tit.active, main .charts_content_box_280 .content-header .nav_tit.active, main .charts_content_box_308 .content-header .nav_tit.active, main .charts_content_box .content-header .nav_tit.active {
+  border-radius: 2px;
+  background-color: #0C0D21;
 }
-main .charts_content_box_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box_308 .content-header .nav_tit.active .ch-tit, main .charts_content_box .content-header .nav_tit.active .ch-tit {
-  color: #FEFFFF !important;
+main .charts_content_box_461_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box_308 .content-header .nav_tit.active .ch-tit, main .charts_content_box .content-header .nav_tit.active .ch-tit {
+  color: #37D1CE !important;
 }
-main .charts_content_box_280 .nav_tab_content, main .charts_content_box_308 .nav_tab_content, main .charts_content_box .nav_tab_content {
+main .charts_content_box_461_280 .nav_tab_content, main .charts_content_box_280 .nav_tab_content, main .charts_content_box_308 .nav_tab_content, main .charts_content_box .nav_tab_content {
   display: none;
   height: 100%;
 }
-main .charts_content_box_280 .normal_chart, main .charts_content_box_280 .main_body_table, main .charts_content_box_308 .normal_chart, main .charts_content_box_308 .main_body_table, main .charts_content_box .normal_chart, main .charts_content_box .main_body_table {
+main .charts_content_box_461_280 .normal_chart, main .charts_content_box_461_280 .main_body_table, main .charts_content_box_280 .normal_chart, main .charts_content_box_280 .main_body_table, main .charts_content_box_308 .normal_chart, main .charts_content_box_308 .main_body_table, main .charts_content_box .normal_chart, main .charts_content_box .main_body_table {
   width: 100%;
   height: 100%;
 }
-main .charts_content_box_280 .main_body, main .charts_content_box_308 .main_body, main .charts_content_box .main_body {
+main .charts_content_box_461_280 .main_body, main .charts_content_box_280 .main_body, main .charts_content_box_308 .main_body, main .charts_content_box .main_body {
   flex: 1;
   height: 0;
   position: relative;
 }
-main .charts_content_box_280 .main_body .pie_chart, main .charts_content_box_308 .main_body .pie_chart, main .charts_content_box .main_body .pie_chart {
+main .charts_content_box_461_280 .main_body .pie_chart, main .charts_content_box_280 .main_body .pie_chart, main .charts_content_box_308 .main_body .pie_chart, main .charts_content_box .main_body .pie_chart {
   width: 100%;
   height: 100%;
 }
 main .charts_content_box_280 {
   background-image: url("../img/charts_content_box_280.png");
 }
+main .charts_content_box_280_2nav {
+  background-image: url("../img/charts_content_box_280_2nav.png");
+}
+main .charts_content_box_461_280 {
+  width: 461px;
+  background-image: url("../img/charts_content_box_461_280.png");
+}
+main .charts_content_box_935_576 {
+  width: 935px;
+  background-image: url("../img/charts_content_box_935_576.png");
+}
 main .charts_content_box_220 {
   background-image: url("../img/charts_content_box_220.png");
 }
 main .charts_content_box_308 {
   background-image: url("../img/charts_content_box_308.png");
+}
+main .charts_content_box_1251 {
+  width: 1251px;
+  background-image: url("../img/charts_content_box_1251.png");
 }
 main .charts_content_box_632 {
   width: 100%;
@@ -474,23 +507,23 @@ main .device_list .device_item .number {
   background-color: transparent;
 }
 .main_body_table .layui-table-view {
-  border-color: #2FF9F0;
+  border-color: rgba(47, 249, 240, 0.4);
   margin: 0;
 }
 .main_body_table .layui-table-view .layui-table {
   width: 100%;
 }
 .main_body_table .layui-table-header {
-  border-color: #2FF9F0;
+  border-color: rgba(47, 249, 240, 0.4);
 }
 .main_body_table .layui-table-header tr {
   background-color: #141546 !important;
   color: #fff;
 }
 .main_body_table tr td {
-  border-color: #2FF9F0;
+  border-color: rgba(47, 249, 240, 0.4);
   border-right: none;
-  color: #2FF9F0;
+  color: #34B8BE;
   word-wrap: break-word;
 }
 .main_body_table .layui-table-cell {
@@ -937,12 +970,78 @@ main .device_list .device_item .number {
   margin-right: 0;
 }
 
+.icon_wyc {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 37px;
+  box-sizing: border-box;
+}
+.icon_wyc .wyc_item {
+  display: flex;
+  align-items: center;
+  flex: 0 0 33.3%;
+}
+.icon_wyc .wyc_item .wyc_content {
+  margin-left: 20px;
+}
+.icon_wyc .wyc_item .wyc_content p {
+  font-size: 30px;
+  font-family: Impact;
+  font-weight: 400;
+  color: #FEFFFF;
+}
+.icon_wyc .wyc_item .wyc_content p span:last-child {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FEFFFF;
+}
+.icon_wyc .wyc_item .wyc_content p:last-child {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FEFFFF;
+}
+
+.percent_cricle {
+  width: 196px;
+  height: 196px;
+  background: url("../img/percent_circle.png");
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.percent_cricle .percent_num {
+  font-size: 30px;
+  font-family: Impact;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.percent_cricle .percent_desc {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #40F3EF;
+}
+
 .icon28 {
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
   width: 28px;
   height: 28px;
+  background-size: 100% 100%;
+}
+
+.icon48 {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: top;
+  width: 48px;
+  height: 48px;
   background-size: 100% 100%;
 }
 

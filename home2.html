@@ -60,80 +60,72 @@
                 </div>
             </div>
         </div>
-
-        <div class="plate_item">
-            <div class="plate_box_long">
-                <div class="plate_til">重点关注清单</div>
-                <div class="plate_num">
-                    <p>
-                        <span>0</span>
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
     <main>
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">实时风险统计</span>
+        <div style="width: 461px; height: 576px; display: flex; flex-direction: column; justify-content: space-between">
+
+            <div class="charts_content_box_461_280" style="height: 280px; ">
+                <div class="content-header">
+                    <span class="ch-tit">风险等级统计</span>
+                </div>
+                <div class="main_body">
+                    <div id="RiskLevel" class="pie_chart"></div>
+                </div>
             </div>
-            <div class="main_body">
-                <div id="LiveRisk" class="pie_chart"></div>
+
+            <div class="charts_content_box_461_280" style="height: 280px">
+                <div class="content-header">
+                    <span class="ch-tit">风险检查</span>
+                </div>
+                <div class="main_body">
+                    <div id="RiskCheck" class="pie_chart"></div>
+                </div>
             </div>
+
+        </div>
+        <div style="width: 935px; height: 576px; ">
+            <div class="charts_content_box charts_content_box_935_576" style="height: 576px">
+                <div class="content-header">
+                    <span class="ch-tit">实时风险清单</span>
+                </div>
+                <div class="main_body">
+                    <div id="_Table1" class="main_body_table">
+                        <table id="table1"></table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="width: 461px; height: 576px; display: flex; flex-direction: column; justify-content: space-between">
+
+            <div class="charts_content_box_461_280" style="height: 280px">
+                <div class="content-header">
+                    <span class="ch-tit">风险状态统计</span>
+                </div>
+                <div class="main_body">
+                    <div id="RiskStatus" class="pie_chart"></div>
+                </div>
+            </div>
+
+            <div class="charts_content_box_461_280" style="height: 280px;">
+                <div class="content-header">
+                    <span class="ch-tit">风险消除统计</span>
+                </div>
+                <div class="main_body">
+                    <div id="RiskClear" class="pie_chart"></div>
+                </div>
+            </div>
+
         </div>
 
 
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">风险消除统计</span>
-            </div>
-            <div class="main_body">
-                <div id="RiskClear" class="pie_chart"></div>
-            </div>
-        </div>
-
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">风险状态统计</span>
-            </div>
-            <div class="main_body">
-                <div id="RiskStatus" class="pie_chart"></div>
-            </div>
-        </div>
-
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">风险检查</span>
-            </div>
-            <div class="main_body">
-                <div id="RiskCheck" class="pie_chart"></div>
-            </div>
-        </div>
-
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">重点关注</span>
-            </div>
-            <div class="main_body">
-                <div id="Important" class="pie_chart"></div>
-            </div>
-        </div>
-
-        <div class="charts_content_box_280" style="height: 280px">
-            <div class="content-header">
-                <span class="ch-tit">风险等级统计</span>
-            </div>
-            <div class="main_body">
-                <div id="RiskLevel" class="pie_chart"></div>
-            </div>
-        </div>
         <div class="charts_content_box charts_content_box_220" style="width: 100%; height: 220px">
             <div class="content-header">
                 <span class="ch-tit">风险清单一览表</span>
             </div>
             <div class="main_body" >
-                <div id="TeamTable" class="main_body_table">
-                        <table id="table"></table>
+                <div id="_Table2" class="main_body_table">
+                    <table id="table2"></table>
                 </div>
             </div>
         </div>
@@ -154,19 +146,54 @@
         form = layui.form
         table = layui.table
         form.render('select')
-        renderTable()
+        renderTable1()
+        renderTable2()
     })
 
-    function renderTable() {
+    function renderTable1() {
 
         window._table = table.render({
-            elem: '#table',
-            height: $("#table").parent().height() - 20,
+            elem: '#table1',
+            height: $("#table1").parent().height() - 20,
+            // height: 'full-100',
+            data: [
+                {name1: '箱梁架设', name2: '箱梁运输', name3: '三级',  name4: '2021-07-01至2021-09-30', name5: '1', name6: '未预警' },
+                {name1: '各安激后临时工程临时场站', name2: '铺轨基地驻地、办公区 生活用电、生产用电', name3: '三级',   name4: '2021-07-01至2021-09-30', name5: '1',  name6: '未预警' },
+                {name1: '各安激后临时工程 临时场站', name2: '现浇支架搭设与拆除', name3: '三级', name4: '2021-07-01至2021-09-30',  name5: '1', name6: '未预警' },
+                {name1: '箱梁架设', name2: '箱梁运输', name3: '三级',  name4: '2021-07-01至2021-09-30', name5: '1', name6: '未预警' },
+                {name1: '各安激后临时工程临时场站', name2: '铺轨基地驻地、办公区 生活用电、生产用电', name3: '三级',   name4: '2021-07-01至2021-09-30', name5: '1',  name6: '未预警' },
+                {name1: '各安激后临时工程 临时场站', name2: '现浇支架搭设与拆除', name3: '三级', name4: '2021-07-01至2021-09-30',  name5: '1', name6: '未预警' },
+                {name1: '箱梁架设', name2: '箱梁运输', name3: '三级',  name4: '2021-07-01至2021-09-30', name5: '1', name6: '未预警' },
+                {name1: '各安激后临时工程临时场站', name2: '铺轨基地驻地、办公区 生活用电、生产用电', name3: '三级',   name4: '2021-07-01至2021-09-30', name5: '1',  name6: '未预警' },
+                {name1: '各安激后临时工程 临时场站', name2: '现浇支架搭设与拆除', name3: '三级', name4: '2021-07-01至2021-09-30',  name5: '1', name6: '未预警' },
+                {name1: '各安激后临时工程 临时场站', name2: '现浇支架搭设与拆除', name3: '三级', name4: '2021-07-01至2021-09-30',  name5: '1', name6: '未预警' },
+            ],
+            cols: [
+                [
+                    { title: '序号',type:'numbers' },
+                    { field: 'name1', width: '15%', title: '单位工程' },
+                    { field: 'name2', width: '24%', title: '风险名称' },
+                    { field: 'name3', title: '风险等级' },
+                    { field: 'name4', width: '24%', title: '施工时间' },
+                    { field: 'name5', title: '检查次数' },
+                    { field: 'name6', title: '预警状态' },
+                ]
+            ],
+            done: function() {
+                $("#_Table1 .layui-table-body").layTableScroll()
+            }
+        })
+    }
+    function renderTable2() {
+
+        window._table = table.render({
+            elem: '#table2',
+            height: $("#table2").parent().height() - 20,
             // height: 'full-100',
             data: [
                 {name1: '箱梁架设1', name2: '箱梁架设', name3: '其他附厲设施', name4: '铺轨基地驻地、办公区生活用电、生产用电', name5: '桥梁倾覆、设备侧翻、设备 故障、人员伤亡', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
-                // {name1: '各安及后临时工程临时场站', name2: '普柜基地其他附属设施', name3: '其他附厲设施', name4: '铺轨基地驻地、办公区生活用电、生产用电', name5: '桥梁倾覆、设备侧翻、设备 故障、人员伤亡', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
-                // {name1: '箱梁架设3', name2: '箱梁架设', name3: '其他附厲设施', name4: '人员出点伤亡、失火', name5: '触电、人员伤亡、火灾', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
+                {name1: '各安及后临时工程临时场站', name2: '普柜基地其他附属设施', name3: '其他附厲设施', name4: '铺轨基地驻地、办公区生活用电、生产用电', name5: '桥梁倾覆、设备侧翻、设备 故障、人员伤亡', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
+                {name1: '箱梁架设3', name2: '箱梁架设', name3: '其他附厲设施', name4: '人员出点伤亡、失火', name5: '触电、人员伤亡、火灾', name6: '2021-07-01至2021-09-30', name7: '三级', name8: '已消除', name9: '未预警' },
             ],
             cols: [
                 [
@@ -182,38 +209,47 @@
                 ]
             ],
             done: function() {
-                $("#TeamTable .layui-table-body").layTableScroll()
+                $("#_Table2 .layui-table-body").layTableScroll()
             }
         })
-        //
-        // Charts['_table'] = {
-        //     resize: function() {
-        //         _table.render({
-        //             height: $("#table").parent().height()
-        //         })
-        //     }
-        // }
     }
     $(function (){
-        // initPie3DChart()
-        initPieChart($("#LiveRisk")[0], "LiveRisk",
+        var opt = {
+            legend: {
+                right: '10%'
+            },
+            series: {
+                radius: ['55%', '80%'],
+                center: ['30%', '50%'],
+            },
+            color: ['#264ACF','#40F3EF', '#FF9125', '#ED2946' ],
+        }
+
+        initPieChart($("#RiskLevel")[0], "RiskLevel",
             [
-                {name: '一级', value: '7'},
+                {name: '一级', value: '6'},
                 {name: '二级', value: '7'},
                 {name: '三级', value: '11'},
-            ]
+            ],
+            Object.assign(opt, { itemGap: 15 })
         )
 
-        // initPie3DChart()
+        initPieChart($("#RiskCheck")[0], "RiskCheck",
+            [
+                {name: '项目检查', value: '6'},
+                {name: '公司检查', value: '7'},
+                {name: '局检查', value: '11'},
+            ],
+            Object.assign(opt, { itemGap: 15 })
+        )
         initPieChart($("#RiskClear")[0], "RiskClear",
             [
                 {name: '未消除', value: '7'},
                 {name: '已消除', value: '11'},
             ],
-            {
-                itemGap: 50
-            }
+            Object.assign(opt, { itemGap: 20 })
         )
+
         initPieChart($("#RiskStatus")[0], "RiskStatus",
             [
                 {name: '施工中', value: '18'},
@@ -221,38 +257,14 @@
                 {name: '已消除', value: '34'},
                 {name: '预警中', value: '12'},
             ],
-            {
-                itemGap: 10
-            }
+            Object.assign(opt, { itemGap: 10 })
         )
-        initPieChart($("#RiskCheck")[0], "RiskCheck",
-            [
-                {name: '项目检查', value: '6'},
-                {name: '公司检查', value: '7'},
-                {name: '局检查', value: '11'},
-            ],
-        )
-        initPieChart($("#Important")[0], "Important",
-            [
-                {name: '即有线', value: '8'},
-                {name: '有限空间', value: '10'},
-            ],
-            {
-                itemGap: 50
-            }
-        )
-        initPieChart($("#RiskLevel")[0], "RiskLevel",
-            [
-                {name: '一级', value: '6'},
-                {name: '二级', value: '7'},
-                {name: '三级', value: '11'},
-            ]
-        )
+
 
 
     })
 
-    function initPieChart(ele, name,data, opt) {
+    function initPieChart1(ele, name,data, opt) {
         var chart = echarts.init(ele);
         var pieChartOption = {
             tooltip: {
@@ -349,7 +361,7 @@
         }
 
         pieChartOption.series[0].data = data
-        pieChartOption = Object.assign(pieChartOption, opt)
+        pieChartOption = deepMerge(pieChartOption, opt)
 
         chart.setOption(pieChartOption);
         Charts[name] = chart
@@ -365,5 +377,8 @@
 
 </script>
 <script src="./js/bigscreen.js"></script>
+<script src="./js/echarts-component.js"></script>
+<script src="./js/screenfull.min.js"></script>
+
 </body>
 </html>

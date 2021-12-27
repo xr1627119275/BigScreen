@@ -13,7 +13,7 @@
 <body style="position: relative; overflow: hidden">
 <div id="screen">
 
-    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle"></div>
 
     <div id="plate_nav">
         <div class="plate_item">
@@ -114,43 +114,45 @@
         </div>
         <div class="charts_content_box">
             <div class="content-header">
-                <div class="nav_tit active" >
-                    <span class="ch-tit">区域统计TOP10</span>
-                </div>
-                <div class="nav_tit ">
-                    <span class="ch-tit">本期出勤率（%）</span>
-                </div>
+                <span class="ch-tit">近7天出勤率（%）</span>
             </div>
             <div class="main_body">
-                <div class="nav_tab_content" style="display: block">
-                    <div id="AreaStatistics" class="normal_chart"></div>
-                </div>
-                <div class="nav_tab_content" >
-                    <div id="CurrentPeriodStatistics" class="normal_chart"></div>
-                <div>
+                <div id="CurrentPeriodStatistics" class="normal_chart"></div>
             </div>
-        </div>
-        </div>
         </div>
         <div class="charts_content_box">
             <div class="content-header">
-                <span class="ch-tit">本期出勤劳务队伍TOP5</span>
+                <span class="ch-tit">劳务人员所属区域TOP5</span>
             </div>
             <div class="main_body">
-                <div id="AttendanceTeamTop5" class="normal_chart"></div>
+                <div id="AreaStatistics" class="normal_chart"></div>
+
             </div>
         </div>
+
         <div class="charts_content_box">
             <div class="content-header">
                 <span class="ch-tit">近30天劳务队伍进退场TOP5</span>
+<!--                <div class="nav_tit active">-->
+<!--                    <span class="ch-tit">本期出勤劳务队伍TOP5</span>-->
+<!--                </div>-->
+<!--                <div class="nav_tit ">-->
+<!--                    <span class="ch-tit">近30天劳务队伍进退场TOP5</span>-->
+<!--                </div>-->
             </div>
             <div class="main_body">
+<!--                <div class="nav_tab_content" style="display: block">-->
+<!--                    <div id="AttendanceTeamTop5" class="normal_chart"></div>-->
+<!--                </div>-->
+<!--                <div class="nav_tab_content">-->
+<!--                    <div id="InOutTeamTop5" class="normal_chart"></div>-->
+<!--                </div>-->
                 <div id="InOutTeamTop5" class="normal_chart"></div>
             </div>
         </div>
         <div class="charts_content_box">
             <div class="content-header">
-                <span class="ch-tit">劳务队伍劳务人员分布</span>
+                <span class="ch-tit">劳务队伍人数及出勤率</span>
             </div>
             <div class="main_body">
                 <div id="TeamTable" class="main_body_table">
@@ -191,7 +193,7 @@
 
     $("#header").load('_header.html')
 
-    layui.use(['form' ,'table'], function (){
+    layui.use(['form', 'table'], function () {
         form = layui.form
         table = layui.table
         form.render('select')
@@ -203,78 +205,74 @@
         $("#Modal").fadeIn()
         renderModalTable()
     }
+
     function closeModal() {
         $("#Modal").fadeOut()
         $("#mark").hide()
     }
-    function renderModalTable() {
 
+    function renderModalTable() {
         table.render({
             elem: '#modalTable',
             height: $("#modalTable").parent().height() - 20,
             data: [
-                { name: '东方华晨（北京）建筑工程有限公司-董永嘉', num1: 4, num2: 23 },
-                { name: '天津复原建设工程有限公司-李建', num1: 4, num2: 23 },
-                { name: '天津三和雨神工程有限公司-郭玉娟', num1: 4, num2: 23 },
-                { name: '合肥东方工程有限公司-程晓明', num1: 4, num2: 23 },
-                { name: '华东建设工程施工有限公司-李明伟', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '河南经开建设有限公司-胡海燕', num1: 4, num2: 23 },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
+                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
             ],
             cols: [
                 [
-                    { field: 'name', width: '60%', title: '劳务队伍' },
-                    { field: 'num1', title: '劳务班组数' },
-                    { field: 'num2', title: '劳务人数' },
+                    {field: 'name', width: '40%', title: '劳务队伍'},
+                    {field: 'name2',title: '班组类型'},
+                    {field: 'name3',title: '班组长'},
+                    {field: 'name4',title: '工人姓名'},
+                    {field: 'num1',width: '20%', title: '身份证号'},
+                    {field: 'date',width: '15%', title: '进场日期'},
                 ]
             ]
         })
     }
+
     function renderTable() {
 
         table.render({
             elem: '#table',
             height: $("#table").parent().height() - 20,
             data: [
-                { name: '东方华晨（北京）建筑工程有限公司-董永嘉', num1: 4, num2: 23 },
-                { name: '天津复原建设工程有限公司-李建', num1: 4, num2: 23 },
-                { name: '天津三和雨神工程有限公司-郭玉娟', num1: 4, num2: 23 },
-                { name: '合肥东方工程有限公司-程晓明', num1: 4, num2: 23 },
-                { name: '华东建设工程施工有限公司-李明伟', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '珠江利好工程有限公司-周三畏', num1: 4, num2: 23 },
-                { name: '河南经开建设有限公司-胡海燕', num1: 4, num2: 23 },
+                {name: '东方华晨建筑工程有限公司-董永嘉', num1: '40%', num2: 23},
+                {name: '天津复原建设工程有限公司-李建', num1: '40%', num2: 23},
+                {name: '天津三和雨神工程有限公司-郭玉娟', num1: '40%', num2: 23},
+                {name: '合肥东方工程有限公司-程晓明', num1: '40%', num2: 23},
+                {name: '华东建设工程施工有限公司-李明伟', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
+                {name: '河南经开建设有限公司-胡海燕', num1: '40%', num2: 23},
             ],
             cols: [
                 [
-                    { field: 'name', width: '60%', title: '劳务队伍' },
-                    { field: 'num1', title: '劳务班组数' },
-                    { field: 'num2', title: '劳务人数' },
+                    {field: 'name', width: '50%', title: '劳务队伍'},
+                    {field: 'num1', width: '28%', title: '本期出勤率（%）'},
+                    {field: 'num2', width: '20%',title: '劳务人数'},
                 ]
             ],
-            done: function() {
+            done: function () {
                 $("#TeamTable .layui-table-body").layTableScroll()
             }
         })
-        //
-        // Charts['_table'] = {
-        //     resize: function() {
-        //         _table.render({
-        //             height: $("#table").parent().height()
-        //         })
-        //     }
-        // }
     }
-    $(function (){
+
+    $(function () {
         // initPie3DChart()
         initPieChart($("#JobStatistics")[0], "JobStatistics",
             [
@@ -283,7 +281,13 @@
                 {name: '普工', value: '34'},
                 {name: '防水工', value: '12'},
                 {name: '泥瓦工', value: '12'},
-            ]
+            ],
+            {
+                series: {
+                    radius: '60%'
+                },
+                itemGap: 15
+            }
         )
         initPieChart($("#AgeStatistics")[0], "AgeStatistics",
             [
@@ -292,31 +296,30 @@
                 {name: '46-50岁', value: '34'},
                 {name: '51-55岁', value: '12'},
                 {name: '56-60岁', value: '12'},
-            ]
+            ],
+            {
+                series: {
+                    radius: '60%'
+                },
+                itemGap: 15
+            }
         )
 
-        initCategoryChart($("#AreaStatistics")[0], 'AreaStatistics', ["安徽省", "河北省", "河南省", "山东省", "四川省", "甘肃省", "陕西省"]
-            , [78, 74, 63, 56, 54, 38, 35])
+        initCategoryChart($("#AreaStatistics")[0], 'AreaStatistics', ["安徽省", "河北省", "河南省", "山东省", "四川省"]
+            , [78, 74, 63, 56, 54])
 
-        initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-24", "11-24", "11-25", "11-26", "11-27", "11-28"]
-            , [78, 74, 63, 56, 54, 38])
+        initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-01 \n11-07", "11-08 \n11-14", "11-15 \n11-21", "11-22 \n11-28", "11-29 \n12-05", "12-06 \n12-12", "12-13 \n12-19"]
+            , [60, 78, 74, 63, 56, 54, 38])
 
-        initBarChart($("#AttendanceTeamTop5")[0], 'AttendanceTeamTop5', [
+        initBarChart($("#InOutTeamTop5")[0], 'InOutTeamTop5', [
             '安徽省安品\n王帅',
             '安徽省安品\n王帅',
             '安徽省安品\n王帅',
             '安徽省安品\n王帅',
             '安徽省安品\n王帅',
-        ], { name: '出勤', data: [78,74,63,56,54] }, { name: '缺勤', data: [68, 64,53, 46, 44]})
-
-        initBarChart($("#InOutTeamTop5")[0], 'AttendanceTeamTop5', [
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-        ], { name: '进场', data: [78,74,63,56,54]},{ name: '退场', data: [68, 64,53, 46, 44]})
+        ], {name: '进场', data: [78, 74, 63, 56, 54]}, {name: '退场', data: [68, 64, 53, 46, 44]})
     })
+
     function initPie3DChart() {
         var chart = {
             type: 'pie',
@@ -324,7 +327,7 @@
                 enabled: true,
                 alpha: 45
             },
-            spacing: [30,120,105,-80],
+            spacing: [30, 120, 105, -80],
             backgroundColor: "#141540",
             dataLabels: {
                 enabled: false
@@ -339,7 +342,7 @@
                 enabled: false
             }
         };
-        var series= [{
+        var series = [{
             name: '配送量',
             data: [
                 ['Bananas', 8],
@@ -363,7 +366,7 @@
     }
 
 
-    function initCategoryChart(ele, name,data1, data2, opt) {
+    function initCategoryChart(ele, name, data1, data2, opt) {
         var option = {
             color: ['#FF9125'],
             xAxis: {
@@ -384,7 +387,7 @@
                 type: 'value',
                 splitLine: {
                     lineStyle: {
-                        color: ['#36C0C5']
+                        color: [splitLineColor]
                     }
                 },
                 axisLabel: {
@@ -400,19 +403,19 @@
                 //     }
                 // }
             },
-            grid:{
-                x:50,
-                y:40,
-                x2:20,
-                y2:45,
-                borderWidth:1
+            grid: {
+                x: 50,
+                y: 40,
+                x2: 20,
+                y2: 45,
+                borderWidth: 1
             },
 
             series: [
                 {
                     data: [120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
-                    barWidth:30,
+                    barWidth: 30,
                     backgroundStyle: {
                         // color: 'rgba(180, 180, 180, 0.2)'
                     },
@@ -435,108 +438,11 @@
                 },
             }
         }
-        option = Object.assign(option, opt)
+        option = deepMerge(option, opt)
         chart.setOption(option);
         Charts[name] = chart
     }
 
-    function initPieChart(ele, name,data, opt) {
-        var chart = echarts.init(ele);
-        var pieChartOption = {
-            tooltip: {
-                trigger: 'item'
-            },
-            color: ['#173DAA', '#CE7525','#18A89D' ,'#BF2E4A', '#BF23CC'],
-            // 图例
-            legend: {
-                // x: 'right',
-                y: 'center',
-                right: '15%',
-                bottom: '0%',
-                orient : 'vertical',
-                icon: 'none',
-                itemGap: 20,
-                formatter(name){
-                    var value;
-                    for (var i = 0; i < data.length; i++) {
-                        if (data[i].name === name) {
-                            value = data[i].value;
-                        }
-                    }
-                    let arr = [
-                        '{icon|}\n{a|' + name + '}{b|' + value + '}'
-                    ];
-
-                    return arr.join('\n')
-                },
-                textStyle: {
-                    rich: {
-                        icon: {
-                            align: 'left',
-                            width: 40,
-                            height: 8,
-                            backgroundColor: 'path://',
-                        },
-                        a: {
-                            fontSize: 16,
-                            align: 'left',
-                            color: "#fff",
-                            padding:[10,0,0,0],
-                            width: 70,
-                        },
-                        b: {
-                            fontSize: 30,
-                            align: 'right',
-                            color: "#fff",
-                            fontWeight: 400,
-                            fontFamily: 'Impact',
-                            // padding:[0,28,0,0],
-                            width: 50
-
-                        }
-                    }
-                },
-                // backgroundColor: "#FAFAFA"
-            },
-            series: [
-                {
-                    type: 'pie',
-                    // radius: ['30%', '60%'],
-                    radius: '60%',
-                    center: ['30%', '50%'],
-                    label: {
-                        normal: {
-                            show: true,//是否显示标签
-                            position: 'left',
-                            formatter: "{c}",
-                            fontSize: 12,
-                            color: '#171717'
-                        },
-                    },
-                    // labelLine: {
-                    //     normal: {
-                    //         show: false,//是否显示引导线
-                    //     }
-                    // },
-                    data: [],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }
-            ]
-        };
-
-        pieChartOption.series[0].data = data
-        pieChartOption = Object.assign(pieChartOption, opt)
-
-        chart.setOption(pieChartOption);
-        Charts[name] = chart
-
-    }
     function initBarChart(ele, name, xdata, data1, data2, opt) {
         var chart = echarts.init(ele);
 
@@ -568,46 +474,46 @@
                         color: '#FEFFFF'
                     }
                 },
-                splitLine: { show: false },
-                splitArea: { show: false }
+                splitLine: {show: false},
+                splitArea: {show: false}
             },
             yAxis: {
 
                 splitLine: {
                     lineStyle: {
-                        color: ['#36C0C5']
+                        color: [splitLineColor]
                     }
                 },
                 axisLabel: {
                     show: true,
-                        textStyle: {
+                    textStyle: {
                         fontSize: 16,
-                            color: '#FEFFFF'
+                        color: '#FEFFFF'
                     }
-                 }
+                }
             },
-            grid:{
-                x:20,
-                y:60,
-                x2:20,
-                y2:20,
+            grid: {
+                x: 20,
+                y: 60,
+                x2: 20,
+                y2: 20,
                 containLabel: true,
-                borderWidth:1
+                borderWidth: 1
             },
             series: [
                 {
                     name: data1.name,
                     type: 'bar',
                     stack: 'one',
-                    barWidth:30,
+                    barWidth: 30,
                     emphasis: emphasisStyle,
                     data: data1.data
                 },
                 {
-                    name:  data2.name,
+                    name: data2.name,
                     type: 'bar',
                     stack: 'one',
-                    barWidth:30,
+                    barWidth: 30,
                     emphasis: emphasisStyle,
                     data: data2.data,
                 },
@@ -618,110 +524,21 @@
             normal: {
                 label: {
                     show: true,
-                        position: 'top',
-                        textStyle: {
+                    position: 'top',
+                    textStyle: {
                         fontSize: 16,
-                            color: '#FEFFFF'
+                        color: '#FEFFFF'
                     }
                 },
             }
         }
 
-        option = Object.assign(option, opt)
+        option = deepMerge(option, opt)
 
         chart.setOption(option);
         Charts[name] = chart
     }
-    function initLineChart(ele, name,data1, data2, opt) {
-        var chart = echarts.init(ele);
-        var option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            grid:{
-                x:20,
-                y:45,
-                x2:20,
-                y2:20,
-                containLabel: true,
-                borderWidth:1
-            },
 
-            xAxis: [
-                {
-                    type: 'category',
-                    // boundaryGap: false,
-                    data: data1,
-                    axisLabel: {
-                        show: true,
-                        textStyle: {
-                            fontSize: 16,
-                            color: '#FEFFFF'
-                        }
-                    }
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'value',
-                    splitLine: {
-                        lineStyle: {
-                            color: ['#36C0C5']
-                        }
-                    },
-                    axisLabel: {
-                        show: true,
-                        textStyle: {
-                            fontSize: 16,
-                            color: '#FEFFFF'
-                        }
-                    }
-                }
-            ],
-            series: [
-                {
-                    // name: 'Line 1',
-                    type: 'line',
-                    // stack: 'Total',
-                    smooth: true,
-                    lineStyle: {
-                        width: 0
-                    },
-                    showSymbol: false,
-
-                    areaStyle: {
-                        opacity: 0.8,
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            {
-                                offset: 0,
-                                color: '#F18A26'
-                            },
-                            {
-                                offset: 1,
-                                color: '#392939'
-                            }
-                        ])
-                    },
-
-                    data: data2
-                }
-
-            ]
-        };
-
-        option.xAxis.data = data1
-        option.series[0].data = data2
-        option = Object.assign(option, opt)
-
-        chart.setOption(option);
-        Charts[name] = chart
-    }
 
     $(window).resize(() => {
         for (var key in Charts) {
@@ -732,5 +549,7 @@
 
 </script>
 <script src="./js/bigscreen.js"></script>
+<script src="./js/echarts-component.js"></script>
+<script src="./js/screenfull.min.js"></script>
 </body>
 </html>

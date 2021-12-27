@@ -247,7 +247,7 @@ main {
     }
   }
 
-  .charts_content_box_280, .charts_content_box_308, .charts_content_box {
+  .charts_content_box_461_280 , .charts_content_box_280, .charts_content_box_308, .charts_content_box {
     width: 618px;
     height: 405px;
     display: flex;
@@ -269,20 +269,40 @@ main {
         font-weight: 400;
         color: #FEFFFF;
       }
+      .nav_tit_right_tip {
+        float: right;
+        font-size: 16px;
+        padding-right: 33px
+      }
+      .nav_tit_right {
+        float: right;
+        margin: 0 20px;
+
+        span {
+          font-size: 14px !important;
+        }
+      }
+
+      .nav_tit_right_v2 {
+        float: right;
+        margin: 0 10px;
+        font-size: 16px;
+      }
 
       .nav_tit {
         display: inline-block;
         cursor: pointer;
 
         .ch-tit {
-          color: #40F3EF !important;
+          color: #FEFFFF;
         }
 
         &.active {
-          background-color: #111234;
+          border-radius: 2px;
+          background-color: #0C0D21;
 
           .ch-tit {
-            color: #FEFFFF !important;
+            color: #37D1CE !important;
           }
         }
       }
@@ -316,7 +336,17 @@ main {
   .charts_content_box_280 {
     background-image: url("../img/charts_content_box_280.png");
   }
-
+  .charts_content_box_280_2nav {
+    background-image: url("../img/charts_content_box_280_2nav.png");
+  }
+  .charts_content_box_461_280 {
+    width: 461px;
+    background-image: url("../img/charts_content_box_461_280.png");
+  }
+  .charts_content_box_935_576 {
+    width: 935px;
+    background-image: url("../img/charts_content_box_935_576.png");
+  }
   .charts_content_box_220 {
     background-image: url("../img/charts_content_box_220.png");
   }
@@ -324,7 +354,10 @@ main {
   .charts_content_box_308 {
     background-image: url("../img/charts_content_box_308.png");
   }
-
+  .charts_content_box_1251 {
+    width: 1251px;
+    background-image: url("../img/charts_content_box_1251.png");
+  }
   .charts_content_box_632 {
     width: 100%;
     height: 100%;
@@ -566,7 +599,7 @@ main {
   }
 }
 
-
+$table_border_color: rgba(47, 249, 240, 0.4);
 .main_body_table {
   box-sizing: border-box;
   padding: 0 8px;
@@ -576,7 +609,7 @@ main {
   }
 
   .layui-table-view {
-    border-color: #2FF9F0;
+    border-color: $table_border_color;
     margin: 0;
 
     .layui-table {
@@ -585,7 +618,7 @@ main {
   }
 
   .layui-table-header {
-    border-color: #2FF9F0;
+    border-color: $table_border_color;
 
     tr {
       background-color: #141546 !important;
@@ -595,9 +628,9 @@ main {
   }
 
   tr td {
-    border-color: #2FF9F0;
+    border-color: $table_border_color;
     border-right: none;
-    color: #2FF9F0;
+    color: #34B8BE;
     word-wrap: break-word;
   }
 
@@ -1096,6 +1129,67 @@ main {
   }
 }
 
+// 租赁合同图标
+.icon_wyc {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 37px;
+  box-sizing: border-box;
+  .wyc_item {
+    display: flex;
+    align-items: center;
+    flex:  0 0 33.3%;
+    .wyc_content {
+      margin-left: 20px;
+      p {
+        font-size: 30px;
+        font-family: Impact;
+        font-weight: 400;
+        color: #FEFFFF;
+        span:last-child {
+          font-size: 16px;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #FEFFFF;
+        }
+      }
+      p:last-child {
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #FEFFFF;
+      }
+    }
+  }
+}
+
+//
+.percent_cricle {
+  width: 196px;
+  height: 196px;
+  background: url("../img/percent_circle.png");
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .percent_num {
+    font-size: 30px;
+    font-family: Impact;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
+  .percent_desc {
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #40F3EF;
+  }
+
+}
+
+
 
 .icon28 {
   display: inline-block;
@@ -1103,5 +1197,13 @@ main {
   vertical-align: top;
   width: 28px;
   height: 28px;
+  background-size: 100% 100%;
+}
+.icon48 {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: top;
+  width: 48px;
+  height: 48px;
   background-size: 100% 100%;
 }

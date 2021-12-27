@@ -1,10 +1,15 @@
+var splitLineColor = 'rgba(54,192,197,0.3)'
 jQuery.fn.extend({
     layTableScroll:function (){
         $(this).each(function() {
             var _this=$(this);//存储对象
             var ul = _this.find("tbody");
-            var li= ul.find("tr");
-            var h = li.length * li.height();
+            var li = ul.find("tr");
+            var h = 0;
+            li.each(function (i, item) {
+                h += $(item).height()
+            })
+
             if (h <= _this.height()) return
             li.clone().prependTo(ul);
 
@@ -163,4 +168,31 @@ var publicAjax = function (types, urls, params, asyncs, header, callback, error)
             layerror('内部错误，请联系管理员！');
         }
     });
+}
+// 深度合并
+function deepMerge(obj1, obj2) {
+    let key;
+    for (key in obj2) {
+        // 如果target(也就是obj1[key])存在，且是对象的话再去调用deepMerge，否则就是obj1[key]里面没这个对象，需要与obj2[key]合并
+        // 如果obj2[key]没有值或者值不是对象，此时直接替换obj1[key]
+        obj1[key] =
+            obj1[key] &&
+            obj1[key].toString() === "[object Object]" &&
+            (obj2[key] && obj2[key].toString() === "[object Object]")
+                ? deepMerge(obj1[key], obj2[key])
+                : (obj1[key] = obj2[key]);
+    }
+    return obj1;
+}
+
+// 格式化数字
+function fmoney(s,n) {
+    n = n > 0 && n <= 20 ? n : 2;
+    s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+    var l = s.split(".")[0].split("").reverse(), r = s.split(".")[1];
+    t = "";
+    for (i = 0; i < l.length; i++) {
+        t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+    }
+    return t.split("").reverse().join("") + "." + r;
 }
