@@ -196,3 +196,26 @@ function fmoney(s,n) {
     }
     return t.split("").reverse().join("") + "." + r;
 }
+
+// 左右滚动
+
+function _scrollItem(direction) {
+    var _content = $(".scroll_main_content")
+    var scrollWidth = _content[0].scrollWidth
+    var width = _content.width()
+    var left = Number(_content.css("left").replace('px', ''))
+    var nextPageLeft = left + (direction == 'left' ? width : -width)
+
+    if (Math.abs(nextPageLeft) > scrollWidth ||  nextPageLeft > 0) return
+
+    _content.animate({
+        left: nextPageLeft + 'px'
+    })
+}
+
+$(".mscroll-container .left_btn").click(function () {
+    _scrollItem('left')
+})
+$(".mscroll-container .right_btn").click(function () {
+    _scrollItem('right')
+})

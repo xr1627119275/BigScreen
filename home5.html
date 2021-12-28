@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术管理</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <div id="plate_nav" style="padding: 14px 0 27px 0;">
+        <div class="plate_item">
+            <div class="plate_box plate_box_long">
+                <div class="plate_til">施组方案计划</div>
+                <div class="plate_num">
+                    <p>
+                        <span>10</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box plate_box_long">
+                <div class="plate_til">施组方案完成</div>
+                <div class="plate_num">
+                    <p>
+                        <span>3</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box plate_box_long">
+                <div class="plate_til">技术交底计划</div>
+                <div class="plate_num">
+                    <p>
+                        <span>23</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box plate_box_long">
+                <div class="plate_til">技术交底完成</div>
+                <div class="plate_num">
+                    <p>
+                        <span>4</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div style="width: 722px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; padding-bottom: 16px">
+            <div class="charts_content_box charts_content_box_722_261">
+                <div class="content-header">
+                    <span class="ch-tit">施组方案计划明细列表</span>
+                </div>
+                <div class="main_body" >
+                    <div id="_Table1" class="main_body_table">
+                        <table id="table1"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="charts_content_box charts_content_box_722_261">
+                <div class="content-header">
+                    <span class="ch-tit">施工方案明细列表</span>
+                </div>
+                <div class="main_body" >
+                    <div id="_Table2" class="main_body_table">
+                        <table id="table2"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="charts_content_box charts_content_box_722_261">
+                <div class="content-header">
+                    <span class="ch-tit">交底明细列表</span>
+                </div>
+                <div class="main_body" >
+                    <div id="_Table3" class="main_body_table">
+                        <table id="table3"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="flex: 0 0 1154px; height: 100%; display: flex; flex-direction: column">
+            <div class="charts_content_box charts_content_box_1154_672">
+                <div class="main_body" style="padding: 9px 9px 18px 9px">
+                    <video src="" style="width: 100%; height: 100%; background-color: #4678B4"></video>
+                </div>
+            </div>
+
+            <div class="mscroll-container" style="width: 100%; flex: 1; padding: 0">
+                <span class="left_btn"></span>
+                <div class="mscroll_content">
+                    <div class="scroll_main_content" >
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                        <div class="video_scroll_item_container" >
+                            <div class="video_scroll_item" style="background-color: #2977BD">
+                                <span>工艺的视频</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="right_btn"></span>
+            </div>
+        </div>
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script>
+    var form, table;
+    var Charts = {}
+
+
+
+    layui.use(['form' ,'table'], function (){
+        form = layui.form
+        table = layui.table
+        form.render('select')
+        renderTable1()
+        renderTable2()
+        renderTable3()
+    })
+
+    function renderTable1() {
+
+        table.render({
+            elem: '#table1',
+            height: $("#table1").parent().height() - 20,
+            data: [
+                {name1: '休宁河特人情箍梁架设技术交底', name2: '一级', name3: '2021-12-26', name4: '施工中'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '二级', name3: '2021-12-26', name4: '施工中'},
+                {name1: '休宁经开区2号大桥拍梁架设技术交底', name2: '三级', name3: '2021-12-26', name4: '施工中'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '一级', name3: '2021-12-26', name4: '施工中'},
+            ],
+            cols: [
+                [
+                    { field: 'name1', width:'45%', title: '方案名称' },
+                    { field: 'name2', title: '方案等级' },
+                    { field: 'name3', title: '计划完成时间' },
+                    { field: 'name4', title: '工号施工状态' },
+                ]
+            ],
+            done: function() {
+                $("#_Table1 .layui-table-body").layTableScroll()
+            }
+        })
+
+    }
+
+    function renderTable2() {
+
+        table.render({
+            elem: '#table2',
+            height: $("#table2").parent().height() - 20,
+            data: [
+                {name1: '休宁河特人情箍梁架设技术交底', name2: '一级', name3: '周长芳', name4: '2021-12-26', name5: '李长晴'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '二级', name3: '周立新', name4: '2021-12-26', name5: '史爱欣'},
+                {name1: '休宁经开区2号大桥拍梁架设技术交底', name2: '三级', name3: '黄海丽', name4: '2021-12-26', name5: '李红艳'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '一级', name3: '胡海燕', name4: '2021-12-26', name5: '安阳'},
+            ],
+            cols: [
+                [
+                    { field: 'name1', width:'40%', title: '方案名称' },
+                    { field: 'name2', width: '16%', title: '方案等级' },
+                    { field: 'name3', title: '编制人' },
+                    { field: 'name4', width: '20%', title: '编制时间' },
+                    { field: 'name5', title: '责任人' },
+                ]
+            ],
+            done: function() {
+                $("#_Table2 .layui-table-body").layTableScroll()
+            }
+        })
+
+    }
+
+    function renderTable3() {
+
+        table.render({
+            elem: '#table3',
+            height: $("#table3").parent().height() - 20,
+            data: [
+                {name1: '休宁河特人情箍梁架设技术交底', name2: '交底部分1', name3: '李长晴', name4: '2021-12-26'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '交底部分2', name3: '周兴防', name4: '2021-12-26'},
+                {name1: '休宁经开区2号大桥拍梁架设技术交底', name2: '交底部分3', name3: '张立伟', name4: '2021-12-26'},
+                {name1: '休宁经开区1号大桥拍梁架设技术交底', name2: '交底部分4', name3: '常邵芳', name4: '2021-12-26'},
+            ],
+            cols: [
+                [
+                    { field: 'name1', width:'45%', title: '交底名称' },
+                    { field: 'name2', title: '交底部分' },
+                    { field: 'name3', title: '交底人' },
+                    { field: 'name4', title: '交底时间' },
+                ]
+            ],
+            done: function() {
+                $("#_Table3 .layui-table-body").layTableScroll()
+            }
+        })
+
+    }
+
+
+</script>
+<script src="./js/bigscreen.js"></script>
+</body>
+</html>

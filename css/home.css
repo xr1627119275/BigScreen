@@ -290,6 +290,16 @@ main .charts_content_box_935_576 {
 main .charts_content_box_220 {
   background-image: url("../img/charts_content_box_220.png");
 }
+main .charts_content_box_722_261 {
+  width: 100%;
+  height: 261px;
+  background-image: url("../img/charts_content_box_722_261.png");
+}
+main .charts_content_box_1154_672 {
+  width: 100%;
+  height: 672px;
+  background-image: url("../img/charts_content_box_1154_672.png");
+}
 main .charts_content_box_308 {
   background-image: url("../img/charts_content_box_308.png");
 }
@@ -426,51 +436,53 @@ main #map_container .statistics .right .filter_header .btn-search {
   font-weight: 400;
   color: #111234;
 }
-main .device_list {
+
+.mscroll-container {
   display: flex;
   box-sizing: border-box;
   padding: 0 14px;
   align-items: center;
 }
-main .device_list .left_btn, main .device_list .right_btn {
+.mscroll-container .left_btn, .mscroll-container .right_btn {
   cursor: pointer;
   width: 28px;
   height: 80px;
   background: url("../img/list_btn_right.png");
   background-size: 100% 100%;
 }
-main .device_list .right_btn {
+.mscroll-container .right_btn {
   background-image: url("../img/list_btn_left.png");
 }
-main .device_list .device_list_content {
+.mscroll-container .mscroll_content {
   flex: 1;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
-main .device_list .device_list_content .scroll_content {
+.mscroll-container .mscroll_content .scroll_main_content {
   width: 100%;
   height: 100%;
   display: flex;
   position: absolute;
 }
-main .device_list .device_item {
+
+.device_item {
   flex: 0 0 33.33%;
   padding-left: 30px;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
 }
-main .device_list .device_item .device_type1 {
+.device_item .device_type1 {
   background-image: url("../img/device_type1.png") !important;
 }
-main .device_list .device_item .device_type2 {
+.device_item .device_type2 {
   background-image: url("../img/device_type2.png") !important;
 }
-main .device_list .device_item .device_type3 {
+.device_item .device_type3 {
   background-image: url("../img/device_type3.png") !important;
 }
-main .device_list .device_item .icon {
+.device_item .icon {
   display: inline-block;
   vertical-align: bottom;
   width: 56px;
@@ -478,21 +490,21 @@ main .device_list .device_item .icon {
   background-image: url("../img/device_type1.png");
   background-size: 100%;
 }
-main .device_list .device_item .device_name, main .device_list .device_item .device_label {
+.device_item .device_name, .device_item .device_label {
   font-size: 18px;
   font-family: Microsoft YaHei;
   font-weight: 400;
   color: #40F3EF;
   line-height: 26px;
 }
-main .device_list .device_item .device_name {
+.device_item .device_name {
   padding: 0 10px;
 }
-main .device_list .device_item .device_label {
+.device_item .device_label {
   display: inline-block;
   width: 100px;
 }
-main .device_list .device_item .number {
+.device_item .number {
   font-size: 18px;
   font-family: Impact;
   font-weight: 400;
@@ -1025,6 +1037,35 @@ main .device_list .device_item .number {
   font-family: Microsoft YaHei;
   font-weight: 400;
   color: #40F3EF;
+}
+
+.video_scroll_item_container {
+  flex: 0 0 25%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video_scroll_item_container .video_scroll_item {
+  cursor: pointer;
+  width: 208px;
+  height: 120px;
+  position: relative;
+  border-radius: 4px;
+}
+.video_scroll_item_container .video_scroll_item span {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #0043BF;
+  -webkit-text-stroke: 1px #FFFFFF;
+  text-stroke: 1px #FFFFFF;
 }
 
 .icon28 {

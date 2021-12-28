@@ -350,6 +350,16 @@ main {
   .charts_content_box_220 {
     background-image: url("../img/charts_content_box_220.png");
   }
+  .charts_content_box_722_261 {
+    width: 100%;
+    height: 261px;
+    background-image: url("../img/charts_content_box_722_261.png");
+  }
+  .charts_content_box_1154_672 {
+    width: 100%;
+    height: 672px;
+    background-image: url("../img/charts_content_box_1154_672.png");
+  }
 
   .charts_content_box_308 {
     background-image: url("../img/charts_content_box_308.png");
@@ -512,90 +522,92 @@ main {
   }
 
 
-  .device_list {
-    display: flex;
-    box-sizing: border-box;
-    padding: 0 14px;
-    align-items: center;
+}
+// 左右滚动
+.mscroll-container {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 14px;
+  align-items: center;
 
-    .left_btn, .right_btn {
-      cursor: pointer;
-      width: 28px;
-      height: 80px;
-      background: url("../img/list_btn_right.png");
-      background-size: 100% 100%;
-    }
+  .left_btn, .right_btn {
+    cursor: pointer;
+    width: 28px;
+    height: 80px;
+    background: url("../img/list_btn_right.png");
+    background-size: 100% 100%;
+  }
 
-    .right_btn {
-      background-image: url("../img/list_btn_left.png");
-    }
+  .right_btn {
+    background-image: url("../img/list_btn_left.png");
+  }
 
-    .device_list_content {
-      flex: 1;
+  .mscroll_content {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .scroll_main_content {
+      width: 100%;
       height: 100%;
-      overflow: hidden;
-      position: relative;
-
-      .scroll_content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        position: absolute;
-      }
-    }
-
-    .device_item {
-      flex: 0 0 33.33%;
-      padding-left: 30px;
       display: flex;
-      box-sizing: border-box;
-      flex-direction: column;
-
-      .device_type1 {
-        background-image: url("../img/device_type1.png") !important;
-      }
-
-      .device_type2 {
-        background-image: url("../img/device_type2.png") !important;
-      }
-
-      .device_type3 {
-        background-image: url("../img/device_type3.png") !important;
-      }
-
-      .icon {
-        display: inline-block;
-        vertical-align: bottom;
-        width: 56px;
-        height: 56px;
-        background-image: url("../img/device_type1.png");
-        background-size: 100%;
-      }
-
-      .device_name, .device_label {
-        font-size: 18px;
-        font-family: Microsoft YaHei;
-        font-weight: 400;
-        color: #40F3EF;
-        line-height: 26px;
-      }
-
-      .device_name {
-        padding: 0 10px;
-      }
-
-      .device_label {
-        display: inline-block;
-        width: 100px;
-      }
-
-      .number {
-        font-size: 18px;
-        font-family: Impact;
-        font-weight: 400;
-        color: #FEFFFF;
-      }
+      position: absolute;
     }
+  }
+
+}
+
+.device_item {
+  flex: 0 0 33.33%;
+  padding-left: 30px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+
+  .device_type1 {
+    background-image: url("../img/device_type1.png") !important;
+  }
+
+  .device_type2 {
+    background-image: url("../img/device_type2.png") !important;
+  }
+
+  .device_type3 {
+    background-image: url("../img/device_type3.png") !important;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 56px;
+    height: 56px;
+    background-image: url("../img/device_type1.png");
+    background-size: 100%;
+  }
+
+  .device_name, .device_label {
+    font-size: 18px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #40F3EF;
+    line-height: 26px;
+  }
+
+  .device_name {
+    padding: 0 10px;
+  }
+
+  .device_label {
+    display: inline-block;
+    width: 100px;
+  }
+
+  .number {
+    font-size: 18px;
+    font-family: Impact;
+    font-weight: 400;
+    color: #FEFFFF;
   }
 }
 
@@ -1186,6 +1198,41 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     font-weight: 400;
     color: #40F3EF;
   }
+
+}
+
+
+//  技术管理 滚动块
+.video_scroll_item_container  {
+  flex: 0 0 25%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .video_scroll_item {
+    cursor: pointer;
+    width: 208px;
+    height: 120px;
+    position: relative;
+    border-radius: 4px;
+
+    span {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: #0043BF;
+      -webkit-text-stroke: 1px #FFFFFF;
+      text-stroke: 1px #FFFFFF;
+    }
+  }
+
 
 }
 
