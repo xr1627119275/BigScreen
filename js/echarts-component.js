@@ -219,7 +219,7 @@ function initLineChart(ele, name, data1, data2, opt) {
                 }
             }
         ,
-        yAxis: [
+        yAxis:
             {
                 type: 'value',
                 splitLine: {
@@ -235,8 +235,8 @@ function initLineChart(ele, name, data1, data2, opt) {
                     }
                 }
             }
-        ],
-        series: [
+        ,
+        series:
             {
                 // name: 'Line 1',
                 type: 'line',
@@ -263,11 +263,11 @@ function initLineChart(ele, name, data1, data2, opt) {
                 data: data2
             }
 
-        ]
+
     };
 
     option.xAxis.data = data1
-    option.series[0].data = data2
+    option.series.data = data2
     deepMerge(option, opt)
 
     chart.setOption(option);

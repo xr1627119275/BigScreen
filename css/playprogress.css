@@ -1,0 +1,66 @@
+#PlayProgress-container {
+  width: 100%;
+}
+#PlayProgress-container .play-progress-top {
+  height: 45px;
+}
+#PlayProgress-container .play-progress-top span {
+  float: left;
+  font-size: 16px;
+  line-height: 45px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FEFFFF;
+}
+#PlayProgress-container .play-progress-top span:last-child {
+  float: right;
+}
+#PlayProgress-container .play-progress-body {
+  position: relative;
+  height: 24px;
+  background: #05062D;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+#PlayProgress-container .play-progress-body .progress {
+  height: 20px;
+  background: #40F3EF;
+  border-radius: 10px;
+  width: 335px;
+}
+#PlayProgress-container .play-progress-opt {
+  width: 480px;
+  height: 50px;
+  margin: 26px auto 0;
+  display: flex;
+  align-items: center;
+}
+#PlayProgress-container .play-progress-opt > div {
+  height: 35px;
+  cursor: pointer;
+  line-height: 35px;
+  margin-right: 80px;
+}
+#PlayProgress-container .play-progress-opt > div span {
+  color: #FEFFFF;
+}
+#PlayProgress-container .play-progress-opt .layui-form-select {
+  width: 142px;
+  box-sizing: border-box;
+  border: 1px solid #0D3DC8;
+}
+#PlayProgress-container .play-progress-opt .layui-form-select input {
+  height: 33px;
+  background: #0C0D21;
+  border: #0C0D21;
+  color: #fff;
+}
+#PlayProgress-container .play-progress-opt .layui-form-select input::-webkit-input-placeholder {
+  color: #fff;
+}
+#PlayProgress-container .play-progress-opt .layui-form-select .layui-edge {
+  border-top-color: #10BEBA;
+}
+
+/*# sourceMappingURL=playprogress.css.map */

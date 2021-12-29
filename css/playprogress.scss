@@ -1,0 +1,66 @@
+#PlayProgress-container {
+  width: 100%;
+  .play-progress-top {
+    height: 45px;
+    span {
+      float: left;
+      font-size: 16px;
+      line-height: 45px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #FEFFFF;
+    }
+    span:last-child {
+      float: right;
+    }
+  }
+  .play-progress-body {
+    position: relative;
+    height: 24px;
+    background: #05062D;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    .progress {
+      height: 20px;
+      background: #40F3EF;
+      border-radius: 10px;
+      width: 335px;
+    }
+  }
+  .play-progress-opt {
+    width: 480px;
+    height: 50px;
+    margin: 26px auto 0;
+    display: flex;
+    align-items: center;
+    & > div {
+      height: 35px;
+      cursor: pointer;
+      line-height: 35px;
+      margin-right: 80px;
+      span {
+        color: #FEFFFF;
+      }
+    }
+    // select
+    .layui-form-select {
+      width: 142px;
+      box-sizing: border-box;
+      border: 1px solid #0D3DC8;
+      input {
+        height: 33px;
+        background: #0C0D21;
+        border: #0C0D21;
+        color: #fff
+      }
+      input::-webkit-input-placeholder {
+        color: #fff;
+      }
+      .layui-edge {
+        border-top-color: #10BEBA;
+      }
+    }
+
+  }
+}
