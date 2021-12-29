@@ -192,8 +192,32 @@ main {
   padding: 0 16px;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+main .page_nav {
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  display: flex;
+}
+main .page_nav .page_nav_item {
+  padding: 4px 5px;
+  background: #161741;
+  border-radius: 2px;
+  margin-right: 5px;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #40F3EF;
+  cursor: pointer;
+}
+main .page_nav .page_nav_item.page_nav_item_active {
+  background: #161741;
+  color: #FFFFFF;
+  border-radius: 2px;
 }
 main.main_left_right {
+  padding: 10px 16px;
   flex-wrap: nowrap;
   align-items: initial;
 }
@@ -232,7 +256,7 @@ main .charts_content_box_461_280 .content-header .nav_tit_right_tip, main .chart
 }
 main .charts_content_box_461_280 .content-header .nav_tit_right, main .charts_content_box_280 .content-header .nav_tit_right, main .charts_content_box_308 .content-header .nav_tit_right, main .charts_content_box .content-header .nav_tit_right {
   float: right;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 main .charts_content_box_461_280 .content-header .nav_tit_right span, main .charts_content_box_280 .content-header .nav_tit_right span, main .charts_content_box_308 .content-header .nav_tit_right span, main .charts_content_box .content-header .nav_tit_right span {
   font-size: 14px !important;
@@ -247,14 +271,14 @@ main .charts_content_box_461_280 .content-header .nav_tit, main .charts_content_
   cursor: pointer;
 }
 main .charts_content_box_461_280 .content-header .nav_tit .ch-tit, main .charts_content_box_280 .content-header .nav_tit .ch-tit, main .charts_content_box_308 .content-header .nav_tit .ch-tit, main .charts_content_box .content-header .nav_tit .ch-tit {
-  color: #FEFFFF;
+  color: #37D1CE;
 }
 main .charts_content_box_461_280 .content-header .nav_tit.active, main .charts_content_box_280 .content-header .nav_tit.active, main .charts_content_box_308 .content-header .nav_tit.active, main .charts_content_box .content-header .nav_tit.active {
   border-radius: 2px;
   background-color: #0C0D21;
 }
 main .charts_content_box_461_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box_280 .content-header .nav_tit.active .ch-tit, main .charts_content_box_308 .content-header .nav_tit.active .ch-tit, main .charts_content_box .content-header .nav_tit.active .ch-tit {
-  color: #37D1CE !important;
+  color: #FEFFFF !important;
 }
 main .charts_content_box_461_280 .nav_tab_content, main .charts_content_box_280 .nav_tab_content, main .charts_content_box_308 .nav_tab_content, main .charts_content_box .nav_tab_content {
   display: none;
@@ -299,6 +323,14 @@ main .charts_content_box_1154_672 {
   width: 100%;
   height: 672px;
   background-image: url("../img/charts_content_box_1154_672.png");
+}
+main .charts_content_box_1252_308 {
+  width: 100%;
+  background-image: url("../img/charts_content_box_1252_308.png");
+}
+main .charts_content_box_1255_632 {
+  width: 100%;
+  background-image: url("../img/charts_content_box_1255_632.png");
 }
 main .charts_content_box_308 {
   background-image: url("../img/charts_content_box_308.png");

@@ -370,14 +370,14 @@
                 }
             }
         }
-        initCategoryChart($("#DeviceRunAnalysis")[0], 'DeviceRunAnalysis', ["皖A26301", "皖A25601", "皖A41820", "皖A25193", "皖A26363", "皖A26301", "皖A25601", "皖A41820", "皖A25193", "皖A26363"]
+        initCategoryChart($("#DeviceRunAnalysis")[0], 'DeviceRunAnalysis', ["皖A26301", "皖A25601", "皖A41820", "皖A25193", "皖A26363"]
             , undefined ,
             {
-                dataZoom: {
-                    type: 'inside',
-                    realtime: true,
-                    startValue: 0,
-                    endValue: 4,
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
                 },
                 yAxis: [
 
@@ -417,11 +417,14 @@
                     {
                         data: [81, 78, 70, 51, 40],
                         type: 'bar',
+                        name:'工作时长(h)',
                         barWidth: 30,
                     },
                     {
                         type: 'line',
                         yAxisIndex: 1,
+                        name:'耗油量(L)',
+
                         lineStyle: {
                             color: '#36C0C5',
                             width: 1

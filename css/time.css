@@ -1,0 +1,102 @@
+#timeline {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline_div {
+  display: flex;
+  margin-top: -60px;
+  margin-left: -90px;
+}
+
+.timeline_div .f-border {
+  margin-right: 180px;
+}
+.timeline_div .f-border:last-child {
+  margin-right: 0;
+}
+
+.f-border {
+  border-color: #fff;
+  position: relative;
+}
+.f-border .f-circle {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #23737F;
+  z-index: 10;
+  border: 5px solid #0C0D2A;
+}
+.f-border .f-top-border-content, .f-border .f-bottom-border-content {
+  position: absolute;
+  width: 180px;
+  left: -6px;
+}
+.f-border .f-top-border-content {
+  bottom: calc(100% + 35px);
+}
+.f-border .f-top-border-content p {
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.f-border .f-bottom-border-content {
+  top: calc(100% + 35px);
+}
+.f-border .f-bottom-border-content p {
+  line-height: 26px;
+  font-size: 16px;
+  height: 26px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.f-border .f-bottom-border-content p:last-child {
+  margin-top: 10px;
+}
+.f-border .f-border-line {
+  display: block;
+  width: 190px;
+  height: 8px;
+  background: #40F3EF;
+  position: absolute;
+  z-index: 9;
+  left: calc(100% - 5px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.f-border:last-child .f-border-line {
+  display: none;
+}
+.f-border.f-border-active .f-top-border-content p, .f-border._f-border-active .f-top-border-content p {
+  color: #40F3EF !important;
+}
+.f-border.f-border-active .f-bottom-border-content p.end-time, .f-border._f-border-active .f-bottom-border-content p.end-time {
+  color: #40F3EF;
+}
+.f-border.f-border-active .f-circle, .f-border._f-border-active .f-circle {
+  background-color: #00FFF2;
+  border-color: #fff;
+}
+.f-border.f-border-active .f-border-line, .f-border._f-border-active .f-border-line {
+  background-color: #FF9125;
+}
+.f-border.f-border-active-next .f-circle {
+  background-color: #FF9125;
+  border-color: #fff;
+}
+
+.t_active {
+  border: 5px;
+  border-color: #fff;
+  box-shadow: 0 0 10px 3px #ffae12;
+}
+
+/*# sourceMappingURL=time.css.map */

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度管理</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+        .state_desc div{
+            font-size: 24px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #40F3EF;
+        }
+        .state_desc span {
+            font-size: 36px;
+            font-family: Impact;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+        .state_desc i {
+            font-style: normal;
+            margin-left: 16px;
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #40F3EF;
+        }
+        .circle_data {
+            width: 202px;
+            height: 196px;
+            background: url("./img/circle_2.png");
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle_data .num {
+            font-size: 24px;
+            font-family: Impact;
+            font-weight: 400;
+            color: #40F3EF;
+        }
+
+    </style>
+    <link rel="stylesheet" href="css/time.css">
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <main class="main_left_right">
+        <div class="page_nav">
+            <div class="page_nav_item page_nav_item_active">进度管理</div>
+            <div class="page_nav_item">进度模拟</div>
+        </div>
+        <div class="main_left" style="display: flex; flex-direction: column">
+            <div class="top" style="display: flex; flex-direction: column; justify-content: space-between; flex: 2">
+
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">产值情况</span>
+                    </div>
+                    <div class="main_body" style="display: flex;">
+                        <div id="MonthOutPutValue" class="pie_chart" style="flex: 0 0 300px; display: flex; align-items: center; justify-content: center">
+                            <div class="circle_data">
+                                <div class="num">20.12%</div>
+                            </div>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-evenly">
+                            <div class="state_desc" >
+                                <div>合同造价</div>
+                                <p style="margin-top: 10px; vertical-align: bottom" >
+                                    <span>20,000,000</span>
+                                    <i>万元</i>
+                                </p>
+                            </div>
+                            <div class="state_desc" >
+                                <div>完成产值</div>
+                                <p style="margin-top: 10px; vertical-align: bottom" >
+                                    <span>1450.24</span>
+                                    <i>万元</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">形象完成情况</span>
+                    </div>
+                    <div class="main_body">
+                        <div id="_Table" class="main_body_table">
+                            <table id="table"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom" style="flex: 1; margin-top: 15px">
+
+                <div class="charts_content_box_280" style="height: 308px">
+                    <div class="content-header">
+                        <span class="ch-tit">月度产值趋势分析</span>
+                    </div>
+                    <div class="main_body">
+                        <div id="MonthTrend" class="normal_chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_right" style="display: flex; flex-direction: column">
+            <div class="top" style="flex: 2">
+
+                <div class="charts_content_box charts_content_box_1255_632" style="width: 100%; height: 100%;">
+                    <div class="content-header">
+                        <span class="ch-tit">进度可视化</span>
+                    </div>
+                    <div class="main_body" >
+                    </div>
+                </div>
+            </div>
+            <div class="bottom" style="flex: 1; margin-top: 15px; display: flex; justify-content: space-between">
+
+                <div class="charts_content_box charts_content_box_1252_308" style="width: 100%; height: 308px;">
+                    <div class="content-header">
+                        <span class="ch-tit">里程碑节点明细</span>
+                    </div>
+                    <div class="main_body" style="display: flex; align-items: center; ">
+                        <div id="timeline" style="overflow-x: auto">
+                                <div class="timeline_div">
+                                    <div class="f-border f-border-active">
+                                        <div class="f-top-border-content">
+                                            <p>已完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-11-21</p>
+                                            <p class="end-time">2021-11-21</p>
+                                            <p class="desc-content">1#隧道施工</p>
+                                        </div>
+                                    </div>
+                                    <div class="f-border">
+                                        <div class="f-top-border-content">
+                                            <p>未完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-12-01</p>
+                                            <p class="end-time"></p>
+                                            <p class="desc-content">2#管线施工</p>
+                                        </div>
+                                    </div>
+                                    <div class="f-border">
+                                        <div class="f-top-border-content">
+                                            <p>未完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-12-01</p>
+                                            <p class="end-time"></p>
+                                            <p class="desc-content">2#隧道施工</p>
+                                        </div>
+                                    </div>
+                                    <div class="f-border">
+                                        <div class="f-top-border-content">
+                                            <p>未完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-12-01</p>
+                                            <p class="end-time"></p>
+                                            <p class="desc-content">2期管线施工</p>
+                                        </div>
+                                    </div>
+                                    <div class="f-border">
+                                        <div class="f-top-border-content">
+                                            <p>未完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-10-01</p>
+                                            <p class="end-time"></p>
+                                            <p class="desc-content">三期管线施工</p>
+                                        </div>
+                                    </div>
+                                    <div class="f-border">
+                                        <div class="f-top-border-content">
+                                            <p>未完成</p>
+                                        </div>
+                                        <div class="f-circle"></div>
+                                        <div class="f-border-line"></div>
+                                        <div class="f-bottom-border-content">
+                                            <p class="start-time">2021-12-25</p>
+                                            <p class="end-time"></p>
+                                            <p class="desc-content">地面道路施工</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+
+
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+<script>
+    var form, table;
+    var Charts = {}
+
+
+
+    layui.use(['form' ,'table'], function (){
+        form = layui.form
+        table = layui.table
+
+        renderTable()
+
+    })
+
+    $(function () {
+        initCategoryChart($("#MonthTrend")[0], 'MonthTrend', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
+            , undefined ,
+            {
+                legend: {
+                    top: '3%',
+                    right: '2%',
+                    icon: 'rect',
+                    textStyle: {
+                        color: '#FEFFFF',
+                        fontSize: 16
+                    }
+                },
+                grid: {
+                    x: 60,
+                    y: 50
+                },
+                yAxis: {
+                    name: '万元',
+                    nameTextStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF',
+                        padding: [0 ,0,0, -45]
+                    },
+                },
+                color: [ '#40F3EF' , '#F29E3B'],
+                series: [
+                    {
+                        data: [1800, 1900, 2000, 2200, 2400, 2600],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '计划'
+                    },
+                    {
+                        data: [900, 1200, 0,0,0,0],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '实际'
+                    }
+                ]
+            }
+        )
+    })
+
+    function renderTable() {
+        table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            data: [
+                {name1: '桥涵工程>预制5标梁>简支箱梁>简支箱梁预制', name2: '2021-12-16'},
+                {name1: '桥涵工程>双土地1号特大桥>简支箱梁> 简支箱梁预制', name2: '2021-12-16'},
+                {name1: '桥涵工程>双土地2号特大桥>简支箱梁> 简支箱梁预制', name2: '2021-12-16'},
+            ],
+            cols: [
+                [
+                    {  type: 'numbers', title: '序号', width: '60' },
+                    { field: 'name1', title: '工号', width: '50%' },
+                    { field: 'name2', title: '进程确定时间',width: '22%' }
+                ]
+            ],
+            done: function() {
+                $("#_Table .layui-table-body").layTableScroll()
+            }
+        })
+    }
+
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+</script>
+<script src="./js/bigscreen.js"></script>
+<script src="./js/echarts-component.js"></script>
+<script src="./js/time.js"></script>
+</body>
+</html>
