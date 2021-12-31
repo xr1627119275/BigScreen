@@ -1,4 +1,4 @@
-#timeline {
+.timeline-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -99,4 +99,70 @@
   box-shadow: 0 0 10px 3px #ffae12;
 }
 
-/*# sourceMappingURL=time.css.map */
+.vertical-timeline-container {
+  width: 100%;
+  height: 100%;
+  padding: 0 25px;
+}
+.vertical-timeline-container .f-vertical-border {
+  width: 100%;
+  height: 80px;
+}
+.vertical-timeline-container .f-vertical-border:first-child .f-circle {
+  position: relative;
+}
+.vertical-timeline-container .f-vertical-border:first-child .f-circle::after {
+  position: absolute;
+  top: -100%;
+  border-radius: 4px;
+  left: 50%;
+  width: 8px;
+  height: 20px;
+  background-color: #00FFF2;
+}
+.vertical-timeline-container .f-border-content {
+  position: absolute;
+  width: 180px;
+  text-align: right;
+}
+.vertical-timeline-container .f-border-content p {
+  line-height: 26px;
+  font-size: 16px;
+  height: 26px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.vertical-timeline-container .f-border-content img {
+  width: 100%;
+  height: 96px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+.vertical-timeline-container .f-border-content .desc-content {
+  color: #02EDEA;
+}
+.vertical-timeline-container .f-vertical-border:nth-child(2n) .f-border-content {
+  position: absolute;
+  text-align: left;
+  right: 25px;
+}
+.vertical-timeline-container .f-circle {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #FF9125;
+  z-index: 10;
+  border: 3px solid #fff;
+}
+.vertical-timeline-container .f-border-line {
+  width: 8px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: #00FFF2;
+}
+
+/*# sourceMappingURL=timeline.css.map */

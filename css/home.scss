@@ -158,7 +158,8 @@ header {
 
 #plate_nav {
   display: flex;
-  padding-bottom: 34px;
+  padding-bottom: 17px;
+  padding-top: 10px;
 
   .plate_item {
     flex: 1;
@@ -230,9 +231,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 10px 16px;
   justify-content: space-between;
-  align-items: center;
+  //align-items: center;
+  align-content: space-between;
   position: relative;
 
   .page_nav {
@@ -259,7 +261,7 @@ main {
     }
   }
   &.main_left_right {
-    padding: 10px 16px;
+
     flex-wrap: nowrap;
     align-items: initial;
 
@@ -1274,7 +1276,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
 
 
 
-.icon28 {
+.icon28,.icon48, .icon32 {
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
@@ -1283,10 +1285,10 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   background-size: 100% 100%;
 }
 .icon48 {
-  display: inline-block;
-  cursor: pointer;
-  vertical-align: top;
   width: 48px;
   height: 48px;
-  background-size: 100% 100%;
+}
+.icon32 {
+  width: 32px;
+  height: 32px;
 }

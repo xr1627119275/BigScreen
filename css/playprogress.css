@@ -1,6 +1,9 @@
 #PlayProgress-container {
   width: 100%;
 }
+#PlayProgress-container * {
+  user-select: none !important;
+}
 #PlayProgress-container .play-progress-top {
   height: 45px;
 }
@@ -24,10 +27,22 @@
   align-items: center;
 }
 #PlayProgress-container .play-progress-body .progress {
+  position: relative;
   height: 20px;
   background: #40F3EF;
   border-radius: 10px;
   width: 335px;
+}
+#PlayProgress-container .play-progress-body .progress .progress_tag {
+  display: block;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -12px;
+  top: -24px;
+  background: url("../img/progress_tag.png") no-repeat;
+  background-size: 100%;
 }
 #PlayProgress-container .play-progress-opt {
   width: 480px;
@@ -37,16 +52,17 @@
   align-items: center;
 }
 #PlayProgress-container .play-progress-opt > div {
+  flex: 0 0 140px;
   height: 35px;
   cursor: pointer;
   line-height: 35px;
-  margin-right: 80px;
 }
 #PlayProgress-container .play-progress-opt > div span {
   color: #FEFFFF;
 }
 #PlayProgress-container .play-progress-opt .layui-form-select {
   width: 142px;
+  margin-right: 80px;
   box-sizing: border-box;
   border: 1px solid #0D3DC8;
 }

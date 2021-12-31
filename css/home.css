@@ -129,7 +129,8 @@ header .right .top .opt_item:nth-child(3) {
 
 #plate_nav {
   display: flex;
-  padding-bottom: 34px;
+  padding-bottom: 17px;
+  padding-top: 10px;
 }
 #plate_nav .plate_item {
   flex: 1;
@@ -189,9 +190,9 @@ main {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 10px 16px;
   justify-content: space-between;
-  align-items: center;
+  align-content: space-between;
   position: relative;
 }
 main .page_nav {
@@ -217,7 +218,6 @@ main .page_nav .page_nav_item.page_nav_item_active {
   border-radius: 2px;
 }
 main.main_left_right {
-  padding: 10px 16px;
   flex-wrap: nowrap;
   align-items: initial;
 }
@@ -1101,7 +1101,7 @@ main #map_container .statistics .right .filter_header .btn-search {
   text-stroke: 1px #FFFFFF;
 }
 
-.icon28 {
+.icon28, .icon48, .icon32 {
   display: inline-block;
   cursor: pointer;
   vertical-align: top;
@@ -1111,12 +1111,13 @@ main #map_container .statistics .right .filter_header .btn-search {
 }
 
 .icon48 {
-  display: inline-block;
-  cursor: pointer;
-  vertical-align: top;
   width: 48px;
   height: 48px;
-  background-size: 100% 100%;
+}
+
+.icon32 {
+  width: 32px;
+  height: 32px;
 }
 
 /*# sourceMappingURL=home.css.map */

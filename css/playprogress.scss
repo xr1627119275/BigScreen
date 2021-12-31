@@ -1,5 +1,8 @@
 #PlayProgress-container {
   width: 100%;
+  * {
+    user-select: none !important;
+  }
   .play-progress-top {
     height: 45px;
     span {
@@ -21,11 +24,24 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
+
     .progress {
+      position: relative;
       height: 20px;
       background: #40F3EF;
       border-radius: 10px;
       width: 335px;
+      .progress_tag {
+        display: block;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: -12px;
+        top: -24px;
+        background: url("../img/progress_tag.png") no-repeat ;
+        background-size: 100%;
+      }
     }
   }
   .play-progress-opt {
@@ -35,10 +51,10 @@
     display: flex;
     align-items: center;
     & > div {
+      flex: 0 0 140px;
       height: 35px;
       cursor: pointer;
       line-height: 35px;
-      margin-right: 80px;
       span {
         color: #FEFFFF;
       }
@@ -46,6 +62,7 @@
     // select
     .layui-form-select {
       width: 142px;
+      margin-right: 80px;
       box-sizing: border-box;
       border: 1px solid #0D3DC8;
       input {

@@ -1,10 +1,11 @@
 var splitLineColor = 'rgba(54,192,197,0.3)'
 jQuery.fn.extend({
-    layTableScroll:function (){
+    layTableScroll:function (_ul, _li){
         $(this).each(function() {
             var _this=$(this);//存储对象
-            var ul = _this.find("tbody");
-            var li = ul.find("tr");
+
+            var ul = _ul || _this.find( "tbody");
+            var li = ul.find( _li || "tr");
             var h = 0;
             li.each(function (i, item) {
                 h += $(item).height()
