@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目概况</title>
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/timeline.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+        .main_left, .main_right, .main_center{
+            height: 100%;
+            width: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .main_center {
+            width: 816px;
+        }
+        .content-header {
+            height: 35px!important;
+            line-height: 35px!important;
+        }
+
+        #Overview {
+            box-sizing: border-box;
+            padding: 20px 20px 35px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: flex-start;
+        }
+        .overview_item {
+            box-sizing: border-box;
+            padding-top: 15px;
+        }
+        .overview_item {
+            flex: 0 0 132px;
+            height: 158px;
+            background: #151751;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .overview_item > i {
+            display: block;
+            margin: 0 auto;
+        }
+        .overview_item p {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #6EFFFA;
+            text-align: center;
+            margin: 0 auto;
+            height: 24px;
+            line-height: 24px;
+        }
+        .overview_item > p.num {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 30px;
+            font-family: Impact;
+            font-weight: 400;
+            color: #FFFFFF;
+            line-height: 24px;
+        }
+        .overview_item_desc {
+            width: 100%;
+            margin-top: 25px;
+            font-size: 16px;
+            height: 210px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #6EFFFA;
+            line-height: 26px;
+            overflow: auto;
+        }
+
+        #video-container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 9px 8px 20px 8px;
+            position: relative;
+        }
+        #video-container video {
+            width: 100%;
+            height: 100%;
+        }
+        .video-select-list {
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            margin: 0 16px 16px;
+        }
+        .select-video-item {
+            margin-top: 16px;
+            cursor: pointer;
+            margin-right: 16px;
+            padding: 6px 9px;
+            background-color: rgba(21, 23, 83, 0.7);
+            font-size: 18px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+        }
+
+
+        #milestone  {
+            width: 100%;
+            height: 100% ;
+            box-sizing: border-box;
+            padding: 30px 35px;
+            padding-bottom: 10px;
+
+        }
+        .milestone-top {
+            height: 148px;
+            background: #14164F;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px 22px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .milestone-top > div {
+            flex: 0 0 calc(50% - 20px);
+            margin-bottom: 20px;
+        }
+        .milestone-til {
+            font-size: 18px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #00FFF2;
+        }
+        .milestone-val {
+            font-size: 30px;
+            font-family: Impact;
+            color: #FEFFFF;
+        }
+        .milestone-timeline {
+            height: calc(100% - 148px);
+            box-sizing: border-box;
+            padding-top: 40px;
+        }
+
+
+        .milestone-timeline .f-top-border-content {
+            bottom: calc(100% + 33px);
+            width: 100px;
+        }
+        .milestone-timeline .f-bottom-border-content {
+            top: calc(100% + 30px);
+            width: 100px;
+        }
+        .milestone-timeline .f-border .f-bottom-border-content p {
+            width: 100px;
+        }
+        .milestone-timeline .f-border-active p {
+            color: #00FFF2!important;
+        }
+
+        #personlist {
+            width: 100%;
+            height: calc(100% - 10px) !important;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 0 2px ;
+            margin-bottom: 10px;
+        }
+        .personlist_item:first-child {
+            margin-top: 7px;
+        }
+        .personlist_item {
+            width: 100%;
+            height: 96px;
+            display: flex;
+            box-sizing: border-box;
+            background: #15164F;
+            padding: 16px;
+            margin-top: 2px;
+            overflow: hidden;
+        }
+        .personlist_item_left{
+            border-radius: 2px;
+        }
+        .personlist_item_left img{
+            width: 64px;
+            height: 64px;
+            background-color: #fff;
+        }
+
+        .personlist_item_center {
+            display: flex;
+            width: 150px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .personlist_item_center span {
+            font-size: 18px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+        }
+        .personlist_item_center span:last-child {
+            color: #40F3EF;
+        }
+        .personlist_item_right {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FEFFFF;
+        }
+
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+
+    <main>
+        <div class="main_left">
+            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+                <div class="content-header">
+                    <span class="ch-tit">项目概况</span>
+                </div>
+                <div class="main_body" id="Overview">
+                    <div class="overview_item">
+                        <i class="icon48" style="background-image: url('./img/project_overview_1.png')"></i>
+                        <p class="num">101</p>
+                        <p>㎡</p>
+                        <p>建筑面积</p>
+                    </div>
+                    <div class="overview_item">
+                        <i class="icon48" style="background-image: url('./img/project_overview_2.png')"></i>
+                        <p class="num">60</p>
+                        <p style="font-size: 14px">万元</p>
+                        <p>工程造价</p>
+                    </div>
+                    <div class="overview_item">
+                        <i class="icon48" style="background-image: url('./img/project_overview_3.png')"></i>
+                        <p class="num">98</p>
+                        <p style="font-size: 14px">天</p>
+                        <p>合同工期倒计时</p>
+                    </div>
+                    <div class="overview_item_desc">
+                        <p>新建北京至唐山铁路（简称“京唐铁路”）是落实京津冀协同
+                            发展战略、促进区域经济一体化的需要。形成北京至唐山的快
+                            速交通走廊。支撑沿线地区经济一体化发展、发挥沿线地区比
+                            较优势和竞争优势。对实现绿色出行、加强生态建设和改善环
+                            境质量具有重要意义。</p>
+                        <p>
+                            线路起自北京市新设的北京城市中心站，终至河北省唐山市既
+                            有唐山站，途径北京市通州区、河北省廊坊市（三河市燕郊镇、
+                            大县、香河县）
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+                <div class="content-header">
+                    <span class="ch-tit">主要工程数量</span>
+                </div>
+
+                <div class="main_body">
+                    <div id="_Table" class="main_body_table">
+                        <table id="table"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_center">
+            <div class="charts_content_box" style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472_nohead.png')">
+                <div id="video-container">
+                    <video src="" style="background-color: #274D8B"></video>
+                    <div class="video-select-list">
+                        <div class="select-video-item">宣传视频1</div>
+                        <div class="select-video-item">宣传视频2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts_content_box" style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472.png')">
+                <div class="content-header">
+                    <span class="ch-tit">项目里程碑</span>
+                </div>
+                <div class="main_body" id="milestone">
+                    <div class="milestone-top">
+                        <div>
+                            <span class="milestone-til">已开工（天）：</span>
+                            <span class="milestone-val">33</span>
+                        </div>
+                        <div>
+                            <span class="milestone-til">总工期（天）：</span>
+                            <span class="milestone-val">720</span>
+                        </div>
+                        <div>
+                            <span class="milestone-til">已完成（万元）：</span>
+                            <span class="milestone-val">3300</span>
+                        </div>
+                        <div>
+                            <span class="milestone-til">合同造价（万元）：</span>
+                            <span class="milestone-val">2,200,000</span>
+                        </div>
+                    </div>
+                    <div class="milestone-timeline">
+                        <div class="timeline-container" style="overflow-x: auto">
+                            <div class="timeline_div">
+                                <div class="f-border f-border-active">
+                                    <div class="f-top-border-content">
+                                        <p>已完成</p>
+                                    </div>
+                                    <div class="f-circle"></div>
+                                    <div class="f-border-line"></div>
+                                    <div class="f-bottom-border-content">
+                                        <p class="end-time">2021-11-21</p>
+                                        <p class="desc-content">1#项目开工</p>
+                                    </div>
+                                </div>
+                                <div class="f-border">
+                                    <div class="f-top-border-content">
+                                        <p>进行中</p>
+                                    </div>
+                                    <div class="f-circle"></div>
+                                    <div class="f-border-line"></div>
+                                    <div class="f-bottom-border-content">
+                                        <p class="end-time">2021-12-01</p>
+                                        <p class="desc-content">围挡封闭</p>
+                                    </div>
+                                </div>
+                                <div class="f-border">
+                                    <div class="f-top-border-content">
+                                        <p>未开始</p>
+                                    </div>
+                                    <div class="f-circle"></div>
+                                    <div class="f-border-line"></div>
+                                    <div class="f-bottom-border-content">
+                                        <p class="end-time">2021-12-31</p>
+                                        <p class="desc-content">管道改迁</p>
+                                    </div>
+                                </div>
+                                <div class="f-border">
+                                    <div class="f-top-border-content">
+                                        <p>未开始</p>
+                                    </div>
+                                    <div class="f-circle"></div>
+                                    <div class="f-border-line"></div>
+                                    <div class="f-bottom-border-content">
+                                        <p class="end-time">2022-06-21</p>
+                                        <p class="desc-content">桩基施工</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="main_right">
+            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+                <div class="content-header">
+                    <span class="ch-tit">五方责任主体</span>
+                </div>
+                <div class="main_body" id="personlist">
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>王大伟</span>
+                            <span>业主代表</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>合肥城投</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>傅常伦</span>
+                            <span>设计负责人</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>上海市政设计院</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>夏万翔</span>
+                            <span>总监理工程师</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>广东天衡</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>王大伟</span>
+                            <span>业主代表</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>合肥城投</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>王大伟</span>
+                            <span>业主代表</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>合肥城投</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>王大伟</span>
+                            <span>业主代表</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>合肥城投</span>
+                        </div>
+                    </div>
+                    <div class="personlist_item">
+                        <div class="personlist_item_left">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="personlist_item_center">
+                            <span>王大伟</span>
+                            <span>业主代表</span>
+                        </div>
+                        <div class="personlist_item_right">
+                            <span>合肥城投</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+                <div class="content-header">
+                    <span class="ch-tit">项目大事件</span>
+                </div>
+                <div class="main_body" style="overflow: hidden">
+                    <div class="timeline-container" style="overflow-y: auto; margin-top: 20px; height: calc(100% - 30px); box-sizing: border-box; ">
+                        <div class="vertical-timeline-container">
+
+                            <div class="f-vertical-border f-border-active">
+                                <div class="f-border-content">
+                                    <p class="time">2021-12-01</p>
+                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
+                                    <img src="" alt="">
+                                </div>
+                                <div class="f-circle"></div>
+                                <div class="f-border-line"></div>
+                            </div>
+
+                            <div class="f-vertical-border f-border-active">
+                                <div class="f-border-content">
+                                    <p class="time">2021-12-01</p>
+                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
+                                    <img src="" alt="">
+                                </div>
+                                <div class="f-circle"></div>
+                                <div class="f-border-line"></div>
+                            </div>
+
+                            <div class="f-vertical-border f-border-active">
+                                <div class="f-border-content">
+                                    <p class="time">2021-12-01</p>
+                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
+                                    <img src="" alt="">
+                                </div>
+                                <div class="f-circle"></div>
+                                <div class="f-border-line"></div>
+                            </div>
+
+                            <div class="f-vertical-border f-border-active">
+                                <div class="f-border-content">
+                                    <p class="time">2021-12-01</p>
+                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
+                                    <img src="" alt="">
+                                </div>
+                                <div class="f-circle"></div>
+                                <div class="f-border-line"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>
+<canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
+<script src="./js/common.js"></script>
+<script src="./js/bg.js"></script>
+
+<script>
+    var form, table;
+    var Charts = {}
+
+    $(function () {
+        $("#personlist").layTableScroll($("#personlist"), '.personlist_item')
+    })
+    layui.use(['table'], function () {
+        table = layui.table
+        renderTable()
+    })
+
+    function renderTable() {
+        table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            data: [
+                { name1: '钢筋', name2: '吨', name3: '28206' },
+                { name1: '土方开挖', name2: '立方', name3: '782200' },
+                { name1: '围护桩', name2: '吨', name3: '2653' },
+                { name1: '抗浮桩', name2: '根', name3: '952' },
+                { name1: '咬合桩', name2: '根', name3: '163' },
+                { name1: '交通疏解', name2: '根', name3: '1530' },
+                { name1: '钢筋', name2: '吨', name3: '28206' },
+                { name1: '钢筋', name2: '吨', name3: '28206' },
+            ],
+            cols: [
+                [
+                    {type: 'numbers', title: '序号'},
+                    {field: 'name1', title: '工程名称'},
+                    {field: 'name2', title: '单位'},
+                    {field: 'name3',title: '工程数量'},
+                ]
+            ],
+            done: function () {
+                $("#_Table .layui-table-body").layTableScroll()
+            }
+        })
+    }
+
+</script>
+
+<script src="./js/bigscreen.js"></script>
+<script src="./js/echarts-component.js"></script>
+<script src="js/timeline.js"></script>
+
+</body>
+</html>
