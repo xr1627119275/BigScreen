@@ -1,7 +1,7 @@
 
 $('#screen').css({
-    width: 1920,
-    height: 1080,
+    width: global_config.screen.width,
+    height: global_config.screen.height,
     overflow:'hidden',
     margin:0,
     position: 'absolute',

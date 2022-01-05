@@ -13,7 +13,7 @@
         .charts_content_box {
             width: 618px;
             height: 308px !important;
-            background-image: url('./img/charts_content_box_308.png');
+            background-image: url('./img/charts_content_box_308.png') !important;
         }
     </style>
 </head>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="main_body">
-
+                <div id="PersonnelStatistics" class="normal_chart"></div>
             </div>
         </div>
 
@@ -95,7 +95,6 @@
             </div>
 
             <div class="main_body">
-
             </div>
         </div>
 
@@ -105,7 +104,7 @@
             </div>
 
             <div class="main_body">
-
+                <div id="ProjectCompleted" class="normal_chart"></div>
             </div>
         </div>
 
@@ -144,6 +143,107 @@
         table = layui.table
         renderTable1()
         renderTable2()
+    })
+
+    $(function () {
+        var itemStyle = {
+            normal: {
+                label: {
+                    show: true,
+                    position: 'top',
+                    textStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF'
+                    }
+                },
+            }
+        }
+        initCategoryChart($("#PersonnelStatistics")[0], 'PersonnelStatistics', ["安徽安晶\n王帅", "安徽庐江\n万小兵", "四川泰安\n吴小伟", "北京之行\n五里冲", "陕西劳务\n童友江"]
+            , undefined ,
+            {
+                legend: {
+                    top: '3%',
+                    right: '2%',
+                    icon: 'rect',
+                    textStyle: {
+                        color: '#FEFFFF',
+                        fontSize: 16
+                    }
+                },
+                grid: {
+                    x: 50,
+                    y: 60,
+                    y2: 60
+                },
+                yAxis: {
+                    name: '/人',
+                    nameTextStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF',
+                        padding: [0 ,0,0, -45]
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 16,
+                            color: '#FEFFFF'
+                        }
+                    }
+                },
+                color: [ '#40F3EF' , '#2459F4'],
+                series: [
+                    {
+                        data: [70, 63, 50, 38, 38],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '在场',
+                        itemStyle
+                    },
+                    {
+                        data: [60, 60, 43,32 ,33],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '出勤',
+                        itemStyle
+                    }
+                ]
+            }
+        )
+        initCategoryChart($("#ProjectCompleted")[0], 'ProjectCompleted', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
+            , undefined ,
+            {
+                legend: {
+                    show: false
+                },
+                grid: {
+                    x: 60,
+                    y: 50
+                },
+                yAxis: {
+                    name: '万元',
+                    nameTextStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF',
+                        padding: [0 ,0,0, -45]
+                    },
+                },
+                color: [ '#40F3EF' , '#F29E3B'],
+                series: [
+                    {
+                        data: [1800, 1900, 2000, 2200, 2400, 2600],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '计划'
+                    },
+                    {
+                        data: [900, 1200, 0,0,0,0],
+                        type: 'bar',
+                        barWidth: 25,
+                        name: '实际'
+                    }
+                ]
+            }
+        )
     })
 
     function renderTable1() {

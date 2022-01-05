@@ -1,4 +1,20 @@
 var splitLineColor = 'rgba(54,192,197,0.3)'
+
+var global_config = {
+    needHeader: false, // 是否需要头部
+    screen: {
+        width: 1920,
+        height: 1080
+    }
+}
+
+if (global_config) {
+    if (!global_config.needHeader) {
+        global_config.screen.height -= $("#header").height()
+        $("#header").hide()
+    }
+}
+
 jQuery.fn.extend({
     layTableScroll:function (_ul, _li){
         $(this).each(function() {
