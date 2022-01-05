@@ -31,7 +31,7 @@ if (global_config) {
 }
 
 jQuery.fn.extend({
-    layTableScroll:function (_ul, _li){
+    layTableScroll:function (_ul, _li, timeout){
         $(this).each(function() {
             var _this=$(this);//存储对象
 
@@ -50,14 +50,15 @@ jQuery.fn.extend({
             _this.hover(function(){i=0},function(){i=1});
             function autoScroll(){
                 l = _this.scrollTop();
+                console.log(l)
                 if(l>=h){
                     _this.scrollTop(0);
                 }else{
                     _this.scrollTop(l + i);
                 }
-                requestAnimationFrame(autoScroll)
+                // requestAnimationFrame(autoScroll)
             }
-            requestAnimationFrame(autoScroll);
+            setInterval(autoScroll, timeout || 20);
         })
     }
 });
