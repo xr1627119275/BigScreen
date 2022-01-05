@@ -167,6 +167,7 @@
             </div>
 
             <div class="main_body">
+                <div id="Material" class="normal_chart"></div>
 
             </div>
         </div>
@@ -236,12 +237,132 @@
             </div>
         </div>
 
+        <style>
+            .layui-form-select {
+                width: 120px;
+            }
+            .layui-form-select  input {
+                height: 24px;
+                background: #0C0D21;
+                border: #0C0D21;
+                color: #fff
+            }
+            .layui-form-select  input::-webkit-input-placeholder {
+                color: #fff;
+            }
+            .layui-form-select  .layui-edge {
+                border-top-color: #10BEBA;
+            }
+        </style>
         <div class="charts_content_box">
             <div class="content-header">
                 <span class="ch-tit">设备统计</span>
+                <div class="ch-tit nav_tit_right_tip layui-form" style="margin-top: 3px">
+                    <select name="quiz" >
+                        <option value="">宿松路一区</option>
+                    </select>
+                </div>
             </div>
 
+            <style>
+                #EquipmentStatistics {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                .devices_item {
+                    width: 33%;
+                    height: 50%;
+                    display: flex;
+                    justify-content: center;
+                }
+                .devices_item i {
+                    width: 80px;
+                    height: 80px;
+                    display: block;
+                    background-size: 100% 100%;
+                }
+                .devices_item .device_type_name {
+                    color: #40F3EF
+                }
+
+            </style>
             <div class="main_body">
+                <div id="EquipmentStatistics">
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon1.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">汽车起重机</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon2.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">洒水车</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon3.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">挖掘机</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon4.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">旋挖掘机</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon5.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">压路机</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="state_desc devices_item" >
+                        <i  style="background-image: url('./img/device_icon6.png')"></i>
+                        <div>
+                            <p>
+                                <span class="num">3</span>
+                                <span>/台</span>
+                            </p>
+                            <p>
+                                <span class="device_type_name">装载机</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -252,7 +373,7 @@
             </div>
 
             <div class="main_body">
-
+                <div id="LOTData" class="normal_chart"></div>
             </div>
         </div>
     </main>
@@ -336,37 +457,147 @@
                 ]
             }
         )
-        initCategoryChart($("#ProjectCompleted")[0], 'ProjectCompleted', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
+        initCategoryChart($("#ProjectCompleted")[0], 'ProjectCompleted', ["钢梁槽", "墩台", "承台", "现脚梁", "抗浮桩", "围护桩"]
             , undefined ,
             {
                 legend: {
                     show: false
                 },
                 grid: {
-                    x: 60,
+                    x: 50,
                     y: 50
                 },
                 yAxis: {
-                    name: '万元',
+                    name: '%',
                     nameTextStyle: {
                         fontSize: 16,
                         color: '#FEFFFF',
-                        padding: [0 ,0,0, -45]
+                        padding: [0 ,0,0, 20]
                     },
                 },
-                color: [ '#40F3EF' , '#F29E3B'],
+                color: [ '#FF9125'],
                 series: [
                     {
-                        data: [1800, 1900, 2000, 2200, 2400, 2600],
+                        data: [29, 13, 43, 30, 20, 17],
                         type: 'bar',
                         barWidth: 25,
-                        name: '计划'
+                        itemStyle
+                    },
+                ]
+            }
+        )
+
+
+        initCategoryChart($("#Material")[0], 'Material', ["水泥", "混凝土", "圆钢", "盘螺", "螺纹钢"]
+            , undefined ,
+            {
+                legend: {
+                    show: false
+                },
+                grid: {
+                    x: 55,
+                    y: 50
+                },
+                yAxis: {
+                    name: '单位：吨',
+                    nameTextStyle: {
+                        fontSize: 16,
+                        color: '#FEFFFF',
+                        padding: [0 ,0,0, 50]
+                    },
+                },
+                color: [ '#FF9125'],
+                series: [
+                    {
+                        data: [590, 700, 850, 600, 450],
+                        type: 'bar',
+                        barWidth: 25,
+                    },
+                ]
+            }
+        )
+
+        var baseYAxis = {
+            show: true,
+            type: 'value',
+            splitLine: {
+                lineStyle: {
+                    color: [splitLineColor]
+                }
+            },
+            nameTextStyle: {
+                fontSize: 16,
+                color: '#FEFFFF',
+                padding: [0 ,0,0, 80]
+            },
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    fontSize: 16,
+                    color: '#FEFFFF'
+                }
+            }
+        }
+        initCategoryChart($("#LOTData")[0], 'LOTData', ["皖A26301", "皖A25601", "皖A41820", "皖A25193", "皖A26363"]
+            , undefined ,
+            {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                yAxis: [
+
+                    Object.assign( {
+                        name: '工作时长(h)'
+                    },baseYAxis),
+                    {
+                        name: '耗油量(L)',
+                        nameTextStyle: {
+                            fontSize: 16,
+                            color: '#FEFFFF',
+                            padding: [0 ,80,0,0]
+                        },
+                        splitLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                fontSize: 16,
+                                color: '#FEFFFF'
+                            }
+                        }
+                    },
+                ],
+                xAxis: {
+                    axisLabel: {
+                        textStyle: {
+                            color: '#40F3EF'
+                        }
+                    }
+                },
+                grid: {
+                    x2: 50
+                },
+                series: [
+                    {
+                        data: [81, 78, 70, 51, 40],
+                        type: 'bar',
+                        name:'工作时长(h)',
+                        barWidth: 30,
                     },
                     {
-                        data: [900, 1200, 0,0,0,0],
-                        type: 'bar',
-                        barWidth: 25,
-                        name: '实际'
+                        type: 'line',
+                        yAxisIndex: 1,
+                        name:'耗油量(L)',
+
+                        lineStyle: {
+                            color: '#36C0C5',
+                            width: 1
+                        },
+                        data: [41, 68, 50, 41, 30],
                     }
                 ]
             }
