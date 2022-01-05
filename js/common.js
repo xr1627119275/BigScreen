@@ -2,6 +2,7 @@ var splitLineColor = 'rgba(54,192,197,0.3)'
 
 var global_config = {
     needHeader: false, // 是否需要头部
+    headerHeight: 138,
     screen: {
         width: 1920,
         height: 1080
@@ -19,7 +20,7 @@ var global_config = {
 
 if (global_config) {
     if (!global_config.needHeader) {
-        global_config.screen.height -= $("#header").height()
+        global_config.screen.height -= global_config.headerHeight || $("#header").height()
         $("#header").hide()
     }
 }
