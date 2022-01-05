@@ -1,0 +1,10 @@
+劳务管理	http://xrdev.top/BigScreen/home1.html
+重大安全风险	http://xrdev.top/BigScreen/home2.html
+隐患排查治理	http://xrdev.top/BigScreen/home3.html
+设备管理	http://xrdev.top/BigScreen/home4.html
+技术管理	http://xrdev.top/BigScreen/home5.html
+进度管理	http://xrdev.top/BigScreen/home6.html
+搅拌站	http://xrdev.top/BigScreen/home7.html
+视频监控	http://xrdev.top/BigScreen/home10.html
+项目概况	http://xrdev.top/BigScreen/ProjectProfile.html
+

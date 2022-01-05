@@ -8,6 +8,15 @@ var global_config = {
     }
 }
 
+
+// let txt = ''
+// document.querySelectorAll("header a").forEach(item=>{
+//     let href = item.getAttribute("href")
+//     if (href) {
+//         txt += item.innerHTML + "\t"  + location.href.replace("_header.html",href) + '\n'
+//     }
+// })
+
 if (global_config) {
     if (!global_config.needHeader) {
         global_config.screen.height -= $("#header").height()
