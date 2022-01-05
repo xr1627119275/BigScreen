@@ -1,9 +1,9 @@
 var splitLineColor = 'rgba(54,192,197,0.3)'
 
 var global_config = {
-    needHeader: true, // 是否需要头部
+    needHeader: false, // 是否需要头部
     headerHeight: 101,
-    backGroupCanvas: false, // 开机背景动画
+    backGroupCanvas: true, // 开机背景动画
     screen: {
         width: 1920,
         height: 1080
@@ -26,7 +26,7 @@ if (global_config) {
     }
     
     if (global_config.backGroupCanvas) {
-        document. write(``)
+        document.write(`<script src="./js/bg.js"></script>`)
     }
 }
 
