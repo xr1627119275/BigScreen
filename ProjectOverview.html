@@ -15,6 +15,56 @@
             height: 308px !important;
             background-image: url('./img/charts_content_box_308.png') !important;
         }
+
+        .circle_data {
+            width: 202px;
+            height: 202px;
+            background: url('./img/project_circle.png');
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .circle_data p {
+            font-size: 30px;
+            font-family: Impact;
+            font-weight: 400;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .circle_data p:last-child {
+            font-size: 16px;
+            height: 20px;
+            line-height: 20px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+
+        .state_desc {
+            display: flex;
+            height: 60px;
+            align-items: center;
+        }
+        .state_desc > div {
+            display: flex;
+            flex-direction: column;
+        }
+        .state_desc  span.num {
+            font-size: 30px;
+            font-family: Impact;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+        .state_desc  span {
+            font-size: 16px;
+            font-family: Microsoft YaHei;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+        .state_desc i  {
+            margin-right: 25px;
+        }
     </style>
 </head>
 <body style="position: relative; overflow: hidden">
@@ -49,21 +99,53 @@
             <div class="content-header">
                 <span class="ch-tit">安全数据</span>
             </div>
-
             <div class="main_body" style="display: flex;">
-                <div id="MonthOutPutValue" class="pie_chart" style="flex: 0 0 300px; display: flex; align-items: center; justify-content: center">
-                    <div class="circle_data">
-                        <div class="num">20.12%</div>
+                <div id="SafeData" class="pie_chart" style="flex: 0 0 50%; display: flex; align-items: center; justify-content: center">
+                    <div class="circle_data" >
+                        <p>3</p>
+                        <p>超期未整改</p>
                     </div>
                 </div>
-                <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-evenly">
-                    <div class="state_desc" >
-
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+                        <div style="height: 202px; display: flex; flex-direction: column; justify-content: space-between">
+                            <div class="state_desc" >
+                                <i class="icon48" style="background-image: url('./img/circle_icon1.png')"></i>
+                                <div>
+                                    <p>
+                                        <span class="num">3</span>
+                                        <span>/个</span>
+                                    </p>
+                                    <p>
+                                        <span>隐患总数</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="state_desc" >
+                                <i class="icon48" style="background-image: url('./img/circle_icon2.png')"></i>
+                                <div>
+                                    <p>
+                                        <span class="num">0</span>
+                                        <span>/个</span>
+                                    </p>
+                                    <p>
+                                        <span>已整改数</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="state_desc" >
+                                <i class="icon48" style="background-image: url('./img/circle_icon3.png')"></i>
+                                <div>
+                                    <p>
+                                        <span class="num">3</span>
+                                        <span>/个</span>
+                                    </p>
+                                    <p>
+                                        <span>未整改数</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="state_desc" >
-
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -94,7 +176,53 @@
                 <span class="ch-tit">质量数据</span>
             </div>
 
-            <div class="main_body">
+            <div class="main_body" style="display: flex;">
+                <div id="QualityData" class="pie_chart" style="flex: 0 0 50%; display: flex; align-items: center; justify-content: center">
+                    <div class="circle_data" >
+                        <p>3</p>
+                        <p>超期未整改</p>
+                    </div>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center">
+                    <div style="height: 202px; display: flex; flex-direction: column; justify-content: space-between">
+                        <div class="state_desc" >
+                            <i class="icon48" style="background-image: url('./img/circle_icon1.png')"></i>
+                            <div>
+                                <p>
+                                    <span class="num">3</span>
+                                    <span>/个</span>
+                                </p>
+                                <p>
+                                    <span>隐患总数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="state_desc" >
+                            <i class="icon48" style="background-image: url('./img/circle_icon2.png')"></i>
+                            <div>
+                                <p>
+                                    <span class="num">0</span>
+                                    <span>/个</span>
+                                </p>
+                                <p>
+                                    <span>已整改数</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="state_desc" >
+                            <i class="icon48" style="background-image: url('./img/circle_icon3.png')"></i>
+                            <div>
+                                <p>
+                                    <span class="num">3</span>
+                                    <span>/个</span>
+                                </p>
+                                <p>
+                                    <span>未整改数</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -133,7 +261,6 @@
 </div>
 <canvas id="canvas" style="position: absolute; top: 0; z-index: 0"></canvas>
 <script src="./js/common.js"></script>
-<script src="./js/bg.js"></script>
 
 <script>
     var form, table;
