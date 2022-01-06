@@ -257,6 +257,12 @@
             color: #FEFFFF;
         }
 
+
+        .timeline_div {
+            position: absolute;
+            margin-left: 20px;
+            left: 0;
+        }
     </style>
 </head>
 <body style="position: relative; overflow: hidden">
@@ -351,8 +357,8 @@
                         </div>
                     </div>
                     <div class="milestone-timeline">
-                        <div class="timeline-container" style="overflow-x: auto">
-                            <div class="timeline_div" style="margin-left: 380px;">
+                        <div id="Horizontal" class="timeline-container" style="overflow: hidden; position: relative">
+                            <div class="timeline_div" >
                                 <div class="f-border f-border-active">
                                     <div class="f-top-border-content">
                                         <p>进行中</p>
@@ -529,8 +535,10 @@
                     <span class="ch-tit">项目大事件</span>
                 </div>
                 <div class="main_body" style="overflow: hidden">
-                    <div class="timeline-container"
-                         style="overflow-y: auto; margin-top: 20px; height: calc(100% - 30px); box-sizing: border-box; ">
+                    <div style="height: calc(100% - 30px);">
+
+                    <div id="VerticalTimeLine" class="timeline-container"
+                         style="overflow: hidden; margin-top: 20px;  box-sizing: border-box; ">
                         <div class="vertical-timeline-container">
 
                             <div class="f-vertical-border f-border-active">
@@ -585,6 +593,8 @@
 
                         </div>
                     </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -603,12 +613,50 @@
     $(function () {
         $("#personlist").layTableScroll($("#personlist"), '.personlist_item')
         $(".overview_item_desc").layTableScroll($("#desc_content"), '.ct', 300)
+        scrollTimeLineHorizontal()
+        scrollTimeLineVertical()
+
     })
     layui.use(['table'], function () {
         table = layui.table
         renderTable()
     })
 
+    function scrollTimeLineHorizontal() {
+        var width = $("#Horizontal")[0].scrollWidth
+        $("#Horizontal .timeline_div").append($("#Horizontal .timeline_div").children().clone())
+        var scrollWidth = $("#Horizontal")[0].scrollWidth
+        var i = 0;
+        setInterval(function () {
+            var left = $("#Horizontal").scrollLeft()
+
+            if (left + width >= scrollWidth) {
+                i = 0;
+                $("#Horizontal").scrollLeft(0)
+            } else {
+                $("#Horizontal").scrollLeft(i++)
+            }
+        }, 10)
+    }
+
+
+    function scrollTimeLineVertical() {
+        var height = $("#VerticalTimeLine")[0].scrollHeight
+        var clone = $("#VerticalTimeLine .vertical-timeline-container").children().clone()
+        $("#VerticalTimeLine .vertical-timeline-container").append(clone)
+        $("#VerticalTimeLine .vertical-timeline-container").append(clone)
+        var scrollHeight = $("#VerticalTimeLine")[0].scrollHeight
+        var i = 0;
+        setInterval(function () {
+            var top = $("#VerticalTimeLine").scrollTop()
+            if (top + height >= scrollHeight) {
+                i = 0;
+                $("#VerticalTimeLine").scrollTop(0)
+            } else {
+                $("#VerticalTimeLine").scrollTop(i++)
+            }
+        }, 10)
+    }
     function renderTable() {
         table.render({
             elem: '#table',

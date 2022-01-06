@@ -36,6 +36,7 @@ if (global_config) {
     }
 }
 
+
 jQuery.fn.extend({
     layTableScroll:function (_ul, _li, timeout){
         $(this).each(function() {
@@ -51,12 +52,11 @@ jQuery.fn.extend({
             if (h <= _this.height()) return
             li.clone().prependTo(ul);
 
-            ul.height(3*h);
+            ul.height(2*h);
             var i=1,l;
             _this.hover(function(){i=0},function(){i=1});
             function autoScroll(){
                 l = _this.scrollTop();
-                console.log(l)
                 if(l>=h){
                     _this.scrollTop(0);
                 }else{
