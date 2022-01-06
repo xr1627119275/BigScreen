@@ -16,19 +16,22 @@
             display: flex;
             justify-content: space-between;
         }
-        .main_left, .main_right, .main_center{
+
+        .main_left, .main_right, .main_center {
             height: 100%;
             width: 520px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+
         .main_center {
             width: 816px;
         }
+
         .content-header {
-            height: 35px!important;
-            line-height: 35px!important;
+            height: 35px !important;
+            line-height: 35px !important;
         }
 
         #Overview {
@@ -39,10 +42,12 @@
             justify-content: space-between;
             align-content: flex-start;
         }
+
         .overview_item {
             box-sizing: border-box;
             padding-top: 15px;
         }
+
         .overview_item {
             flex: 0 0 132px;
             height: 158px;
@@ -51,10 +56,12 @@
             align-items: center;
             justify-content: center;
         }
+
         .overview_item > i {
             display: block;
             margin: 0 auto;
         }
+
         .overview_item p {
             font-size: 16px;
             font-family: Microsoft YaHei;
@@ -65,6 +72,7 @@
             height: 24px;
             line-height: 24px;
         }
+
         .overview_item > p.num {
             margin-top: 10px;
             margin-bottom: 5px;
@@ -74,6 +82,7 @@
             color: #FFFFFF;
             line-height: 24px;
         }
+
         .overview_item_desc {
             width: 100%;
             margin-top: 25px;
@@ -85,6 +94,7 @@
             line-height: 26px;
             overflow: hidden;
         }
+
         .overview_item_desc p {
             text-indent: 2em;
         }
@@ -96,16 +106,19 @@
             padding: 9px 8px 20px 8px;
             position: relative;
         }
+
         #video-container video {
             width: 100%;
             height: 100%;
         }
+
         .video-select-list {
             display: flex;
             flex-wrap: wrap;
             position: absolute;
             margin: 0 16px 16px;
         }
+
         .select-video-item {
             margin-top: 16px;
             cursor: pointer;
@@ -118,14 +131,15 @@
             color: #FEFFFF;
         }
 
-        #milestone  {
+        #milestone {
             width: 100%;
-            height: 100% ;
+            height: 100%;
             box-sizing: border-box;
             padding: 30px 35px;
             padding-bottom: 10px;
 
         }
+
         .milestone-top {
             height: 148px;
             background: #14164F;
@@ -136,21 +150,25 @@
             display: flex;
             flex-wrap: wrap;
         }
+
         .milestone-top > div {
             flex: 0 0 calc(50% - 20px);
             margin-bottom: 20px;
         }
+
         .milestone-til {
             font-size: 18px;
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #00FFF2;
         }
+
         .milestone-val {
             font-size: 30px;
             font-family: Impact;
             color: #FEFFFF;
         }
+
         .milestone-timeline {
             height: calc(100% - 148px);
             box-sizing: border-box;
@@ -162,15 +180,18 @@
             bottom: calc(100% + 33px);
             width: 100px;
         }
+
         .milestone-timeline .f-bottom-border-content {
             top: calc(100% + 30px);
             width: 100px;
         }
+
         .milestone-timeline .f-border .f-bottom-border-content p {
             width: 100px;
         }
+
         .milestone-timeline .f-border-active p {
-            color: #00FFF2!important;
+            color: #00FFF2 !important;
         }
 
         #personlist {
@@ -178,12 +199,14 @@
             height: calc(100% - 10px) !important;
             box-sizing: border-box;
             overflow: hidden;
-            padding: 0 2px ;
+            padding: 0 2px;
             margin-bottom: 10px;
         }
+
         .personlist_item:first-child {
             margin-top: 7px;
         }
+
         .personlist_item {
             width: 100%;
             height: 96px;
@@ -194,13 +217,15 @@
             margin-top: 2px;
             overflow: hidden;
         }
-        .personlist_item_left{
+
+        .personlist_item_left {
             border-radius: 2px;
         }
-        .personlist_item_left img{
+
+        .personlist_item_left img {
             width: 64px;
             height: 64px;
-            background-color: #fff;
+            /*background-color: #fff;*/
         }
 
         .personlist_item_center {
@@ -210,15 +235,18 @@
             justify-content: space-between;
             padding: 0 20px;
         }
+
         .personlist_item_center span {
             font-size: 18px;
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #FEFFFF;
         }
+
         .personlist_item_center span:last-child {
             color: #40F3EF;
         }
+
         .personlist_item_right {
             display: flex;
             align-items: center;
@@ -233,11 +261,12 @@
 <body style="position: relative; overflow: hidden">
 <div id="screen">
 
-    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle"></div>
 
     <main>
         <div class="main_left">
-            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+            <div class="charts_content_box"
+                 style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
                 <div class="content-header">
                     <span class="ch-tit">项目概况</span>
                 </div>
@@ -262,7 +291,9 @@
                     </div>
                     <div class="overview_item_desc" style="word-break: break-all;">
                         <div id="desc_content">
-                            <p class="ct">新都桥至波密段（以下简称中间段）站前工程正线长度681.481km，桥隧总长636.004km，桥隧比93.3%。其中隧道40 座长545.913km，占比80.1%；桥梁68 座长90.811km，占比13.3%。新建车站15 座，雅江、理塘、毛垭坝、巴塘、白玉、贡觉、昌都、邦达、洛隆为中间站，红龙、罗麦、则巴、扩达、夏里、多吉为越行站。</p>
+                            <p class="ct">新都桥至波密段（以下简称中间段）站前工程正线长度681.481km，桥隧总长636.004km，桥隧比93.3%。其中隧道40
+                                座长545.913km，占比80.1%；桥梁68 座长90.811km，占比13.3%。新建车站15
+                                座，雅江、理塘、毛垭坝、巴塘、白玉、贡觉、昌都、邦达、洛隆为中间站，红龙、罗麦、则巴、扩达、夏里、多吉为越行站。</p>
                             <p class="ct">
                                 CZXZZQ-6标施工里程为DK1091+900-DK1052+080，长度44.046km，包含多木格隧道15695m、多吉隧道14445m（24446m）、瓤打曲大桥（主跨246m矮塔斜拉桥）、波堆藏布特大桥13326m、波密梁场307孔。
                             </p>
@@ -270,7 +301,8 @@
                     </div>
                 </div>
             </div>
-            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+            <div class="charts_content_box"
+                 style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
                 <div class="content-header">
                     <span class="ch-tit">主要工程数量</span>
                 </div>
@@ -283,7 +315,8 @@
             </div>
         </div>
         <div class="main_center">
-            <div class="charts_content_box" style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472_nohead.png')">
+            <div class="charts_content_box"
+                 style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472_nohead.png')">
                 <div id="video-container">
                     <video src="" style="background-color: #274D8B"></video>
                     <div class="video-select-list">
@@ -292,7 +325,8 @@
                     </div>
                 </div>
             </div>
-            <div class="charts_content_box" style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472.png')">
+            <div class="charts_content_box"
+                 style="width: 816px; height: 472px; background-image: url('./img/charts_content_box_816_472.png')">
                 <div class="content-header">
                     <span class="ch-tit">项目里程碑</span>
                 </div>
@@ -326,7 +360,7 @@
                                     <div class="f-border-line"></div>
                                     <div class="f-bottom-border-content">
                                         <p class="end-time">2021-11-21</p>
-                                        <p class="desc-content">1#项目开工</p>
+                                        <p class="desc-content">里程碑一</p>
                                     </div>
                                 </div>
                                 <div class="f-border">
@@ -337,7 +371,7 @@
                                     <div class="f-border-line"></div>
                                     <div class="f-bottom-border-content">
                                         <p class="end-time">2021-12-01</p>
-                                        <p class="desc-content">围挡封闭</p>
+                                        <p class="desc-content">里程碑二</p>
                                     </div>
                                 </div>
                                 <div class="f-border">
@@ -348,7 +382,7 @@
                                     <div class="f-border-line"></div>
                                     <div class="f-bottom-border-content">
                                         <p class="end-time">2021-12-31</p>
-                                        <p class="desc-content">管道改迁</p>
+                                        <p class="desc-content">里程碑三</p>
                                     </div>
                                 </div>
                                 <div class="f-border">
@@ -359,7 +393,7 @@
                                     <div class="f-border-line"></div>
                                     <div class="f-bottom-border-content">
                                         <p class="end-time">2022-06-21</p>
-                                        <p class="desc-content">桩基施工</p>
+                                        <p class="desc-content">里程碑四</p>
                                     </div>
                                 </div>
                             </div>
@@ -370,110 +404,117 @@
 
         </div>
         <div class="main_right">
-            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+            <div class="charts_content_box"
+                 style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
                 <div class="content-header">
                     <span class="ch-tit">五方责任主体</span>
                 </div>
-                <div class="main_body" id="personlist">
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
+                <div class="main_body">
+                    <div id="personlist">
+
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>业主代表</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>建设单位</span>
+                            </div>
                         </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>业主代表</span>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>勘察负责人</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>勘察单位</span>
+                            </div>
                         </div>
-                        <div class="personlist_item_right">
-                            <span>建设单位</span>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>设计负责人</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>设计单位</span>
+                            </div>
+                        </div>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>项目经理</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>施工单位</span>
+                            </div>
+                        </div>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>监理工程师</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>监理单位</span>
+                            </div>
+                        </div>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>勘察负责人</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>勘察单位</span>
+                            </div>
+                        </div>
+                        <div class="personlist_item">
+                            <div class="personlist_item_left">
+                                <img src="./img/person_avator.png" alt=""/>
+                            </div>
+                            <div class="personlist_item_center">
+                                <span>姓名</span>
+                                <span>设计负责人</span>
+                            </div>
+                            <div class="personlist_item_right">
+                                <span>设计单位</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>勘察负责人</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>勘察单位</span>
-                        </div>
-                    </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>设计负责人</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>设计单位</span>
-                        </div>
-                    </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>项目经理</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>施工单位</span>
-                        </div>
-                    </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>监理工程师</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>监理单位</span>
-                        </div>
-                    </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>勘察负责人</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>勘察单位</span>
-                        </div>
-                    </div>
-                    <div class="personlist_item">
-                        <div class="personlist_item_left">
-                            <img src="" alt="" />
-                        </div>
-                        <div class="personlist_item_center">
-                            <span>姓名</span>
-                            <span>设计负责人</span>
-                        </div>
-                        <div class="personlist_item_right">
-                            <span>设计单位</span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-            <div class="charts_content_box" style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
+            <div class="charts_content_box"
+                 style="width: 520px; height: 472px; background-image: url('./img/charts_content_box_520_472.png')">
                 <div class="content-header">
                     <span class="ch-tit">项目大事件</span>
                 </div>
                 <div class="main_body" style="overflow: hidden">
-                    <div class="timeline-container" style="overflow-y: auto; margin-top: 20px; height: calc(100% - 30px); box-sizing: border-box; ">
+                    <div class="timeline-container"
+                         style="overflow-y: auto; margin-top: 20px; height: calc(100% - 30px); box-sizing: border-box; ">
                         <div class="vertical-timeline-container">
 
                             <div class="f-vertical-border f-border-active">
                                 <div class="f-border-content">
                                     <p class="time">2021-12-01</p>
-                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
-                                    <img src="" alt="">
+                                    <p class="desc-content">川藏大事件一</p>
+                                    <img src="./img/something_demo1.png" alt="">
                                 </div>
                                 <div class="f-circle"></div>
                                 <div class="f-border-line"></div>
@@ -482,8 +523,8 @@
                             <div class="f-vertical-border f-border-active">
                                 <div class="f-border-content">
                                     <p class="time">2021-12-01</p>
-                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
-                                    <img src="" alt="">
+                                    <p class="desc-content">川藏大事件二</p>
+                                    <img src="./img/something_demo1.png" alt="">
                                 </div>
                                 <div class="f-circle"></div>
                                 <div class="f-border-line"></div>
@@ -492,8 +533,8 @@
                             <div class="f-vertical-border f-border-active">
                                 <div class="f-border-content">
                                     <p class="time">2021-12-01</p>
-                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
-                                    <img src="" alt="">
+                                    <p class="desc-content">川藏大事件三</p>
+                                    <img src="./img/something_demo1.png" alt="">
                                 </div>
                                 <div class="f-circle"></div>
                                 <div class="f-border-line"></div>
@@ -502,8 +543,8 @@
                             <div class="f-vertical-border f-border-active">
                                 <div class="f-border-content">
                                     <p class="time">2021-12-01</p>
-                                    <p class="desc-content">宿松路首墩顺利浇筑</p>
-                                    <img src="" alt="">
+                                    <p class="desc-content">川藏大事件四</p>
+                                    <img src="./img/something_demo1.png" alt="">
                                 </div>
                                 <div class="f-circle"></div>
                                 <div class="f-border-line"></div>
@@ -540,21 +581,21 @@
             elem: '#table',
             height: $("#table").parent().height() - 20,
             data: [
-                { name1: '钢筋', name2: '吨', name3: '28206' },
-                { name1: '土方开挖', name2: '立方', name3: '782200' },
-                { name1: '围护桩', name2: '吨', name3: '2653' },
-                { name1: '抗浮桩', name2: '根', name3: '952' },
-                { name1: '咬合桩', name2: '根', name3: '163' },
-                { name1: '交通疏解', name2: '根', name3: '1530' },
-                { name1: '钢筋', name2: '吨', name3: '28206' },
-                { name1: '钢筋', name2: '吨', name3: '28206' },
+                {name1: '钢筋', name2: '吨', name3: '28206'},
+                {name1: '土方开挖', name2: '立方', name3: '782200'},
+                {name1: '围护桩', name2: '吨', name3: '2653'},
+                {name1: '抗浮桩', name2: '根', name3: '952'},
+                {name1: '咬合桩', name2: '根', name3: '163'},
+                {name1: '交通疏解', name2: '根', name3: '1530'},
+                {name1: '钢筋', name2: '吨', name3: '28206'},
+                {name1: '钢筋', name2: '吨', name3: '28206'},
             ],
             cols: [
                 [
                     {type: 'numbers', title: '序号'},
                     {field: 'name1', title: '工程名称'},
                     {field: 'name2', title: '单位'},
-                    {field: 'name3',title: '工程数量'},
+                    {field: 'name3', title: '工程数量'},
                 ]
             ],
             done: function () {

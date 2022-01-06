@@ -51,7 +51,7 @@ jQuery.fn.extend({
             if (h <= _this.height()) return
             li.clone().prependTo(ul);
 
-            ul.height(2*h);
+            ul.height(3*h);
             var i=1,l;
             _this.hover(function(){i=0},function(){i=1});
             function autoScroll(){
