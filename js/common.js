@@ -5,6 +5,7 @@ var global_config = {
     headerHeight: 101,
     markBackGroup: true,
     backGroupCanvas: true, // 开机背景动画
+    needScale: true,
     screen: {
         width: 1920,
         height: 1080
@@ -28,6 +29,10 @@ if (global_config) {
     
     if (global_config.backGroupCanvas) {
         document.write(`<script src="./js/bg.js"></script>`)
+    }
+
+    if (global_config.needScale) {
+        document.write(`<script src="./js/bigscreen.js"></script>`)
     }
 
 
