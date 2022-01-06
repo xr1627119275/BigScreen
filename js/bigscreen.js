@@ -5,7 +5,7 @@ $('#screen').css({
     overflow:'hidden',
     margin:0,
     position: 'absolute',
-    zIndex: 1
+    zIndex: 2
 });
 scale()
 

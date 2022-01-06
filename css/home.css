@@ -2,15 +2,26 @@
 body, html {
   width: 100%;
   height: 100%;
-  background-color: #0C0D21;
   position: relative;
   margin: 0 auto;
   font-family: MicrosoftYaHei;
 }
 
+#MarkBg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: url("../img/bg_2.png") 100% 100%;
+  background-size: contain;
+}
+
 #screen {
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 header {

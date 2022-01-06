@@ -3,6 +3,7 @@ var splitLineColor = 'rgba(54,192,197,0.3)'
 var global_config = {
     needHeader: false, // 是否需要头部
     headerHeight: 101,
+    markBackGroup: true,
     backGroupCanvas: true, // 开机背景动画
     screen: {
         width: 1920,
@@ -27,6 +28,11 @@ if (global_config) {
     
     if (global_config.backGroupCanvas) {
         document.write(`<script src="./js/bg.js"></script>`)
+    }
+
+
+    if (global_config.markBackGroup) {
+        $("body").append($(`<div id="MarkBg"></div>`))
     }
 }
 
