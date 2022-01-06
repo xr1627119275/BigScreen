@@ -611,16 +611,17 @@
     var Charts = {}
 
     $(function () {
-        $("#personlist").layTableScroll($("#personlist"), '.personlist_item')
+        // $("#personlist").layTableScroll($("#personlist"), '.personlist_item')
         $(".overview_item_desc").layTableScroll($("#desc_content"), '.ct', 300)
         scrollTimeLineHorizontal()
         scrollTimeLineVertical()
-
+        scroll("#personlist", "#personlist")
     })
     layui.use(['table'], function () {
         table = layui.table
         renderTable()
     })
+
 
     function scrollTimeLineHorizontal() {
         var width = $("#Horizontal")[0].scrollWidth
@@ -629,7 +630,6 @@
         var i = 0;
         setInterval(function () {
             var left = $("#Horizontal").scrollLeft()
-
             if (left + width >= scrollWidth) {
                 i = 0;
                 $("#Horizontal").scrollLeft(0)
@@ -643,7 +643,6 @@
     function scrollTimeLineVertical() {
         var height = $("#VerticalTimeLine")[0].scrollHeight
         var clone = $("#VerticalTimeLine .vertical-timeline-container").children().clone()
-        $("#VerticalTimeLine .vertical-timeline-container").append(clone)
         $("#VerticalTimeLine .vertical-timeline-container").append(clone)
         var scrollHeight = $("#VerticalTimeLine")[0].scrollHeight
         var i = 0;

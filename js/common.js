@@ -37,6 +37,24 @@ if (global_config) {
 }
 
 
+
+function scroll(target, child) {
+    var height = $(target)[0].scrollHeight
+    var clone = $(child).children().clone()
+    $(child).append(clone)
+    var scrollHeight = $(target)[0].scrollHeight
+    var i = 0;
+    setInterval(function () {
+        var top = $(target).scrollTop()
+        if (top + height >= scrollHeight) {
+            i = 0;
+            $(target).scrollTop(0)
+        } else {
+            $(target).scrollTop(i++)
+        }
+    }, 25)
+}
+
 jQuery.fn.extend({
     layTableScroll:function (_ul, _li, timeout){
         $(this).each(function() {
