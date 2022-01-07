@@ -344,73 +344,8 @@
                     </div>
                     <div class="milestone-timeline">
                         <div id="Horizontal" class="timeline-container" style="overflow: hidden; position: relative">
-                            <div class="timeline_div" >
-                                <div class="f-border f-border-active">
-                                    <div class="f-top-border-content">
-                                        <p>进行中</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2022-3-1</p>
-                                        <p class="desc-content">施工准备</p>
-                                    </div>
-                                </div>
-                                <div class="f-border">
-                                    <div class="f-top-border-content">
-                                        <p>未开始</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2029-4-1</p>
-                                        <p class="desc-content">主体工程</p>
-                                    </div>
-                                </div>
-                                <div class="f-border">
-                                    <div class="f-top-border-content">
-                                        <p>未开始</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2029-10-1</p>
-                                        <p class="desc-content">无砟隧道及沉降测</p>
-                                    </div>
-                                </div>
-                                <div class="f-border">
-                                    <div class="f-top-border-content">
-                                        <p>未开始</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2031-8-30</p>
-                                        <p class="desc-content">铺轨工程</p>
-                                    </div>
-                                </div>
-                                <div class="f-border">
-                                    <div class="f-top-border-content">
-                                        <p>未开始</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2032-5-8</p>
-                                        <p class="desc-content">站后及四电工程</p>
-                                    </div>
-                                </div>
-                                <div class="f-border">
-                                    <div class="f-top-border-content">
-                                        <p>未开始</p>
-                                    </div>
-                                    <div class="f-circle"></div>
-                                    <div class="f-border-line"></div>
-                                    <div class="f-bottom-border-content">
-                                        <p class="end-time">2032-11-8</p>
-                                        <p class="desc-content">联调联试</p>
-                                    </div>
-                                </div>
+                            <div class="timeline_div"  id="timeline_list">
+
                             </div>
                         </div>
                     </div>
@@ -443,55 +378,6 @@
                          style="overflow: hidden; margin-top: 20px;  box-sizing: border-box; ">
                         <div class="vertical-timeline-container">
 
-                            <div class="f-vertical-border f-border-active">
-                                <div class="f-border-content">
-                                    <p class="time">2021-12-01</p>
-                                    <p class="desc-content">多木格隧道完工</p>
-                                    <img src="./img/something_demo1.png" alt="">
-                                </div>
-                                <div class="f-circle"></div>
-                                <div class="f-border-line"></div>
-                            </div>
-
-                            <div class="f-vertical-border f-border-active">
-                                <div class="f-border-content">
-                                    <p class="time">2021-12-01</p>
-                                    <p class="desc-content">多吉隧道完工</p>
-                                    <img src="./img/something_demo1.png" alt="">
-                                </div>
-                                <div class="f-circle"></div>
-                                <div class="f-border-line"></div>
-                            </div>
-
-                            <div class="f-vertical-border f-border-active">
-                                <div class="f-border-content">
-                                    <p class="time">2021-12-01</p>
-                                    <p class="desc-content">瓤打曲大桥完工</p>
-                                    <img src="./img/something_demo1.png" alt="">
-                                </div>
-                                <div class="f-circle"></div>
-                                <div class="f-border-line"></div>
-                            </div>
-
-                            <div class="f-vertical-border f-border-active">
-                                <div class="f-border-content">
-                                    <p class="time">2021-12-01</p>
-                                    <p class="desc-content">波堆藏布特大桥完工</p>
-                                    <img src="./img/something_demo1.png" alt="">
-                                </div>
-                                <div class="f-circle"></div>
-                                <div class="f-border-line"></div>
-                            </div>
-
-                            <div class="f-vertical-border f-border-active">
-                                <div class="f-border-content">
-                                    <p class="time">2021-12-01</p>
-                                    <p class="desc-content">波密梁场307孔完工</p>
-                                    <img src="./img/something_demo1.png" alt="">
-                                </div>
-                                <div class="f-circle"></div>
-                                <div class="f-border-line"></div>
-                            </div>
 
                         </div>
                     </div>
@@ -508,110 +394,23 @@
 <script src="./js/common.js"></script>
 
 
+<script src="./data/projectprofile1.js"></script>
 <script>
     $(function() {
-        var data = {
-            normal: [
-                { unit: 'km', num: '44.046'},
-                { num: '840876', unit: '万元'},
-                { unit: '天'}
-            ],
-            desc: [
-                '新都桥至波密段（以下简称中间段）站前工程正线长度681.481km，桥隧总长636.004km，桥隧比93.3%。其中隧道40座长545.913km，占比80.1%；桥梁68 座长90.811km，占比13.3%。新建车站15座，雅江、理塘、毛垭坝、巴塘、白玉、贡觉、昌都、邦达、洛隆为中间站，红龙、罗麦、则巴、扩达、夏里、多吉为越行站。',
-                'CZXZZQ-6标施工里程为DK1091+900-DK1052+080，长度44.046km，包含多木格隧道15695m、多吉隧道14445m（24446m）、瓤打曲大桥（主跨246m矮塔斜拉桥）、波堆藏布特大桥13326m、波密梁场307孔。'
-            ],
-            persons: [
-                {
-                    "text": [
-                        "姓名",
-                        "业主代表",
-                        "建设单位"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "勘察负责人",
-                        "勘察单位"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "设计负责人",
-                        "中铁第一勘察设计院集团"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "项目经理",
-                        "中铁四局集团"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "监理工程师",
-                        "中咨工程管理咨询"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "勘察负责人",
-                        "勘察单位"
-                    ],
-                    "img": "./img/person_avator.png"
-                },
-                {
-                    "text": [
-                        "姓名",
-                        "设计负责人",
-                        "中铁第一勘察设计院集团"
-                    ],
-                    "img": "./img/person_avator.png"
-                }
-            ],
-            milestone: [
-                {
-                    "label": "已开工（天）：",
-                    "value": ""
-                },
-                {
-                    "label": "总工期（月）：",
-                    "value": ""
-                },
-                {
-                    "label": "已完成（万元）：",
-                    "value": ""
-                },
-                {
-                    "label": "合同造价（万元）：",
-                    type: 'money',
-                    "value": 840876
-                }
-            ],
-            startDate: '2021-12-1',
-            endDate: '2032-11-8',
-        }
 
-        var allDay = moment(data.endDate).diff(moment(data.startDate), 'days')
-        var allMonth = moment(data.endDate).diff(moment(data.startDate), 'months')
-        var nowStartDay = moment(moment.now()).diff(data.startDate, 'days')
 
-        var nowStartMonth = moment(moment.now()).diff(data.startDate, 'months')
-        data.milestone[0].value = nowStartDay < 0 ? 0 : nowStartDay
-        data.milestone[1].value = allMonth < 0 ? 0 : allMonth
+        var allDay = moment(profileData.endDate).diff(moment(profileData.startDate), 'days')
+        var allMonth = moment(profileData.endDate).diff(moment(profileData.startDate), 'months')
+        var nowStartDay = moment(moment.now()).diff(profileData.startDate, 'days')
 
-        data.milestone[2].value = nowStartMonth < 0 ? 0 : parseInt(data.milestone[3].value / data.milestone[1].value *  nowStartMonth)
+        var nowStartMonth = moment(moment.now()).diff(profileData.startDate, 'months')
+
+        // 里程碑
+        profileData.milestone[0].value = nowStartDay < 0 ? 0 : nowStartDay
+        profileData.milestone[1].value = allMonth < 0 ? 0 : allMonth
+        profileData.milestone[2].value = nowStartMonth < 0 ? 0 : parseInt(profileData.milestone[3].value / profileData.milestone[1].value *  nowStartMonth)
         $(".milestone-top").html("")
-        data.milestone.forEach(function (item) {
+        profileData.milestone.forEach(function (item) {
             $(".milestone-top").append(`
                 <div>
                     <span class="milestone-til">${item.label}</span>
@@ -619,20 +418,41 @@
                 </div>
             `)
         })
+        // 里程碑时间轴
+        $("#timeline_list").html("")
+        profileData.milestoneTimeline.forEach(function (item) {
+            $("#timeline_list").append(`
+            <div class="f-border ${item.status != "未开始" && 'f-border-active'}">
+                <div class="f-top-border-content">
+                    <p>${item.status}</p>
+                </div>
+                <div class="f-circle"></div>
+                <div class="f-border-line"></div>
+                <div class="f-bottom-border-content">
+                    <p class="end-time">${item.date}</p>
+                    <p class="desc-content">${item.desc}</p>
+                </div>
+            </div>
+            `)
+        })
+        $(".f-border-active").next().addClass('f-border-active-next')
+
         // 概况数据
-        data.normal[2].num = allDay < 0 ? 0 : allDay
-        data.normal.forEach(function (item, index) {
+        profileData.normal[2].num = allDay < 0 ? 0 : allDay
+        profileData.normal.forEach(function (item, index) {
             $("#Overview .overview_item").eq(index).find(".num").html(item.num)
             $("#Overview .overview_item").eq(index).find(".unit").html(item.unit)
         })
 
+        // 项目概况文字描述
         $("#desc_content").html("")
-        data.desc.forEach(function (item) {
+        profileData.desc.forEach(function (item) {
             $("#desc_content").append(`<p class="ct">${item}</p>`)
         })
 
+        // 人员列表
         $("#personlist").html("")
-        data.persons.forEach(function (item) {
+        profileData.persons.forEach(function (item) {
             $("#personlist").append(`
                 <div class="personlist_item">
                     <div class="personlist_item_left">
@@ -646,6 +466,22 @@
                         <span>${item.text[2]}</span>
                     </div>
                 </div>
+            `)
+        })
+
+        // 项目大事件
+        $(".vertical-timeline-container").html("")
+        profileData.somethingTimeline.forEach(function (item) {
+            $(".vertical-timeline-container").append(`
+             <div class="f-vertical-border f-border-active">
+                <div class="f-border-content">
+                    <p class="time">${item.date}</p>
+                    <p class="desc-content">${item.desc}</p>
+                    <img src="${item.img}" alt="">
+                </div>
+                <div class="f-circle"></div>
+                <div class="f-border-line"></div>
+            </div>
             `)
         })
     })
