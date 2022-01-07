@@ -8,7 +8,7 @@ $('#screen').css({
     zIndex: 2
 });
 scale()
-
+// _scale()
 $(window).on("resize", scale)
 
 function scale(){
@@ -23,4 +23,40 @@ function scale(){
     var marginLeft = (parseFloat(document.documentElement.clientWidth) - parseFloat($('#screen').css('width'))*bi)/2;
     // 设置body的marginLeft
     $('#screen').css('margin-left',marginLeft+'px');
+}
+
+function _scale() {
+    //缩放方法
+    var marginLeft = (parseFloat(document.documentElement.clientWidth) - parseFloat($('#screen').css('width'))*bi)/2;
+
+    widWidth = window.innerWidth;
+        widHeight = window.innerHeight;
+        xScale = (widWidth / global_config.screen.width);
+        yScale = (widHeight / global_config.screen.height);
+        if (xScale < yScale) {
+            //宽度缩放比例小于高度缩放比例时，已宽度缩放比例同比缩放
+            sca = xScale;
+            origin = 'left center 0px';
+
+        } else {
+            sca = yScale;
+            origin = 'center top 0px';
+        }
+
+        var scale = 'scale(' + sca + ')';
+        // if(browser.versions.trident){
+        //     $("#screen").css('-ms-transform', scale);//缩放比列 ie9
+        // }else if(browser.versions.presto){
+        //     $("#screen").css('-o-transform', scale);//缩放比列 Opera
+        // }else if(browser.versions.webKit){
+        //     $("#screen").css('-webkit-transform', scale);//缩放比列 Safari 和 Chrome
+        // }else if(browser.versions.gecko){
+        //     $("#screen").css('-moz-transform', scale);//缩放比列 Firefox
+        // }else{
+        //
+        // }
+        $("#screen").css('transform', scale);//缩放比列
+        $("#screen").css('transform-origin', origin);//缩放之后顶点对齐
+    $('#screen').css('margin-left',marginLeft+'px');
+
 }

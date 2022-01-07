@@ -2,10 +2,10 @@ var splitLineColor = 'rgba(54,192,197,0.3)'
 
 var global_config = {
     needHeader: false, // 是否需要头部
-    headerHeight: 101,
-    markBackGroup: true,
-    backGroupCanvas: true, // 开机背景动画
-    needScale: true,
+    headerHeight: 101, // 头部高度
+    markBackGroup: false, // 背景遮罩图片
+    backGroupCanvas: false, // 背景动画
+    needScale: true, // 开始系统缩放
     screen: {
         width: 1920,
         height: 1080
@@ -35,13 +35,12 @@ if (global_config) {
         document.write(`<script src="./js/bigscreen.js"></script>`)
     }
 
-
     if (global_config.markBackGroup) {
         $("body").append($(`<div id="MarkBg"></div>`))
     }
 }
 
-
+document.write(`<script src="./js/moment.min.js"></script>`)
 
 function scroll(target, child) {
     var height = $(target)[0].scrollHeight
