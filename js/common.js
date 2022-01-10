@@ -4,7 +4,7 @@ var global_config = {
     needHeader: false, // 是否需要头部
     headerHeight: 101, // 头部高度
     markBackGroup: false, // 背景遮罩图片
-    backGroupCanvas: true, // 背景动画
+    backGroupCanvas: false, // 背景动画
     needScale: true, // 开始系统缩放
     screen: {
         width: 1920,
