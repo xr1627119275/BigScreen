@@ -1,6 +1,7 @@
 @import "common/common";
 
-body, html {
+body,
+html {
   width: 100%;
   height: 100%;
   //background-color: $bg_color;
@@ -43,10 +44,11 @@ header {
     font-size: 16px;
     font-family: Microsoft YaHei;
     font-weight: 400;
-    color: #40F3EF;
+    color: #40f3ef;
   }
 
-  .left, .right {
+  .left,
+  .right {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -74,7 +76,7 @@ header {
       font-size: 32px;
       font-family: Microsoft YaHei;
       font-weight: bold;
-      color: #FFFFFF;
+      color: #ffffff;
       text-align: center;
       text-shadow: 0 6px 10px rgba(0, 16, 45, 0.2);
     }
@@ -85,10 +87,10 @@ header {
       font-family: Microsoft YaHei;
       font-weight: 400;
       text-align: center;
-      color: #FFFFFF;
+      color: #ffffff;
 
       & > span {
-        color: #58EBE9;
+        color: #58ebe9;
       }
     }
   }
@@ -104,11 +106,12 @@ header {
     line-height: 30px;
     text-align: center;
 
-    &.active, &:hover {
+    &.active,
+    &:hover {
       background-image: url("../img/nav_item_active.png");
 
       a {
-        color: #FFFFFF;
+        color: #ffffff;
       }
     }
 
@@ -116,7 +119,7 @@ header {
       font-size: 18px;
       font-family: Microsoft YaHei;
       font-weight: 400;
-      color: #18BFBB;
+      color: #18bfbb;
     }
   }
 
@@ -132,9 +135,9 @@ header {
 
         input {
           height: 24px;
-          background: #0C0D21;
-          border: #0C0D21;
-          color: #fff
+          background: #0c0d21;
+          border: #0c0d21;
+          color: #fff;
         }
 
         input::-webkit-input-placeholder {
@@ -142,7 +145,7 @@ header {
         }
 
         .layui-edge {
-          border-top-color: #10BEBA;
+          border-top-color: #10beba;
         }
       }
 
@@ -169,7 +172,6 @@ header {
   }
 }
 
-
 #plate_nav {
   display: flex;
   padding-bottom: 17px;
@@ -180,7 +182,8 @@ header {
     display: flex;
     justify-content: center;
 
-    .plate_box_long, .plate_box {
+    .plate_box_long,
+    .plate_box {
       position: relative;
       width: 156px;
       height: 104px;
@@ -188,7 +191,6 @@ header {
       background-size: 100% 100%;
 
       &:after {
-
       }
 
       .plate_til {
@@ -198,7 +200,7 @@ header {
         line-height: 28px;
         font-family: Microsoft YaHei;
         font-weight: 400;
-        color: #03FFE4;
+        color: #03ffe4;
       }
 
       .plate_num {
@@ -207,7 +209,7 @@ header {
         font-family: Impact;
         text-align: center;
         font-weight: 400;
-        color: #FFFFFF;
+        color: #ffffff;
         text-shadow: 0px 2px 4px rgba(0, 16, 45, 0.32);
 
         p {
@@ -216,12 +218,12 @@ header {
 
           .unit {
             display: block;
-            content: '/个';
+            content: "/个";
             width: 30px;
             font-size: 14px;
             font-family: Microsoft YaHei;
             font-weight: 400;
-            color: #FFFFFF;
+            color: #ffffff;
             position: absolute;
             top: 45%;
             right: 4px;
@@ -265,17 +267,16 @@ main {
       font-size: 16px;
       font-family: Microsoft YaHei;
       font-weight: 400;
-      color: #40F3EF;
+      color: #40f3ef;
       cursor: pointer;
       &.page_nav_item_active {
         background: #161741;
-        color: #FFFFFF;
+        color: #ffffff;
         border-radius: 2px;
       }
     }
   }
   &.main_left_right {
-
     flex-wrap: nowrap;
     align-items: initial;
 
@@ -288,7 +289,10 @@ main {
     }
   }
 
-  .charts_content_box_461_280 , .charts_content_box_280, .charts_content_box_308, .charts_content_box {
+  .charts_content_box_461_280,
+  .charts_content_box_280,
+  .charts_content_box_308,
+  .charts_content_box {
     width: 618px;
     height: 405px;
     display: flex;
@@ -308,12 +312,31 @@ main {
         padding: 0 8px;
         font-family: Microsoft YaHei;
         font-weight: 400;
-        color: #FEFFFF;
+        color: #feffff;
       }
       .nav_tit_right_tip {
         float: right;
         font-size: 16px;
-        padding-right: 33px
+        padding-right: 33px;
+        &.layui-form {
+          margin-top: 3px;
+        }
+        
+        .layui-form-select {
+          width: 120px;
+        }
+        .layui-form-select input {
+          height: 24px;
+          background: #0c0d21;
+          border: #0c0d21;
+          color: #fff;
+        }
+        .layui-form-select input::-webkit-input-placeholder {
+          color: #fff;
+        }
+        .layui-form-select .layui-edge {
+          border-top-color: #10beba;
+        }
       }
       .nav_tit_right {
         float: right;
@@ -333,18 +356,17 @@ main {
       .nav_tit {
         display: inline-block;
         cursor: pointer;
-
+        line-height: 28px;
         .ch-tit {
-          color: #37D1CE;
-
+          color: #37d1ce;
         }
 
         &.active {
           border-radius: 2px;
-          background-color: #0C0D21;
+          background-color: #0c0d21;
 
           .ch-tit {
-            color: #FEFFFF !important;
+            color: #feffff !important;
           }
         }
       }
@@ -353,14 +375,13 @@ main {
     .nav_tab_content {
       display: none;
       height: 100%;
-
     }
 
-    .normal_chart, .main_body_table {
+    .normal_chart,
+    .main_body_table {
       width: 100%;
       height: 100%;
     }
-
 
     .main_body {
       flex: 1;
@@ -371,7 +392,6 @@ main {
         width: 100%;
         height: 100%;
       }
-
     }
   }
 
@@ -434,7 +454,6 @@ main {
       width: 100%;
       height: 100%;
       position: relative;
-
     }
 
     .statistics {
@@ -456,12 +475,13 @@ main {
         justify-content: space-between;
       }
 
-      .statistics_item, .statistics_item_noicon {
+      .statistics_item,
+      .statistics_item_noicon {
         width: 155px;
         height: 72px;
         display: flex;
         align-items: center;
-        background-color: #2DDDD8;
+        background-color: #2dddd8;
 
         &:nth-child(2) {
           .icon {
@@ -514,7 +534,7 @@ main {
       .right {
         flex: 1;
         margin-left: 2px;
-        background-color: rgba(17, 18, 52, .8);
+        background-color: rgba(17, 18, 52, 0.8);
 
         .filter_header {
           padding-top: 10px;
@@ -526,7 +546,7 @@ main {
             width: 283px;
             height: 32px;
             box-sizing: border-box;
-            border: 1px solid #40F3EF;
+            border: 1px solid #40f3ef;
 
             input {
               background-color: transparent;
@@ -548,7 +568,6 @@ main {
               transform: translateY(-50%);
               background: url("../img/date.png");
               background-size: 100% 100%;
-
             }
           }
 
@@ -559,19 +578,16 @@ main {
             height: 32px;
             cursor: pointer;
             line-height: 32px;
-            background: #6EFFFA;
+            background: #6efffa;
             font-size: 16px;
             font-family: Microsoft YaHei;
             font-weight: 400;
             color: #111234;
-
           }
         }
       }
     }
   }
-
-
 }
 // 左右滚动
 .mscroll-container {
@@ -580,7 +596,8 @@ main {
   padding: 0 14px;
   align-items: center;
 
-  .left_btn, .right_btn {
+  .left_btn,
+  .right_btn {
     cursor: pointer;
     width: 28px;
     height: 80px;
@@ -605,7 +622,6 @@ main {
       position: absolute;
     }
   }
-
 }
 
 .device_item {
@@ -636,11 +652,12 @@ main {
     background-size: 100%;
   }
 
-  .device_name, .device_label {
+  .device_name,
+  .device_label {
     font-size: 18px;
     font-family: Microsoft YaHei;
     font-weight: 400;
-    color: #40F3EF;
+    color: #40f3ef;
     line-height: 26px;
   }
 
@@ -657,7 +674,7 @@ main {
     font-size: 18px;
     font-family: Impact;
     font-weight: 400;
-    color: #FEFFFF;
+    color: #feffff;
   }
 }
 
@@ -666,7 +683,15 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   box-sizing: border-box;
   padding: 0 8px;
 
-  .layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-tool, .layui-table[lay-even] tr:nth-child(even) {
+  .layui-table tbody tr:hover,
+  .layui-table thead tr,
+  .layui-table-click,
+  .layui-table-header,
+  .layui-table-hover,
+  .layui-table-mend,
+  .layui-table-patch,
+  .layui-table-tool,
+  .layui-table[lay-even] tr:nth-child(even) {
     background-color: transparent;
   }
 
@@ -686,13 +711,12 @@ $table_border_color: rgba(47, 249, 240, 0.4);
       background-color: #141546 !important;
       color: #fff;
     }
-
   }
 
   tr td {
     border-color: $table_border_color;
     border-right: none;
-    color: #34B8BE;
+    color: #34b8be;
     word-wrap: break-word;
   }
 
@@ -748,13 +772,13 @@ $table_border_color: rgba(47, 249, 240, 0.4);
       font-size: 18px;
       font-family: Microsoft YaHei;
       font-weight: 400;
-      color: #FEFFFF;
+      color: #feffff;
       float: left;
     }
 
     i {
       float: right;
-      color: #0DFBE7;
+      color: #0dfbe7;
       font-size: 16px;
       font-weight: 700;
       line-height: 24px;
@@ -763,7 +787,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
       width: 24px;
       border-radius: 50%;
       display: block;
-      background: #001C59;
+      background: #001c59;
       height: 24px;
     }
   }
@@ -808,17 +832,18 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     justify-content: space-between;
     align-items: center;
 
-    .progress_num, .progress_desc {
+    .progress_num,
+    .progress_desc {
       font-size: 16px;
       font-family: Microsoft YaHei;
       font-weight: 400;
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     .progress_body {
       height: 170px;
       width: 26px;
-      background-color: #40F3EF;
+      background-color: #40f3ef;
       border-radius: 12px;
       overflow: hidden;
       vertical-align: bottom;
@@ -831,7 +856,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
         display: inline-block;
         width: 100%;
         border-radius: 12px 12px 0 0;
-        background-color: #FF9125;
+        background-color: #ff9125;
       }
     }
   }
@@ -852,14 +877,14 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   margin: 0 2px;
   height: 56px;
   vertical-align: top;
-  color: #FFF;
+  color: #fff;
   background: url("../img/maptype.png") no-repeat;
   background-size: 100%;
-  border: 1px solid rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .map_type .map_figure .txt {
@@ -870,7 +895,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   height: 25px;
   font-size: 16px;
   line-height: 1.8;
-  color: #40F3EF;
+  color: #40f3ef;
   text-align: center;
   background: rgba(21, 23, 83, 0.64);
 }
@@ -884,8 +909,8 @@ $table_border_color: rgba(47, 249, 240, 0.4);
 }
 
 .map_type .map_figure.cur {
-  border: 1px solid #FFF !important;
-  box-shadow: 0 0 8px rgba(255, 255, 255, .5) inset;
+  border: 1px solid #fff !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset;
   opacity: 1;
 }
 
@@ -901,11 +926,11 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   padding: 0 8px;
   font-size: 14px;
   line-height: 38px;
-  color: #FFF;
+  color: #fff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  background: rgba(191, 239, 255, .05);
+  background: rgba(191, 239, 255, 0.05);
 }
 
 .ico_msg {
@@ -922,23 +947,23 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   width: 238px;
   height: 40px;
   box-sizing: border-box;
-  font-family: 'Microsoft Yahei';
+  font-family: "Microsoft Yahei";
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  border: 1px solid #3BDFDD;
+  border: 1px solid #3bdfdd;
   background: rgba(20, 21, 64, 0.7);
   input::-webkit-input-placeholder {
-    color: #FEFFFF;
+    color: #feffff;
   }
   input:-moz-placeholder {
-    color: #FEFFFF;
+    color: #feffff;
   }
   input::-moz-placeholder {
-    color: #FEFFFF;
+    color: #feffff;
   }
   input:-ms-input-placeholder {
-    color: #FEFFFF;
+    color: #feffff;
   }
 }
 
@@ -951,7 +976,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   font-size: 16px;
   font-family: Microsoft YaHei;
   font-weight: 400;
-  color: #FEFFFF;
+  color: #feffff;
 }
 
 .search_area .btn_sea {
@@ -973,8 +998,8 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   width: 238px;
   line-height: 1.65;
   border-radius: 4px;
-  border: 1px solid rgba(191, 239, 255, .05);
-  background: rgba(191, 239, 255, .2);
+  border: 1px solid rgba(191, 239, 255, 0.05);
+  background: rgba(191, 239, 255, 0.2);
 }
 
 .translate_wrap .list {
@@ -984,12 +1009,12 @@ $table_border_color: rgba(47, 249, 240, 0.4);
 
 .translate_wrap .list li {
   padding: 5px 10px;
-  color: #FEFFFF;
+  color: #feffff;
   font-size: 16px;
 }
 
 .translate_wrap .list li:hover {
-  background-color: rgba(245, 245, 245, .2);
+  background-color: rgba(245, 245, 245, 0.2);
 }
 
 .condition {
@@ -1000,21 +1025,20 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   box-sizing: border-box;
   border: 1px solid rgba(59, 223, 221, 0.7);
   border-radius: 2px;
-  .layui-form-checkbox[lay-skin=primary] {
+  .layui-form-checkbox[lay-skin="primary"] {
     span {
       font-size: 16px;
       font-family: Microsoft YaHei;
       font-weight: 400;
-      color: #FEFFFF;
+      color: #feffff;
     }
   }
 
-  .layui-form-checked[lay-skin=primary] i {
-    background-color: #3BDFDD;
-    border-color: #3BDFDD !important;
+  .layui-form-checked[lay-skin="primary"] i {
+    background-color: #3bdfdd;
+    border-color: #3bdfdd !important;
   }
 }
-
 
 // 视频监控部分页面
 #video-container {
@@ -1026,14 +1050,19 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     margin: 8px;
     background:
             //url("../img/video_bg_left_top.png") top left no-repeat,
-            linear-gradient(to left,rgba(35 ,132 ,135, 1), rgba(35 ,132 ,135, 1)) top no-repeat,
-            linear-gradient(to left,rgba(35 ,132 ,135, 1), rgba(35 ,132 ,135, 1)) bottom no-repeat,
-            linear-gradient(to bottom,rgba(35 ,132 ,135, 1), rgba(35 ,132 ,135, 1)) left no-repeat,
-            linear-gradient(to bottom,rgba(35 ,132 ,135, 1), rgba(35 ,132 ,135, 1)) right no-repeat;
-            //url("../img/video_bg_right_top.png") top right no-repeat,
-            //url("../img/video_bg_left_bottom.png") bottom left no-repeat,
-            //url("../img/video_bg_right_bottom.png") bottom right no-repeat;
-    background-size: calc(100% - 340px) 1px, calc(100% - 340px) 1px,1px calc(100% - 340px) ,1px calc(100% - 340px) ;
+      linear-gradient(to left, rgba(35, 132, 135, 1), rgba(35, 132, 135, 1)) top
+        no-repeat,
+      linear-gradient(to left, rgba(35, 132, 135, 1), rgba(35, 132, 135, 1))
+        bottom no-repeat,
+      linear-gradient(to bottom, rgba(35, 132, 135, 1), rgba(35, 132, 135, 1))
+        left no-repeat,
+      linear-gradient(to bottom, rgba(35, 132, 135, 1), rgba(35, 132, 135, 1))
+        right no-repeat;
+    //url("../img/video_bg_right_top.png") top right no-repeat,
+    //url("../img/video_bg_left_bottom.png") bottom left no-repeat,
+    //url("../img/video_bg_right_bottom.png") bottom right no-repeat;
+    background-size: calc(100% - 340px) 1px, calc(100% - 340px) 1px,
+      1px calc(100% - 340px), 1px calc(100% - 340px);
     position: relative;
     box-sizing: border-box;
     padding: 2px 2px 20px;
@@ -1069,9 +1098,10 @@ $table_border_color: rgba(47, 249, 240, 0.4);
       z-index: 2;
       background-image: url("../img/video_bg_right_bottom.png");
     }
-    .header_title,.video_bottom_opt {
+    .header_title,
+    .video_bottom_opt {
       height: 40px;
-      background-color: #15164F;
+      background-color: #15164f;
       padding: 0 8px;
       line-height: 40px;
 
@@ -1081,7 +1111,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
         font-size: 18px;
         font-family: Microsoft YaHei;
         font-weight: 400;
-        color: #FEFFFF;
+        color: #feffff;
       }
       .video_opt {
         display: flex;
@@ -1093,13 +1123,13 @@ $table_border_color: rgba(47, 249, 240, 0.4);
         cursor: pointer;
       }
       .camera {
-        background-image: url('../img/camera.png');
+        background-image: url("../img/camera.png");
       }
       .videotape {
-        background-image: url('../img/videotape.png');
+        background-image: url("../img/videotape.png");
       }
       .zoom {
-        background-image: url('../img/zoom.png');
+        background-image: url("../img/zoom.png");
         margin-right: 8px;
       }
     }
@@ -1133,25 +1163,24 @@ $table_border_color: rgba(47, 249, 240, 0.4);
         line-height: 24px;
         outline: none;
         padding: 0 10px;
-        background: #2548C9;
+        background: #2548c9;
         border-radius: 2px;
         font-size: 16px;
         font-family: Microsoft YaHei;
         font-weight: 400;
-        color: #6EFFFA;
+        color: #6efffa;
       }
       i {
         margin-left: 17px;
       }
       .reback {
-        background-image: url('../img/reback.png');
+        background-image: url("../img/reback.png");
       }
 
       .bigscreen {
-        background-image: url('../img/bigscreen.png');
+        background-image: url("../img/bigscreen.png");
       }
     }
-
   }
   &.video_size_4 {
     .video_box {
@@ -1183,7 +1212,8 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     .video_box:nth-child(n + 6) {
       margin-bottom: 0;
     }
-    .video_box:first-child , .video_box:nth-child(3n + 1) {
+    .video_box:first-child,
+    .video_box:nth-child(3n + 1) {
       margin-left: 0;
     }
     .video_box:nth-child(3n) {
@@ -1202,26 +1232,26 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   .wyc_item {
     display: flex;
     align-items: center;
-    flex:  0 0 33.3%;
+    flex: 0 0 33.3%;
     .wyc_content {
       margin-left: 20px;
       p {
         font-size: 30px;
         font-family: Impact;
         font-weight: 400;
-        color: #FEFFFF;
+        color: #feffff;
         span:last-child {
           font-size: 16px;
           font-family: Microsoft YaHei;
           font-weight: 400;
-          color: #FEFFFF;
+          color: #feffff;
         }
       }
       p:last-child {
         font-size: 16px;
         font-family: Microsoft YaHei;
         font-weight: 400;
-        color: #FEFFFF;
+        color: #feffff;
       }
     }
   }
@@ -1241,20 +1271,18 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     font-size: 30px;
     font-family: Impact;
     font-weight: 400;
-    color: #FFFFFF;
+    color: #ffffff;
   }
   .percent_desc {
     font-size: 16px;
     font-family: Microsoft YaHei;
     font-weight: 400;
-    color: #40F3EF;
+    color: #40f3ef;
   }
-
 }
 
-
 //  技术管理 滚动块
-.video_scroll_item_container  {
+.video_scroll_item_container {
   flex: 0 0 25%;
   height: 100%;
   overflow: hidden;
@@ -1278,19 +1306,16 @@ $table_border_color: rgba(47, 249, 240, 0.4);
       transform: translateY(-50%);
       font-family: Microsoft YaHei;
       font-weight: bold;
-      color: #0043BF;
-      -webkit-text-stroke: 1px #FFFFFF;
-      text-stroke: 1px #FFFFFF;
+      color: #0043bf;
+      -webkit-text-stroke: 1px #ffffff;
+      text-stroke: 1px #ffffff;
     }
   }
-
-
 }
 
-
-
-
-.icon28,.icon48, .icon32 {
+.icon28,
+.icon48,
+.icon32 {
   display: inline-block;
   cursor: pointer;
   vertical-align: top;

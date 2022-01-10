@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>高支模检测</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/clear.css">
-    <link rel="stylesheet" href="./css/home.css">
-    <script src="./js/jquery.min.js"></script>
-    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
-    <script src="./js/layui/dist/layui.js"></script>
-    <script src="./js/echarts.min.js"></script>
+  <meta charset="UTF-8">
+  <title>高支模检测</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/clear.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <script src="./js/jquery.min.js"></script>
+  <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+  <script src="./js/layui/dist/layui.js"></script>
+  <script src="./js/echarts.min.js"></script>
 
 </head>
+
 <body style="position: relative; overflow: hidden">
-<div id="screen">
-    <div id="header" style="width: 100%; height: 101px; vertical-align: middle" ></div>
+  <div id="screen">
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle"></div>
 
     <!-- <div class="charts_content_box_280" style="height: 308px">
       <div class="content-header">
@@ -32,49 +34,67 @@
       </div>
   </div> -->
 
-  <style>
-    .main-left {
-      width: 1252px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .main-right {
-      width: 618px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  </style>
+    <style>
+      .main-left {
+        width: 1252px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .main-right {
+        width: 618px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    </style>
     <main>
-      <div class="main-left" >
+      <div class="main-left">
         <div style="display: flex; justify-content: space-between;">
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-                <span class="ch-tit">运行状态</span>
+              <span class="ch-tit">工程数据</span>
+
             </div>
             <div class="main_body" style="display: flex;">
-                
+
             </div>
           </div>
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-                <span class="ch-tit">产值情况</span>
+              <span class="ch-tit">运行状态</span>
+              <div class="ch-tit nav_tit_right_tip layui-form" >
+                <select name="quiz" title="请选择">
+                  <option value="">工程#1</option>
+                </select>
+              </div>
             </div>
             <div class="main_body" style="display: flex;">
-                
+
             </div>
           </div>
         </div>
-
         <div class="charts_content_box charts_content_box_1252_308" style="width: 100%; height: 308px">
           <div class="content-header">
-              <span class="ch-tit"></span>
+            <div class="nav_tit active">
+              <span class="ch-tit">实时数据</span>
+            </div>
+            <div class="nav_tit">
+              <span class="ch-tit">历史数据</span>
+            </div>
+            <div class="ch-tit nav_tit_right_tip layui-form" >
+              <select name="quiz" title="请选择">
+                <option value="">工程#1</option>
+              </select>
+            </div>
           </div>
           <div class="main_body" style="display: flex;">
-              
+              <div id="_Table" class="main_body_table">
+                <table id="table"></table>
+              </div>
           </div>
         </div>
 
@@ -82,18 +102,28 @@
         <div style="display: flex; justify-content: space-between;">
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-                <span class="ch-tit">立杆倾斜检测</span>
+              <span class="ch-tit">立杆倾斜检测</span>
+              <div class="ch-tit nav_tit_right_tip layui-form">
+                <select name="quiz" title="请选择" >
+                    <option value="">工程#1</option>
+                </select>
+              </div>
             </div>
             <div class="main_body" style="display: flex;">
-                
+
             </div>
           </div>
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-                <span class="ch-tit">竖向位移检测</span>
+              <span class="ch-tit">竖向位移检测</span>
+              <div class="ch-tit nav_tit_right_tip layui-form">
+                <select name="quiz" title="请选择" >
+                    <option value="">工程#1</option>
+                </select>
+              </div>
             </div>
             <div class="main_body" style="display: flex;">
-                
+
             </div>
           </div>
         </div>
@@ -102,122 +132,144 @@
       <div class="main-right">
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
-              <span class="ch-tit">告警数据</span>
+            <span class="ch-tit">告警数据</span>
+            <div class="ch-tit nav_tit_right_tip layui-form">
+              <select name="quiz" title="请选择" >
+                  <option value="">工程#1</option>
+              </select>
+            </div>
           </div>
           <div class="main_body" style="display: flex;">
-              
+
           </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
-              <span class="ch-tit">水平位移监测</span>
+            <span class="ch-tit">水平位移监测</span>
+            <div class="ch-tit nav_tit_right_tip layui-form">
+              <select name="quiz" title="请选择" >
+                  <option value="">工程#1</option>
+              </select>
+            </div>
           </div>
           <div class="main_body" style="display: flex;">
-              
+
           </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
-              <span class="ch-tit">立杆轴力监测</span>
+            <span class="ch-tit">立杆轴力监测</span>
+            <div class="ch-tit nav_tit_right_tip layui-form">
+              <select name="quiz" title="请选择" >
+                  <option value="">工程#1</option>
+              </select>
+            </div>
           </div>
           <div class="main_body" style="display: flex;">
-              
+
           </div>
         </div>
       </div>
     </main>
 
-</div>
-<canvas id="canvas" ></canvas>
+  </div>
+  <canvas id="canvas"></canvas>
 
 
-<script src="./js/common.js"></script>
+  <script src="./js/common.js"></script>
 
-<script>
+  <script>
     var form, table;
     var Charts = {}
 
-    layui.use(['form' ,'table'], function (){
-        form = layui.form
-        table = layui.table
-        renderTable()
+    layui.use(['form', 'table'], function () {
+      form = layui.form
+      table = layui.table
+      renderTable()
     })
 
     $(function () {
-        initCategoryChart($("#MonthTrend")[0], 'MonthTrend', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
-            , undefined ,
-            {
-                legend: {
-                    top: '3%',
-                    right: '2%',
-                    icon: 'rect',
-                    textStyle: {
-                        color: '#FEFFFF',
-                        fontSize: 16
-                    }
-                },
-                grid: {
-                    x: 60,
-                    y: 50
-                },
-                yAxis: {
-                    name: '万元',
-                    nameTextStyle: {
-                        fontSize: 16,
-                        color: '#FEFFFF',
-                        padding: [0 ,0,0, -45]
-                    },
-                },
-                color: [ '#40F3EF' , '#F29E3B'],
-                series: [
-                    {
-                        data: [1800, 1900, 2000, 2200, 2400, 2600],
-                        type: 'bar',
-                        barWidth: 25,
-                        name: '计划'
-                    },
-                    {
-                        data: [900, 1200, 0,0,0,0],
-                        type: 'bar',
-                        barWidth: 25,
-                        name: '实际'
-                    }
-                ]
+      initCategoryChart($("#MonthTrend")[0], 'MonthTrend', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
+        , undefined,
+        {
+          legend: {
+            top: '3%',
+            right: '2%',
+            icon: 'rect',
+            textStyle: {
+              color: '#FEFFFF',
+              fontSize: 16
             }
-        )
+          },
+          grid: {
+            x: 60,
+            y: 50
+          },
+          yAxis: {
+            name: '万元',
+            nameTextStyle: {
+              fontSize: 16,
+              color: '#FEFFFF',
+              padding: [0, 0, 0, -45]
+            },
+          },
+          color: ['#40F3EF', '#F29E3B'],
+          series: [
+            {
+              data: [1800, 1900, 2000, 2200, 2400, 2600],
+              type: 'bar',
+              barWidth: 25,
+              name: '计划'
+            },
+            {
+              data: [900, 1200, 0, 0, 0, 0],
+              type: 'bar',
+              barWidth: 25,
+              name: '实际'
+            }
+          ]
+        }
+      )
     })
 
     function renderTable() {
-        table.render({
-            elem: '#table',
-            height: $("#table").parent().height() - 20,
-            data: [
-                {name1: '桥涵工程>预制5标梁>简支箱梁>简支箱梁预制', name2: '2021-12-16'},
-                {name1: '桥涵工程>双土地1号特大桥>简支箱梁> 简支箱梁预制', name2: '2021-12-16'},
-                {name1: '桥涵工程>双土地2号特大桥>简支箱梁> 简支箱梁预制', name2: '2021-12-16'},
-            ],
-            cols: [
-                [
-                    {  type: 'numbers', title: '序号', width: '60' },
-                    { field: 'name1', title: '工号', width: '50%' },
-                    { field: 'name2', title: '进程确定时间',width: '22%' }
-                ]
-            ],
-            done: function() {
-                $("#_Table .layui-table-body").layTableScroll()
-            }
-        })
+      table.render({
+        elem: '#table',
+        height: $("#table").parent().height() - 20,
+        data: [
+          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.19°", name4: "0.19°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:25:30"  },
+          { name1: '1#检测点', name2: '水平位移', name3: "0.23mm", name4: "0.23mm", name5: '540mm', name6: "正常",name7: "2021年08月24日 07:24:30"  },
+          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.21°", name4: "0.23°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:23:30"  },
+          { name1: '1#检测点', name2: '轴力', name3: "20N", name4: "20N", name5: '200N', name6: "正常",name7: "2021年08月24日 07:22:30"  },
+          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.15°", name4: "0.23°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:21:30"  },
+        ],
+        cols: [
+          [
+            { field: 'name1', title: '测点名称' },
+            { field: 'name2', title: '检测类型'},
+            { field: 'name3', title: '本次变化值' },
+            { field: 'name4', title: '累计变化值' },
+            { field: 'name5', title: '预警值' },
+            { field: 'name6', title: '状态' },
+            { field: 'name7', title: '检测时间', width: "20%" },
+          ]
+        ],
+        done: function () {
+          $("#_Table .layui-table-body").layTableScroll()
+        }
+      })
     }
 
     $(window).resize(() => {
-        for (var key in Charts) {
-            if (!Charts[key]) continue
-            Charts[key].resize()
-        }
+      for (var key in Charts) {
+        if (!Charts[key]) continue
+        Charts[key].resize()
+      }
     });
 
-</script>
-<script src="./js/echarts-component.js"></script>
-<script src="js/timeline.js"></script>
+  </script>
+  <script src="./js/echarts-component.js"></script>
+  <script src="js/timeline.js"></script>
 </body>
+
 </html>
