@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>进度管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/clear.css">
     <link rel="stylesheet" href="./css/home.css">
     <script src="./js/jquery.min.js"></script>
@@ -10,8 +11,11 @@
     <script src="./js/layui/dist/layui.js"></script>
     <script src="./js/echarts.min.js"></script>
 
+    <link rel="stylesheet" href="./css/timeline.css">
+    <link rel="stylesheet" href="./css/playprogress.css">
+
     <style>
-        .state_desc div{
+         .state_desc div{
             font-size: 24px;
             font-family: Microsoft YaHei;
             font-weight: 400;
@@ -46,24 +50,7 @@
             font-weight: 400;
             color: #40F3EF;
         }
-
-        .gantt_tree_content , .gantt_task .gantt_task_scale .gantt_scale_cell,  .gantt_grid_scale .gantt_grid_head_cell{
-            color: #ffffff!important;
-            font-size: 16px;
-        }
-
-
-        ::-webkit-scrollbar,.scroll_box::-webkit-scrollbar,.main_cont::-webkit-scrollbar,#AutoIframe::-webkit-scrollbar,.side .menu::-webkit-scrollbar{width:10px;}
-        ::-webkit-scrollbar-track,.scroll_box::-webkit-scrollbar-track,.main_cont::-webkit-scrollbar-track,#AutoIframe::-webkit-scrollbar-track,.side .menu::-webkit-scrollbar-track{border-radius:5px;box-shadow:inset 0 0 4px rgba(255,255,255,.7);}
-        ::-webkit-scrollbar-thumb,.scroll_box::-webkit-scrollbar-thumb,.main_cont::-webkit-scrollbar-thumb,#AutoIframe::-webkit-scrollbar-thumb,.side .menu::-webkit-scrollbar-thumb{border-radius:5px;background: #40f3ef;box-shadow:inset 0 0 4px rgba(0,0,0,.2);}
-        ::-webkit-scrollbar,.scroll_box::-webkit-scrollbar,.main_cont::-webkit-scrollbar,#AutoIframe::-webkit-scrollbar{height:10px;}
-
-
     </style>
-    <link rel="stylesheet" href="./css/timeline.css">
-    <link rel="stylesheet" href="./css/playprogress.css">
-    <link rel="stylesheet" href="./css/lib/dhtmlxgantt.css">
-    <script src="./js/dhtmlxgantt.js"></script>
 </head>
 <body style="position: relative; overflow: hidden">
 <div id="screen">
@@ -232,81 +219,6 @@
 
     </main>
 
-<!-- 进度模拟 -->
-    <main id="simulate" class="main_left_right" style="flex-wrap: wrap; display: none">
-        <div class="page_nav">
-            <a class="page_nav_item " href="#">进度管理</a>
-            <a class="page_nav_item page_nav_item_active" href="#simulate">进度模拟</a>
-        </div>
-        <div class="main_left" style="display: flex; flex-direction: column; width: 618px; height: 741px" >
-            <div class="top" style="display: flex; height:100%; flex-direction: column; justify-content: space-between;">
-                <div class="charts_content_box " style="width: 100%; height: 418px; background-image: url('./img/charts_content_box_618_418.png')">
-                    <div class="content-header">
-                        <span class="ch-tit">进度计划数</span>
-                    </div>
-                    <div class="main_body" >
-                        <div id="gantt_here" style='width:calc(100% - 1px); height:calc(100% - 1px);'></div>
-                    </div>
-                </div>
-                <div class="charts_content_box charts_content_box_308" style="width: 100%; height: 308px;">
-                    <div class="content-header">
-                        <span class="ch-tit">产值进度</span>
-                    </div>
-                    <div class="main_body" >
-                        <div id="Schedule" class="normal_chart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main_right" style="display: flex; flex-direction: column; height: 741px">
-            <div class="charts_content_box " style="width: 100%; height: 100%;; background-image: url('./img/charts_content_box_1255_741.png')" >
-                <div class="content-header">
-                    <span class="ch-tit">进度模拟</span>
-                </div>
-                <div class="main_body" >
-                </div>
-            </div>
-        </div>
-
-        <div class="charts_content_box" style="width: 100%; height: 201px; margin-top: 16px; background-image: url('./img/charts_content_box_1888_201.png')" >
-            <div class="content-header">
-                <span class="ch-tit">数据模拟</span>
-            </div>
-            <div class="main_body" style="padding: 0 35px; display: flex; align-items: center">
-                <div id="PlayProgress-container">
-                    <div class="play-progress-top">
-                        <span>2021年11月10日</span>
-                        <span>2023年12月25日</span>
-                    </div>
-                    <div class="play-progress-body">
-                        <div class="progress">
-                            <span class="progress_tag"></span>
-                        </div>
-                    </div>
-                    <div class="play-progress-opt">
-                        <div class="layui-form">
-                            <select name="opt1" >
-                                <option value="">1倍速推演</option>
-                                <option value="2">2倍速推演</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <span>播放</span>
-                            <i class="icon32" style="background-image: url('./img/play_32.png')"></i>
-                        </div>
-                        <div>
-                            <span>重新开始</span>
-                            <i class="icon32" style="background-image: url('./img/reback_32.png')"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-
 </div>
 <canvas id="canvas" ></canvas>
 
@@ -330,124 +242,10 @@
     layui.use(['form' ,'table'], function (){
         form = layui.form
         table = layui.table
-
         renderTable()
-
     })
 
-
-    gantt.i18n.setLocale("cn");     //设置语言为中文，默认英文
-    gantt.config.scale_unit = "month";
-    gantt.config.date_scale = "%Y, %F";
-    gantt.config.scale_height = 50;
-    gantt.config.subscales = [
-        {unit: "day", step: 5, date: "%j"}
-    ];
-
-    //自定义网格标题的内容
-    //var colHeader = '<div class="selfDefine_head">类型</div>'+'<div class="searchEl"><input id="search" type="text" placeholder="请输入"></div>';
-    gantt.config.columns = [
-        {name: "text", tree: true, align: "left",  width: '200', resize: true},
-        /*        {
-                    name: "buttons",
-                    label: colHeader,
-                    width: 200,
-                    tree: true,
-                    resize: true
-                }*/
-    ];
-
-    //开启只读模式
-    gantt.config.readonly = true;
-
-    //激活提示工具
-    gantt.plugins({
-        tooltip: true
-    });
-
-    //提示信息样式
-    gantt.templates.tooltip_text = function (start, end, task) {
-        return '<b>任务名称:</b> ' + task.text  + '<br/><b>开始时间:</b> ' + gantt.templates.tooltip_date_format(start) + '<br/><b>结束时间:</b> ' + gantt.templates.tooltip_date_format(end) + '<br/><b>工期:</b> ' + task.duration + "日"
-    };
-
-    //在页面上呈现数据后触发
-    gantt.attachEvent("onDataRender", function(){
-
-        $(".gantt_task_line").each( function () {
-            // console.log($(this).attr("aria-label"));
-            var text = $(this).attr("aria-label");
-            if (text.indexOf("*") != -1) {
-                $(this).css("display","none");
-            }
-        });
-        $(".gantt_cell_tree").each( function () {
-            // console.log($(this).attr("aria-label"));
-            var text = $(this).attr("aria-label");
-            var newText = text.split("*");
-            $(this).children(".gantt_tree_content").text(newText[0]);
-        });
-        $(".gantt_grid_head_text").css({"font-weight":"bold","font-size":"16px"});
-        $(".gantt_folder_open,.gantt_file").css("display","none");
-    });
-
-    //初始化
-    gantt.init("gantt_here");
-
-    $.get("./gantt-demo.json", function (res) {
-        console.log(res)
-        gantt.parse({
-            data: res,
-            links:[
-
-            ]
-        });
-    })
-
-
-    //滚动条滚动时触发
-    gantt.attachEvent("onGanttScroll", function (left, top){
-        // any custom logic here
-        //console.log(left);
-        if (left >= 0) {
-            $(".gantt_task_line").each( function () {
-                var text = $(this).attr("aria-label");
-                if (text.indexOf("*") != -1) {
-                    $(this).css("display","none");
-                }
-            });
-        }
-    });
     $(function () {
-        initLineChart($("#Schedule")[0], 'Schedule', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
-            , [2060, 1078,  2063, 2056, 2025,2084],
-            {
-                yAxis: {
-                    name: '/万元',
-                    nameTextStyle: {
-                        fontSize: 14,
-                        color: '#FEFFFF',
-                        padding: [0 ,0,0, -45]
-                    },
-                },
-                series: {
-                    areaStyle: {
-                        opacity: 0.8,
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            {
-                                offset: 0,
-                                color: '#40F3EF'
-                            },
-                            {
-                                offset: 1,
-                                color: '#162947'
-                            }
-                        ])
-                    }
-                }
-            }
-
-        )
-
         initCategoryChart($("#MonthTrend")[0], 'MonthTrend', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
             , undefined ,
             {
@@ -521,7 +319,6 @@
     });
 
 </script>
-<!--<script src="./js/bigscreen.js"></script>-->
 <script src="./js/echarts-component.js"></script>
 <script src="js/timeline.js"></script>
 </body>
