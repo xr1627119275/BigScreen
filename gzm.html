@@ -12,6 +12,23 @@
   <script src="./js/layui/dist/layui.js"></script>
   <script src="./js/echarts.min.js"></script>
 
+  <style>
+    .main-left {
+      width: 1252px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .main-right {
+      width: 618px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
 </head>
 
 <body style="position: relative; overflow: hidden">
@@ -33,22 +50,49 @@
           </div>
       </div>
   </div> -->
-
     <style>
-      .main-left {
-        width: 1252px;
-        height: 100%;
+      .layout_icon_text {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
       }
-
-      .main-right {
-        width: 618px;
-        height: 100%;
+      .layout_icon_text .icon_img {
+        width: 80px;
+        height: 80px;
+        display: block;
+        background-size: 100%;
+      }
+      .layout_icon_text .main_text {
+        width: 120px;
+        height: 80px;
+        margin-left: 10px;
         display: flex;
+        text-align: center;
         flex-direction: column;
         justify-content: space-between;
+      } 
+      .layout_icon_text .main_text p:first-child {
+        height: 50px;
+        line-height: 50px;
+        font-size: 42px;
+        font-family: Impact;
+        font-weight: 400;
+        color: #FFFFFF;
+      }
+      .layout_icon_text .main_text p:last-child {
+        font-size: 16px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #40F3EF;
+      }
+      #project-container ,#alarm-container  {
+        padding: 0 40px  20px 0;
+        box-sizing: border-box;
+        display: flex; flex-wrap: wrap; justify-content: center;
+      }
+      #alarm-container .layout_icon_text , #project-container .layout_icon_text {
+        width: 50%;
+        height: 50%;
       }
     </style>
     <main>
@@ -57,10 +101,39 @@
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
               <span class="ch-tit">工程数据</span>
-
+              
             </div>
-            <div class="main_body" style="display: flex;">
-
+            <div class="main_body" id="project-container"  style="display: flex;">
+              
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/gzm_project1.png');"></div>
+                    <div class="main_text">
+                      <p>3</p>
+                      <p>高支模工程数</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/gzm_project2.png');"></div>
+                    <div class="main_text">
+                      <p>3</p>
+                      <p>测点总数</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/gzm_project3.png');"></div>
+                    <div class="main_text">
+                      <p>3</p>
+                      <p>测点在线数</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/gzm_project4.png');"></div>
+                    <div class="main_text">
+                      <p>0</p>
+                      <p>测点离线数</p>
+                    </div>
+                </div>
+            
             </div>
           </div>
           <div class="charts_content_box_308" style="height: 308px">
@@ -72,8 +145,101 @@
                 </select>
               </div>
             </div>
-            <div class="main_body" style="display: flex;">
-
+            <style>
+              #RunStatus {
+                display: flex;
+                justify-content: space-between;
+                box-sizing: border-box;
+                padding: 8px;
+              }
+              #runmainimg {
+                width: 280px;
+                height: 250px;
+                background: url('./img/gzm_status_main.png') no-repeat;
+                background-size: 100%;
+              }
+              #StatusData {
+                width: 280px;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+              }
+              p.starttime {
+                font-size: 18px;
+                font-family: Adobe Heiti Std;
+                font-weight: normal;
+                color: #36C0C5;
+              }
+              .status_item {
+                display: flex;
+                height: 72px;
+                align-items: center;
+                background: linear-gradient(to right, #151752, #111235);
+              }
+              .status_icon {
+                width: 40px;
+                height: 40px;
+                margin: 0 25px 0 13px;
+                background-size: 100%;
+              }
+              .status_body {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+              }
+              .status_body p {
+                height: 50%;
+                font-size: 16px;
+                font-family: Adobe Heiti Std;
+                font-weight: normal;
+                color: #FFFFFF;
+              }
+              .status_body span {
+                font-size: 14px;
+                font-family: Adobe Heiti Std;
+                font-weight: normal;
+                color: #FFFFFF;
+              }
+              .status_body span.st_num {
+                font-size: 36px;
+                font-family: Impact;
+                font-weight: 400;
+                color: #FFFFFF;
+              }
+            </style>
+            <div id="RunStatus" class="main_body" style="display: flex;" >
+              <div id="runmainimg"></div>
+              <div id="StatusData">
+                <p class="starttime">开始时间：2021-11-30  12:23</p>
+                <div class="status_item">
+                  <div class="status_icon" style="background-image: url('./img/gzm_status_day.png');"></div>
+                  <div class="status_body">
+                    <p>
+                      <span class="st_num">2</span> <span>天</span> 
+                    </p>
+                    <p>运行天速</p>
+                  </div>
+                </div>
+                <div class="status_item">
+                  <div class="status_icon" style="background-image: url('./img/gzm_status_normal.png');"></div>
+                  <div class="status_body">
+                    <p>
+                      <span class="st_num">3</span> <span>个</span> 
+                    </p>
+                    <p>正常测点</p>
+                  </div>
+                </div>
+                <div class="status_item">
+                  <div class="status_icon" style="background-image: url('./img/gzm_status_fail.png');"></div>
+                  <div class="status_body">
+                    <p>
+                      <span class="st_num">1</span> <span>个</span> 
+                    </p>
+                    <p>异常测点</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -110,7 +276,7 @@
               </div>
             </div>
             <div class="main_body" style="display: flex;">
-
+              <div id="TiltMonitori" class="normal_chart"></div>
             </div>
           </div>
           <div class="charts_content_box_308" style="height: 308px">
@@ -122,8 +288,8 @@
                 </select>
               </div>
             </div>
-            <div class="main_body" style="display: flex;">
-
+            <div class="main_body" >
+              <div id="verticalMonitor" class="normal_chart"></div>
             </div>
           </div>
         </div>
@@ -139,9 +305,38 @@
               </select>
             </div>
           </div>
-          <div class="main_body" style="display: flex;">
-
-          </div>
+          <div class="main_body" id="alarm-container"  style="display: flex;">
+              
+            <div class="layout_icon_text">
+                <div class="icon_img" style="background-image: url('./img/gzm_alarm1.png');"></div>
+                <div class="main_text">
+                  <p>3</p>
+                  <p>倾角告警</p>
+                </div>
+            </div>
+            <div class="layout_icon_text">
+                <div class="icon_img" style="background-image: url('./img/gzm_alarm2.png');"></div>
+                <div class="main_text">
+                  <p>3</p>
+                  <p>轴力告警</p>
+                </div>
+            </div>
+            <div class="layout_icon_text">
+                <div class="icon_img" style="background-image: url('./img/gzm_alarm3.png');"></div>
+                <div class="main_text">
+                  <p>3</p>
+                  <p>水平位移告警</p>
+                </div>
+            </div>
+            <div class="layout_icon_text">
+                <div class="icon_img" style="background-image: url('./img/gzm_alarm4.png');"></div>
+                <div class="main_text">
+                  <p>3</p>
+                  <p>竖向位移告警</p>
+                </div>
+            </div>
+        
+        </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
@@ -153,7 +348,7 @@
             </div>
           </div>
           <div class="main_body" style="display: flex;">
-
+              <div id="HorizontalmMonitori" class="normal_chart"></div>
           </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
@@ -166,7 +361,7 @@
             </div>
           </div>
           <div class="main_body" style="display: flex;">
-
+            <div id="PoleMonitor" class="normal_chart"></div>
           </div>
         </div>
       </div>
@@ -189,48 +384,114 @@
     })
 
     $(function () {
-      initCategoryChart($("#MonthTrend")[0], 'MonthTrend', ["2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03"]
-        , undefined,
-        {
-          legend: {
-            top: '3%',
-            right: '2%',
-            icon: 'rect',
-            textStyle: {
-              color: '#FEFFFF',
-              fontSize: 16
-            }
-          },
-          grid: {
-            x: 60,
-            y: 50
-          },
-          yAxis: {
-            name: '万元',
-            nameTextStyle: {
-              fontSize: 16,
-              color: '#FEFFFF',
-              padding: [0, 0, 0, -45]
-            },
-          },
-          color: ['#40F3EF', '#F29E3B'],
-          series: [
-            {
-              data: [1800, 1900, 2000, 2200, 2400, 2600],
-              type: 'bar',
-              barWidth: 25,
-              name: '计划'
-            },
-            {
-              data: [900, 1200, 0, 0, 0, 0],
-              type: 'bar',
-              barWidth: 25,
-              name: '实际'
-            }
-          ]
-        }
-      )
+      var opts = {
+        color: ['#36C0C5', '#2459F4', '#F18A26']
+      }
+      initBrokenLineChart($("#HorizontalmMonitori")[0], "HorizontalmMonitori",
+            [
+                {
+                    name: '测点1',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点2',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点3',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        , Object.assign({ title: { text: '/mm' }}, opts))
+     
+      initBrokenLineChart($("#TiltMonitori")[0], "TiltMonitori",
+            [
+                {
+                    name: '测点1',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点2',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点3',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        , Object.assign({ title: { text: '/°' }}, opts))
+
+      initBrokenLineChart($("#verticalMonitor")[0], "verticalMonitor",
+            [
+                {
+                    name: '测点1',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点2',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点3',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        , Object.assign({ title: { text: '/mm' }}, opts))
+
+      initBrokenLineChart($("#PoleMonitor")[0], "PoleMonitor",
+            [
+                {
+                    name: '测点1',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点2',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                },
+                {
+                    name: '测点3',
+                    type: 'line',
+                    stack: 'Total',
+                    smooth: true,
+                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                }
+            ]
+        , Object.assign({ title: { text: '/n' }}, opts))
     })
+
 
     function renderTable() {
       table.render({
@@ -270,6 +531,43 @@
   </script>
   <script src="./js/echarts-component.js"></script>
   <script src="js/timeline.js"></script>
-</body>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
 
 </html>

@@ -343,7 +343,7 @@
 
                     </div>
                     <div class="milestone-timeline">
-                        <div id="Horizontal" class="timeline-container" style="overflow: hidden; position: relative">
+                        <div id="Horizontal" class="timeline-container" style="overflow: auto; position: relative">
                             <div class="timeline_div"  id="timeline_list">
 
                             </div>
@@ -494,7 +494,7 @@
     $(function () {
         // $("#personlist").layTableScroll($("#personlist"), '.personlist_item')
         $(".overview_item_desc").layTableScroll($("#desc_content"), '.ct', 300)
-        scrollTimeLineHorizontal()
+        // scrollTimeLineHorizontal()
         scrollTimeLineVertical()
         scroll("#personlist", "#personlist")
     })
