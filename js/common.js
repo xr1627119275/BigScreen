@@ -267,7 +267,7 @@ function _scrollItem(direction) {
     var left = Number(_content.css("left").replace('px', ''))
     var nextPageLeft = left + (direction == 'left' ? width : -width)
 
-    if (Math.abs(nextPageLeft) > scrollWidth ||  nextPageLeft > 0) return
+    if (Math.abs(nextPageLeft) >= scrollWidth ||  nextPageLeft > 0) return
 
     _content.animate({
         left: nextPageLeft + 'px'

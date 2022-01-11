@@ -190,10 +190,14 @@
               }
               .status_body p {
                 height: 50%;
+                box-sizing: border-box;
                 font-size: 16px;
                 font-family: Adobe Heiti Std;
                 font-weight: normal;
                 color: #FFFFFF;
+              }
+              .status_body p:last-child {
+                padding-top: 5px;
               }
               .status_body span {
                 font-size: 14px;
@@ -385,7 +389,11 @@
 
     $(function () {
       var opts = {
-        color: ['#36C0C5', '#2459F4', '#F18A26']
+        color: ['#36C0C5', '#2459F4', '#F18A26'],
+        grid:{
+            x:10,
+            x2:30,
+        },
       }
       initBrokenLineChart($("#HorizontalmMonitori")[0], "HorizontalmMonitori",
             [
@@ -394,24 +402,27 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点2',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点3',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 }
             ]
-        , Object.assign({ title: { text: '/mm' }}, opts))
+        , Object.assign({ title: { text: '/mm' }, xAxis: {
+                boundaryGap: true,
+          data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
+        }}, opts))
      
       initBrokenLineChart($("#TiltMonitori")[0], "TiltMonitori",
             [
@@ -420,24 +431,28 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> Number(Math.random().toFixed(2)))
                 },
                 {
                     name: '测点2',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> Number(Math.random().toFixed(2)))
                 },
                 {
                     name: '测点3',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> Number(Math.random().toFixed(2)))
                 }
             ]
-        , Object.assign({ title: { text: '/°' }}, opts))
+        , Object.assign({ title: { text: '/°' }, xAxis: {
+          boundaryGap: true,
+
+          data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
+        }}, opts))
 
       initBrokenLineChart($("#verticalMonitor")[0], "verticalMonitor",
             [
@@ -446,24 +461,28 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点2',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点3',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 }
             ]
-        , Object.assign({ title: { text: '/mm' }}, opts))
+        , Object.assign({ title: { text: '/mm' }, xAxis: {
+          boundaryGap: true,
+
+          data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
+        }}, opts))
 
       initBrokenLineChart($("#PoleMonitor")[0], "PoleMonitor",
             [
@@ -472,24 +491,28 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点2',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 },
                 {
                     name: '测点3',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 }
             ]
-        , Object.assign({ title: { text: '/n' }}, opts))
+        , Object.assign({ title: { text: '/n' }, xAxis: {
+          boundaryGap: true,
+
+          data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
+        }}, opts))
     })
 
 
