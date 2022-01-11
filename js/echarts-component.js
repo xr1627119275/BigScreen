@@ -175,7 +175,11 @@ function initBrokenLineChart(ele, name,series, opt) {
     };
 
     option = deepMerge(option, opt)
-    series.forEach(item => item.itemStyle = itemStyle)
+    series.forEach(item => { 
+        // symbol: "none", // 去掉折线小圆点
+        item.symbol = "none";
+        item.itemStyle = itemStyle
+    })
     option.series = series
     chart.setOption(option);
 
