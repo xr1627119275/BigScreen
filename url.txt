@@ -4,7 +4,11 @@
 设备管理	http://xrdev.top/BigScreen/home4.html
 技术管理	http://xrdev.top/BigScreen/home5.html
 进度管理	http://xrdev.top/BigScreen/home6.html
+进度模拟	http://xrdev.top/BigScreen/home6-2.html
 搅拌站	http://xrdev.top/BigScreen/home7.html
 视频监控	http://xrdev.top/BigScreen/home10.html
 项目概况	http://xrdev.top/BigScreen/ProjectProfile.html
+项目总览	http://xrdev.top/BigScreen/ProjectOverview.html
+高支模检测	http://xrdev.top/BigScreen/gzm.html
+环境监测	http://xrdev.top/BigScreen/env.htmls
 
