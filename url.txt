@@ -10,5 +10,5 @@
 项目概况	http://xrdev.top/BigScreen/ProjectProfile.html
 项目总览	http://xrdev.top/BigScreen/ProjectOverview.html
 高支模检测	http://xrdev.top/BigScreen/gzm.html
-环境监测	http://xrdev.top/BigScreen/env.htmls
+环境监测	http://xrdev.top/BigScreen/env.html
 
