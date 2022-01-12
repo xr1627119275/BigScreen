@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>高支模监测</title>
+  <title>深基坑监测</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/clear.css">
   <link rel="stylesheet" href="./css/home.css">
@@ -23,33 +23,32 @@
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
               <span class="ch-tit">工程数据</span>
-              
             </div>
             <div class="main_body" id="project-container"  style="display: flex;">
               
                 <div class="layout_icon_text">
-                    <div class="icon_img" style="background-image: url('./img/gzm_project1.png');"></div>
+                    <div class="icon_img" style="background-image: url('./img/sjk_project1.png');"></div>
                     <div class="main_text">
                       <p>3</p>
-                      <p>高支模工程数</p>
+                      <p>基坑总数</p>
                     </div>
                 </div>
                 <div class="layout_icon_text">
-                    <div class="icon_img" style="background-image: url('./img/gzm_project2.png');"></div>
+                    <div class="icon_img" style="background-image: url('./img/sjk_project2.png');"></div>
                     <div class="main_text">
                       <p>3</p>
                       <p>测点总数</p>
                     </div>
                 </div>
                 <div class="layout_icon_text">
-                    <div class="icon_img" style="background-image: url('./img/gzm_project3.png');"></div>
+                    <div class="icon_img" style="background-image: url('./img/sjk_project3.png');"></div>
                     <div class="main_text">
                       <p>3</p>
                       <p>测点在线数</p>
                     </div>
                 </div>
                 <div class="layout_icon_text">
-                    <div class="icon_img" style="background-image: url('./img/gzm_project4.png');"></div>
+                    <div class="icon_img" style="background-image: url('./img/sjk_project4.png');"></div>
                     <div class="main_text">
                       <p>0</p>
                       <p>测点离线数</p>
@@ -63,12 +62,12 @@
               <span class="ch-tit">运行状态</span>
               <div class="ch-tit nav_tit_right_tip layui-form" >
                 <select name="quiz" title="请选择">
-                  <option value="">工程#1</option>
+                  <option value="">1#基坑</option>
                 </select>
               </div>
             </div>
             <div id="RunStatus" class="main_body" style="display: flex;" >
-              <div id="runmainimg"></div>
+              <div id="runmainimg" style="background-image: url('./img/sjk_status_main.png');"></div>
               <div id="StatusData">
                 <p class="starttime">开始时间：2021-11-30  12:23</p>
                 <div class="status_item">
@@ -112,7 +111,7 @@
             </div>
             <div class="ch-tit nav_tit_right_tip layui-form" >
               <select name="quiz" title="请选择">
-                <option value="">工程#1</option>
+                <option value="">1#基坑</option>
               </select>
             </div>
           </div>
@@ -127,10 +126,10 @@
         <div style="display: flex; justify-content: space-between;">
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-              <span class="ch-tit">立杆倾斜检测</span>
+              <span class="ch-tit">地下水位监测</span>
               <div class="ch-tit nav_tit_right_tip layui-form">
                 <select name="quiz" title="请选择" >
-                    <option value="">工程#1</option>
+                    <option value="">1#基坑</option>
                 </select>
               </div>
             </div>
@@ -140,10 +139,10 @@
           </div>
           <div class="charts_content_box_308" style="height: 308px">
             <div class="content-header">
-              <span class="ch-tit">竖向位移检测</span>
+              <span class="ch-tit">地表沉降监测</span>
               <div class="ch-tit nav_tit_right_tip layui-form">
                 <select name="quiz" title="请选择" >
-                    <option value="">工程#1</option>
+                    <option value="">1#基坑</option>
                 </select>
               </div>
             </div>
@@ -157,52 +156,18 @@
       <div class="main-right">
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
-            <span class="ch-tit">告警数据</span>
-            <div class="ch-tit nav_tit_right_tip layui-form">
-              <select name="quiz" title="请选择" >
-                  <option value="">工程#1</option>
-              </select>
-            </div>
+            <span class="ch-tit">近30天告警数据</span>
           </div>
           <div class="main_body" id="alarm-container"  style="display: flex;">
               
-            <div class="layout_icon_text">
-                <div class="icon_img" style="background-image: url('./img/gzm_alarm1.png');"></div>
-                <div class="main_text">
-                  <p>3</p>
-                  <p>倾角告警</p>
-                </div>
-            </div>
-            <div class="layout_icon_text">
-                <div class="icon_img" style="background-image: url('./img/gzm_alarm2.png');"></div>
-                <div class="main_text">
-                  <p>3</p>
-                  <p>轴力告警</p>
-                </div>
-            </div>
-            <div class="layout_icon_text">
-                <div class="icon_img" style="background-image: url('./img/gzm_alarm3.png');"></div>
-                <div class="main_text">
-                  <p>3</p>
-                  <p>水平位移告警</p>
-                </div>
-            </div>
-            <div class="layout_icon_text">
-                <div class="icon_img" style="background-image: url('./img/gzm_alarm4.png');"></div>
-                <div class="main_text">
-                  <p>3</p>
-                  <p>竖向位移告警</p>
-                </div>
-            </div>
-        
-        </div>
+         </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
             <span class="ch-tit">水平位移监测</span>
             <div class="ch-tit nav_tit_right_tip layui-form">
               <select name="quiz" title="请选择" >
-                  <option value="">工程#1</option>
+                  <option value="">1#基坑</option>
               </select>
             </div>
           </div>
@@ -212,10 +177,10 @@
         </div>
         <div class="charts_content_box_308" style="height: 308px">
           <div class="content-header">
-            <span class="ch-tit">立杆轴力监测</span>
+            <span class="ch-tit">轴力监测</span>
             <div class="ch-tit nav_tit_right_tip layui-form">
               <select name="quiz" title="请选择" >
-                  <option value="">工程#1</option>
+                  <option value="">1#基坑</option>
               </select>
             </div>
           </div>
@@ -271,7 +236,7 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
+                    data: new Array(6).fill(0).map((item, index)=> (index % 2 == 0 ? -1 : 1 ) * parseInt(Math.random() * 30))
                 }
             ]
         , Object.assign({ title: { text: '/mm' }, xAxis: {
@@ -300,10 +265,10 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(6).fill(0).map(item=> Number(Math.random().toFixed(2)))
+                    data: new Array(6).fill(0).map((item, index)=> (index % 2 == 0 ? -1 : 1 ) * Number(Math.random().toFixed(2)))
                 }
             ]
-        , Object.assign({ title: { text: '/°' }, xAxis: {
+        , Object.assign({ title: { text: '/mm' }, xAxis: {
           boundaryGap: true,
 
           data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
@@ -330,14 +295,14 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
+                    data: new Array(6).fill(0).map((item, index) => (index % 2 == 0 ? -1 : 1 ) * parseInt(Math.random() * 30))
                 }
             ]
         , Object.assign({ title: { text: '/mm' }, xAxis: {
           boundaryGap: true,
-
           data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
-        }}, opts))
+        }
+    }, opts))
 
       initBrokenLineChart($("#PoleMonitor")[0], "PoleMonitor",
             [
@@ -363,7 +328,7 @@
                     data: new Array(6).fill(0).map(item=> parseInt(Math.random() * 30))
                 }
             ]
-        , Object.assign({ title: { text: '/n' }, xAxis: {
+        , Object.assign({ title: { text: '/KN' }, xAxis: {
           boundaryGap: true,
 
           data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
@@ -376,11 +341,11 @@
         elem: '#table',
         height: $("#table").parent().height() - 20,
         data: [
-          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.19°", name4: "0.19°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:25:30"  },
-          { name1: '1#检测点', name2: '水平位移', name3: "0.23mm", name4: "0.23mm", name5: '540mm', name6: "正常",name7: "2021年08月24日 07:24:30"  },
-          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.21°", name4: "0.23°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:23:30"  },
-          { name1: '1#检测点', name2: '轴力', name3: "20N", name4: "20N", name5: '200N', name6: "正常",name7: "2021年08月24日 07:22:30"  },
-          { name1: '1#检测点', name2: '立杆倾斜', name3: "0.15°", name4: "0.23°", name5: '2.0°', name6: "正常",name7: "2021年08月24日 07:21:30"  },
+          { name1: '基坑检测点001', name2: '地下水位', name3: "0.15mm", name4: "0.15mm", name5: '2.00mm', name6: "正常",name7: "2021年08月24日 07:25:30"  },
+          { name1: '基坑检测点002', name2: '基坑周边沉降', name3: "0.13mm", name4: "0.90mm", name5: '2.00mm', name6: "正常",name7: "2021年08月24日 07:24:30"  },
+          { name1: '基坑检测点003', name2: '深坑水平位移', name3: "0.14mm", name4: "0.89mm", name5: '2.00mm', name6: "正常",name7: "2021年08月24日 07:23:30"  },
+          { name1: '基坑检测点004', name2: '地下水位', name3: "0.19mm", name4: "0.90mm",name5: '2.00mm', name6: "正常",name7: "2021年08月24日 07:22:30"  },
+          { name1: '基坑检测点005', name2: '基坑周边沉降', name3: "0.20mm", name4: "0.72mm", name5: '2.00mm', name6: "正常",name7: "2021年08月24日 07:21:30"  },
         ],
         cols: [
           [

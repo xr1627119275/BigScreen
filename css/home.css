@@ -1413,3 +1413,147 @@ main #map_container .statistics .right .filter_header .btn-search {
   width: 32px;
   height: 32px;
 }
+
+#Engineing .main-left {
+  width: 1252px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#Engineing .main-right {
+  width: 618px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#Engineing .layout_icon_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Engineing .layout_icon_text .icon_img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  background-size: 100%;
+}
+
+#Engineing .layout_icon_text .main_text {
+  width: 120px;
+  height: 80px;
+  margin-left: 10px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#Engineing .layout_icon_text .main_text p:first-child {
+  height: 50px;
+  line-height: 50px;
+  font-size: 42px;
+  font-family: Impact;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+#Engineing .layout_icon_text .main_text p:last-child {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  color: #40F3EF;
+}
+
+#Engineing #project-container, #Engineing #alarm-container {
+  padding: 0 40px  20px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#Engineing #alarm-container .layout_icon_text, #Engineing #project-container .layout_icon_text {
+  width: 50%;
+  height: 50%;
+}
+
+#Engineing #RunStatus {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+#Engineing #runmainimg {
+  width: 280px;
+  height: 250px;
+  background: url("../img/gzm_status_main.png") no-repeat;
+  background-size: 100%;
+}
+
+#Engineing #StatusData {
+  width: 280px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#Engineing p.starttime {
+  font-size: 18px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #36C0C5;
+}
+
+#Engineing .status_item {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  background: linear-gradient(to right, #151752, #111235);
+}
+
+#Engineing .status_icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 25px 0 13px;
+  background-size: 100%;
+}
+
+#Engineing .status_body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#Engineing .status_body p {
+  height: 50%;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+#Engineing .status_body p:last-child {
+  padding-top: 5px;
+}
+
+#Engineing .status_body span {
+  font-size: 14px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+#Engineing .status_body span.st_num {
+  font-size: 36px;
+  font-family: Impact;
+  font-weight: 400;
+  color: #FFFFFF;
+}

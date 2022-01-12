@@ -1,3 +1,8 @@
+var xAxis_axisTick = { 
+        lineStyle: {
+            opacity: 0
+        }
+}
 function initPieChart(ele, name,data, opt) {
     var chart = echarts.init(ele);
     var pieChartOption = {
@@ -136,6 +141,10 @@ function initBrokenLineChart(ele, name,series, opt) {
                     fontSize: 16,
                     color: '#FEFFFF'
                 }
+            },
+            axisTick: xAxis_axisTick,
+            axisLine: {
+                lineStyle: { color: '#36C0C5'}
             }
         },
         yAxis: {
@@ -214,6 +223,7 @@ function initLineChart(ele, name, data1, data2, opt) {
                 type: 'category',
                 // boundaryGap: false,
                 data: data1,
+                axisTick: xAxis_axisTick,
                 axisLabel: {
                     show: true,
                     textStyle: {

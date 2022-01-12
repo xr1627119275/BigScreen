@@ -1331,3 +1331,138 @@ $table_border_color: rgba(47, 249, 240, 0.4);
   width: 32px;
   height: 32px;
 }
+
+
+
+#Engineing {
+  .main-left {
+    width: 1252px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .main-right {
+    width: 618px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+
+  .layout_icon_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .layout_icon_text .icon_img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    background-size: 100%;
+  }
+  .layout_icon_text .main_text {
+    width: 120px;
+    height: 80px;
+    margin-left: 10px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+  } 
+  .layout_icon_text .main_text p:first-child {
+    height: 50px;
+    line-height: 50px;
+    font-size: 42px;
+    font-family: Impact;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
+  .layout_icon_text .main_text p:last-child {
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #40F3EF;
+  }
+  #project-container ,#alarm-container  {
+    padding: 0 40px  20px 0;
+    box-sizing: border-box;
+    display: flex; flex-wrap: wrap; justify-content: center;
+  }
+  #alarm-container .layout_icon_text , #project-container .layout_icon_text {
+    width: 50%;
+    height: 50%;
+  } 
+
+
+
+
+  #RunStatus {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 8px;
+  }
+  #runmainimg {
+    width: 280px;
+    height: 250px;
+    background: url('../img/gzm_status_main.png') no-repeat;
+    background-size: 100%;
+  }
+  #StatusData {
+    width: 280px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  p.starttime {
+    font-size: 18px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #36C0C5;
+  }
+  .status_item {
+    display: flex;
+    height: 72px;
+    align-items: center;
+    background: linear-gradient(to right, #151752, #111235);
+  }
+  .status_icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 25px 0 13px;
+    background-size: 100%;
+  }
+  .status_body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .status_body p {
+    height: 50%;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #FFFFFF;
+  }
+  .status_body p:last-child {
+    padding-top: 5px;
+  }
+  .status_body span {
+    font-size: 14px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #FFFFFF;
+  }
+  .status_body span.st_num {
+    font-size: 36px;
+    font-family: Impact;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
+
+}
