@@ -193,7 +193,7 @@ function initBrokenLineChart(ele, name,series, opt) {
     chart.setOption(option);
 
     Charts[name] = chart
-
+    return chart
 }
 
 

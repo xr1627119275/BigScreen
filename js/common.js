@@ -1,4 +1,4 @@
-var splitLineColor = 'rgba(54,192,197,0.3)'
+var splitLineColor = 'rgba(54,192,197,0.3)' // 图标分割线颜色
 
 var global_config = {
     needHeader: false, // 是否需要头部

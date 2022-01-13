@@ -304,7 +304,7 @@
         }
     }, opts))
 
-      initBrokenLineChart($("#PoleMonitor")[0], "PoleMonitor",
+      var PoleMonitorChart = initBrokenLineChart($("#PoleMonitor")[0], "PoleMonitor",
             [
                 {
                     name: '测点1',
@@ -333,6 +333,7 @@
 
           data: ['12:00\n11-23', '13:00\n11-23', '14:00\n11-23', '15:00\n11-23', '16:00\n11-23',  '17:00\n11-23']
         }}, opts))
+
     })
 
 
