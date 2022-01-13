@@ -9,6 +9,7 @@
 视频监控	http://xrdev.top/BigScreen/home10.html
 项目概况	http://xrdev.top/BigScreen/ProjectProfile.html
 项目总览	http://xrdev.top/BigScreen/ProjectOverview.html
-高支模检测	http://xrdev.top/BigScreen/gzm.html
+高支模监测	http://xrdev.top/BigScreen/gzm.html
+深基坑监测	http://xrdev.top/BigScreen/sjk.html
 环境监测	http://xrdev.top/BigScreen/env.html
 

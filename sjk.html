@@ -159,7 +159,7 @@
             <span class="ch-tit">近30天告警数据</span>
           </div>
           <div class="main_body" id="alarm-container"  style="display: flex;">
-              
+              <div id="AlarmChart" class="normal_chart"></div>
          </div>
         </div>
         <div class="charts_content_box_308" style="height: 308px">
@@ -215,6 +215,25 @@
             x2:30,
         },
       }
+
+      var optPie = {
+            legend: {
+                right: '10%'
+            },
+            series: {
+                radius: ['55%', '80%'],
+                center: ['30%', '50%'],
+            },
+            color: ['#264ACF','#36C0C5' ],
+        }
+
+        initPieChart($("#AlarmChart")[0], "AlarmChart",
+            [
+                {name: '超出预警值', value: '15'},
+                {name: '超出控制值', value: '10'},
+            ],
+            Object.assign(optPie, { itemGap: 50 })
+        )
       initBrokenLineChart($("#HorizontalmMonitori")[0], "HorizontalmMonitori",
             [
                 {
