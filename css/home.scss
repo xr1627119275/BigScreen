@@ -409,6 +409,10 @@ main {
     width: 935px;
     background-image: url("../img/charts_content_box_935_576.png");
   }
+  .charts_content_box_936_405 {
+    width: 936px;
+    background-image: url("../img/charts_content_box_936_405.png");
+  }
   .charts_content_box_220 {
     background-image: url("../img/charts_content_box_220.png");
   }
@@ -1334,7 +1338,7 @@ $table_border_color: rgba(47, 249, 240, 0.4);
 
 
 
-#Engineing {
+#Engineing, .common_icon_text_layout {
   .main-left {
     width: 1252px;
     height: 100%;
@@ -1371,7 +1375,14 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     text-align: center;
     flex-direction: column;
     justify-content: space-between;
-  } 
+  }
+  .unit {
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #FFFFFF;
+  }
   .layout_icon_text .main_text p:first-child {
     height: 50px;
     line-height: 50px;
@@ -1386,12 +1397,12 @@ $table_border_color: rgba(47, 249, 240, 0.4);
     font-weight: 400;
     color: #40F3EF;
   }
-  #project-container ,#alarm-container  {
+  #project-container ,#alarm-container,.main_icon_text_layout  {
     padding: 0 40px  20px 0;
     box-sizing: border-box;
     display: flex; flex-wrap: wrap; justify-content: center;
   }
-  #alarm-container .layout_icon_text , #project-container .layout_icon_text {
+  .main_icon_text_layout .layout_icon_text,  #alarm-container .layout_icon_text , #project-container .layout_icon_text {
     width: 50%;
     height: 50%;
   } 

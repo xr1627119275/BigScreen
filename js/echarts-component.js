@@ -89,7 +89,7 @@ function initPieChart(ele, name,data, opt) {
 
     chart.setOption(pieChartOption);
     Charts[name] = chart
-
+    return chart
 }
 
 // 折线图
@@ -223,7 +223,6 @@ function initLineChart(ele, name, data1, data2, opt) {
                 type: 'category',
                 // boundaryGap: false,
                 data: data1,
-                axisTick: xAxis_axisTick,
                 axisLabel: {
                     show: true,
                     textStyle: {
@@ -254,6 +253,7 @@ function initLineChart(ele, name, data1, data2, opt) {
             {
                 // name: 'Line 1',
                 type: 'line',
+
                 // stack: 'Total',
                 smooth: true,
                 lineStyle: {

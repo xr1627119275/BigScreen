@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>物质管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/clear.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./js/layui/dist/css/layui.css">
+    <script src="./js/layui/dist/layui.js"></script>
+    <script src="./js/echarts.min.js"></script>
+
+    <style>
+        .common_icon_text_layout {
+            box-sizing: border-box;
+            padding-left: 50px;
+        }
+        .common_icon_text_layout .layout_icon_text .main_text {
+            width: initial;
+            text-align: left;
+            margin-left: 30px;
+        }
+        .common_icon_text_layout .layout_icon_text {
+            justify-content: flex-start;
+        }
+
+        .common_icon_text_layout .layout_icon_text .main_text p:first-child {
+            font-size: 30px;
+        }
+        .plate_num {
+            font-size: 36px !important;
+        }
+    </style>
+</head>
+<body style="position: relative; overflow: hidden">
+<div id="screen">
+
+    <div id="header" style="width: 100%; height: 101px; vertical-align: middle"></div>
+
+    <div id="plate_nav">
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">总采购</div>
+                <div class="plate_num">
+                    <p>
+                        <span>10,995</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">战略采购</div>
+                <div class="plate_num">
+                    <p>
+                        <span>5995</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">支出</div>
+                <div class="plate_num">
+                    <p>
+                        <span>60</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">库存</div>
+                <div class="plate_num">
+                    <p>
+                        <span>28</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">周转采购</div>
+                <div class="plate_num">
+                    <p>
+                        <span>0</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="plate_item">
+            <div class="plate_box">
+                <div class="plate_til">周转租赁</div>
+                <div class="plate_num">
+                    <p>
+                        <span>4</span>
+                        <span class="unit">/万</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main style="align-content: space-between">
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">采购来源分析</span>
+            </div>
+            <div class="main_body">
+                <div id="SourceAnalysis" class="pie_chart"></div>
+            </div>
+        </div>
+        <div class="charts_content_box">
+            <div class="content-header">
+                <span class="ch-tit">采购类别分析</span>
+            </div>
+            <div class="main_body">
+                <div id="PurchaseAanalysis" class="normal_chart"></div>
+            </div>
+        </div>
+        <div class="charts_content_box common_icon_text_layout">
+            <div class="content-header">
+                <span class="ch-tit">滞后分析</span>
+            </div>
+            <div class="main_body main_icon_text_layout">
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/sjk_project1.png');"></div>
+                    <div class="main_text">
+                        <p><span>3</span><span class="unit">/万</span></p>
+                        <p>应付未付</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/sjk_project1.png');"></div>
+                    <div class="main_text">
+                        <p><span>180.34</span><span class="unit">/万</span></p>
+                        <p>应入未入</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/sjk_project1.png');"></div>
+                    <div class="main_text">
+                        <p><span>65324.23</span><span class="unit">/万</span></p>
+                        <p>应列未列</p>
+                    </div>
+                </div>
+                <div class="layout_icon_text">
+                    <div class="icon_img" style="background-image: url('./img/sjk_project1.png');"></div>
+                    <div class="main_text">
+                        <p><span>23.23</span><span class="unit">/万</span></p>
+                        <p>应摊未摊</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts_content_box charts_content_box_936_405">
+            <div class="content-header">
+                <span class="ch-tit">采购/生产商</span>
+            </div>
+            <div class="main_body">
+                <div id="_Table" class="main_body_table">
+                    <table id="table"></table>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts_content_box charts_content_box_936_405">
+            <div class="content-header">
+                <span class="ch-tit">成本分析</span>
+                <span class="ch-tit nav_tit_right_tip" >单位：元</span>
+            </div>
+
+            <style>
+                .data-result {
+                    position: absolute;
+                    right: 15px;
+                    top: 10px;
+                    padding: 10px 22px;
+                    background: #151851;
+                }
+                .data-result p {
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 18px;
+                    font-family: Microsoft YaHei;
+                    font-weight: 400;
+                    color: #FEFFFF;
+                }
+            </style>
+            <div class="main_body" style="position: relative">
+
+                <div id="CostAnalysis" class="normal_chart" style="width: calc(100% - 300px)"></div>
+                <div class="data-result">
+                    <p><span>量差：</span><span>2245698.32</span></p>
+                    <p><span>价差：</span><span>-286963.41</span></p>
+                    <p><span>盈亏：</span><span>45635645521.23</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<canvas id="canvas" ></canvas>
+
+<script src="./js/common.js"></script>
+<script>
+    var form, table;
+    var Charts = {}
+
+    $("#header").load('_header.html')
+
+    layui.use(['form', 'table'], function () {
+        form = layui.form
+        table = layui.table
+        form.render('select')
+        renderTable()
+    })
+
+    function renderTable() {
+
+        table.render({
+            elem: '#table',
+            height: $("#table").parent().height() - 20,
+            data: [
+                {name1: '上海济发实业有限公司', name2: '38.86万' },
+                {name1: '中铁四局集团物资工贸有限公司西安分公司', name2: '12.30万' },
+                {name1: '安徽宏程物资有限公司', name2: '563.02万' },
+                {name1: '安徽涵瑞商贸有限公司', name2: '163.32万' },
+                {name1: '安徽领德商贸有限公司', name2: '328.86万' },
+                {name1: '北京思达建茂科技发展有限公司', name2: '1236.32万' },
+                {name1: '合肥市包河区节节青五金建材经营部', name2: '5653142.23万' },
+            ],
+            cols: [
+                [
+                    {type: "numbers", title: "序号"},
+                    {field: 'name1', title: '生产厂商'},
+                    {field: 'name2', title: '供应金额'},
+                ]
+            ],
+            done: function () {
+                $("#_Table .layui-table-body").layTableScroll()
+            }
+        })
+    }
+
+
+    $(function () {
+        // initPie3DChart()
+        var optPie = {
+            legend: {
+                right: '8%',
+                textStyle: {
+                    rich: {
+                        name: {
+                            width: 120
+                        },
+                        unit: {
+                            fontSize: 16,
+                            align: 'right',
+                            padding: [0,0,-10,10],
+                            color: '#fff'
+                        }
+                    }
+                }
+            },
+            series: {
+                radius: ['45%', '65%'],
+                center: ['30%', '50%'],
+            },
+            _formatter: function (name, value) {
+                var unit = "/万"
+                var arr = [
+                    '{icon|}',
+                    '{name|' + name + '}{value|' + value + '}{unit|' + unit +'}',
+                ];
+                return arr.join('\n')
+            },
+            color: ['#264ACF', '#FF9125', '#36C0C5' ],
+        }
+        initPieChart($("#SourceAnalysis")[0], "AlarmChart",
+            [
+                {name: '电商采购', value: '1203.24'},
+                {name: '战略采购', value: '1303.45'},
+                {name: '其他采购', value: '4603.25'},
+            ],
+            Object.assign(optPie, { itemGap: 50 })
+        )
+        initPieChart($("#PurchaseAanalysis")[0], 'PurchaseAanalysis',[
+            {name: '石头', value: '18'},
+            {name: '沙子', value: '20'},
+            {name: '混凝土', value: '34'},
+            {name: '粉煤炭', value: '22'},
+            {name: '钢材', value: '150'},
+        ], {
+            color: ['#BF23CC','#CE7525', '#BF2E4A', '#173DAA', '#18A89D' ],
+            series: {
+                radius: ['0', '80%'], center: ['50%', '50%'],
+                label: {
+                    show: true,
+                    position: 'inner',
+                    fontSize: 14,
+                },
+            },
+            legend: {
+                show: false
+            }
+        })
+        _initChart($("#CostAnalysis")[0], 'CostAnalysis', ['盘螺', '螺纹钢', '混凝土', '圆钢', '碎石'].reverse(), [-200, -220, 200, 220, 10].reverse())
+    })
+
+
+    function _initChart(ele, name, data1, data2, opt) {
+            var chart = echarts.init(ele);
+            var colors = ['#F59A23', '#3EF2ED', '#173DAA', '#FF3333', '#F59A23' ]
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: function (datas, dat) {
+                        console.log(datas, dat)
+                        var data = datas[0]
+                        var text = [
+                            data.axisValue + "",
+                            `盈亏金额：30,250,236.24`
+                        ]
+                        return text.join('<br/>')
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    top: '5%',
+                    bottom: '10%',
+                    containLabel: true,
+                    borderWidth: 1
+                },
+                xAxis:
+                    {
+                        type: 'value',
+                        splitLine: {
+                            show: false,
+                            lineStyle: {
+                                color: [splitLineColor]
+                            }
+                        },
+                        axisLabel: {
+                            show: false,
+                        }
+                    }
+                ,
+                yAxis:
+                    {
+                        type: 'category',
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                fontSize: 16,
+                                color: '#FEFFFF'
+                            }
+                        },
+                        data: data1
+                    }
+                ,
+                series:
+                    {
+                        // name: 'Profit',
+                        type: 'bar',
+                        label: {
+                            show: false,
+                        },
+                        barWidth: 24,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        itemStyle: {
+                            color: function(params, index){
+                                console.log(params)
+                                var index= colors.length - params.dataIndex - 1
+                                return  colors[index]
+                            }
+                        },
+                        data: data2
+                    },
+
+
+
+            };
+
+
+            deepMerge(option, opt)
+
+            chart.setOption(option);
+            Charts[name] = chart
+    }
+    $(window).resize(() => {
+        for (var key in Charts) {
+            if (!Charts[key]) continue
+            Charts[key].resize()
+        }
+    });
+
+</script>
+<!--<script src="./js/bigscreen.js"></script>-->
+<script src="./js/echarts-component.js"></script>
+<script src="./js/screenfull.min.js"></script>
+</body>
+</html>
