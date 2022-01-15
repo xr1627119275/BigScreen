@@ -12,4 +12,5 @@
 高支模监测	http://xrdev.top/BigScreen/gzm.html
 深基坑监测	http://xrdev.top/BigScreen/sjk.html
 环境监测	http://xrdev.top/BigScreen/env.html
+物资管理	http://xrdev.top/BigScreen/wz.html
 
