@@ -609,7 +609,7 @@
             showEnclosure: false,
             types: [10, 20],
             markerClick: function (obj, marker) {
-                publicAjax(null, "sys/deskTop/queryById", {id: obj.id, type: obj.type,modular:0}, false, null, function (res) {
+                _publicAjax(null, "sys/deskTop/queryById", {id: obj.id, type: obj.type,modular:0}, false, null, function (res) {
                     if (res.code == 2000) {
                         leftTipsHandle(res.data, obj.type);
                         rightTipsHandle(res.data, obj.type, obj.gps);
@@ -650,7 +650,7 @@
         var value = $('#search-value').val();
         if (value !== '') {
             searchMap = new Map();
-            publicAjax(null, "sys/deskTop/queryByName", {
+            _publicAjax(null, "sys/deskTop/queryByName", {
                 name: value,
                 types: mapUtil.getTypes()
             }, false, null, function (res) {

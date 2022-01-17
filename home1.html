@@ -188,6 +188,7 @@
 <canvas id="canvas" ></canvas>
 
 <script src="./js/common.js"></script>
+
 <script>
     var form, table;
     var Charts = {}
@@ -199,6 +200,9 @@
         table = layui.table
         form.render('select')
         renderTable()
+
+        renderHeaderData()
+
     })
 
     function openModal() {
@@ -210,6 +214,18 @@
     function closeModal() {
         $("#Modal").fadeOut()
         $("#mark").hide()
+    }
+
+
+    // 渲染头部数据
+    function renderHeaderData() {
+        parent.window.publicPostAjax('http://112.26.197.79:40106/' + parent.window.site_display_system + "/laborScreen/gainTop", undefined , false, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data != null) {
+                    console.log(re.data)
+                }
+            }
+        });
     }
 
     function renderModalTable() {

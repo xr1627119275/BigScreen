@@ -38,6 +38,7 @@ if (global_config) {
     if (global_config.markBackGroup) {
         $("body").append($(`<div id="MarkBg"></div>`))
     }
+
 }
 
 document.write(`<script src="./js/moment.min.js"></script>`)
@@ -58,6 +59,8 @@ function scroll(target, child) {
         }
     }, 25)
 }
+
+setTimeout(function () {
 
 jQuery.fn.extend({
     layTableScroll:function (_ul, _li, timeout){
@@ -90,6 +93,7 @@ jQuery.fn.extend({
         })
     }
 });
+})
 
 // 加载首页
 $("#header").load('_header.html',undefined, function (response, status) {
@@ -186,7 +190,7 @@ function doHandleMonth(month) {
 }
 
 publicUrl = 'http://61.190.7.13:9410/mdm/'
-var publicAjax = function (types, urls, params, asyncs, header, callback, error) {
+var _publicAjax = function (types, urls, params, asyncs, header, callback, error) {
     var async_val = true, header_val = {"Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiMSIsImxvZ2luTmFtZSI6IkFkbWluaXN0cmF0b3IiLCJpc3MiOiJjdGNlYWRtaW5zdHJhdG9yIn0.4ztrsoEczkasFe2meS5oASG372rc8zsdFaPG8FjH8Ho"}, type_val = 'post';
     if (asyncs != null) {
         async_val = asyncs;
