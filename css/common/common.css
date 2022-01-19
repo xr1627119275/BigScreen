@@ -1,17 +1,3 @@
-/* Error: expected ":".
- *   ,
- * 1 | $bg_color = "#0C0D21";
- *   |           ^
- *   '
- *   common.scss 1:11  root stylesheet */
-
-body::before {
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-}
 
 
-
+/*# sourceMappingURL=common.css.map */

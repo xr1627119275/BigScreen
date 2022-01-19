@@ -26,7 +26,7 @@
                 <div class="plate_til">项目部得分</div>
                 <div class="plate_num">
                     <p>
-                        <span>123</span>
+                        <span id="score">0</span>
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="plate_til">项目部排名</div>
                 <div class="plate_num">
                     <p>
-                        <span>34</span>
+                        <span id="ranking">0</span>
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                 <div class="plate_til">本期隐患数量</div>
                 <div class="plate_num">
                     <p>
-                        <span>12</span>
+                        <span id="flawCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="plate_til">本期待整改</div>
                 <div class="plate_num">
                     <p>
-                        <span>6</span>
+                        <span>0</span>
                     </p>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="plate_til">超期未销项</div>
                 <div class="plate_num">
                     <p>
-                        <span>3</span>
+                        <span>0</span>
                     </p>
                 </div>
             </div>
@@ -106,15 +106,15 @@
             <div class="content-header">
                 <span class="ch-tit">隐患趋势统计</span>
 
-                <div class="nav_tit nav_tit_right" style="margin-right: 20px" data-value="30">
+                <div class="nav_tit nav_tit_right" style="margin-right: 20px" onclick="getFlawTrend(2)">
                     <span class="ch-tit">月</span>
                 </div>
-                <div class="nav_tit nav_tit_right active" data-value="7">
+                <div class="nav_tit nav_tit_right active"  onclick="getFlawTrend(1)">
                     <span class="ch-tit">近7天</span>
                 </div>
             </div>
             <div class="main_body">
-                <div id="Statistics" class="pie_chart"></div>
+                <div id="Statistics" class="normal_chart"></div>
             </div>
         </div>
 
@@ -123,7 +123,7 @@
                 <span class="ch-tit">隐患专业情况</span>
             </div>
             <div class="main_body">
-                <div id="State" class="pie_chart"></div>
+                <div id="State" class="normal_chart"></div>
             </div>
         </div>
 
@@ -158,30 +158,34 @@
     })
 
     function renderTable() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawDetail", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                    console.log('getFlawDetail', re.data)
 
-        window._table = table.render({
-            elem: '#table',
-            height: $("#table").parent().height() - 20,
-            // height: 'full-100',
-            data: [
-                {name1: '1.5T架桥机对位后防溜不到位', name2: 'Ⅰ', name3: '请安质部督促整改', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30', },
-                {name1: '施工现场施工处理不当', name2: 'Ⅱ', name3: '请安质部督促综合队整改闭合', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30',  },
-                {name1: '现场施工文明施工不到位', name2: 'Ⅲ', name3: '请安质部督促综合队整改闭合', name4: '赵于密', name5: '赵于密', name6: '2021-12-03 10:30',  },
-            ],
-            cols: [
-                [
-                    { field: 'name1', title: '隐患内容',  },
-                    { field: 'name2', title: '隐患等级',  },
-                    { field: 'name3', title: '整改内容',  },
-                    { field: 'name4', title: '整改人', },
-                    { field: 'name5', title: '创建人',   },
-                    { field: 'name6', title: '创建时间', },
-                ]
-            ],
-            done: function() {
-                $("#TeamTable .layui-table-body").layTableScroll()
-            }
-        })
+                    table.render({
+                        elem: '#table',
+                        height: $("#table").parent().height() - 20,
+                        // height: 'full-100',
+                        data: re.data,
+                        cols: [
+                            [
+                                { field: 'content', title: '隐患内容',  },
+                                { field: 'flawLevel', title: '隐患等级',  },
+                                { field: 'measure', title: '整改内容',  },
+                                { field: 'rectifyRp', title: '整改人', },
+                                { field: 'createName', title: '创建人',   },
+                                { field: 'statDate', title: '创建时间', templet: function (d) {
+                                        return new Date(d.statDate).pattern('yyyy-MM-dd')
+                                    }},
+                            ]
+                        ],
+                        done: function() {
+                            $("#TeamTable .layui-table-body").layTableScroll()
+                        }
+                    })
+
+                }
+        });
         //
         // Charts['_table'] = {
         //     resize: function() {
@@ -191,7 +195,136 @@
         //     }
         // }
     }
+
+    // 单位得分及排名
+    function getCompanyScore() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getCompanyScore", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    $("#ranking").text(re.data.ranking)
+                    $("#score").text(re.data.score)
+                }
+            }
+        });
+    }
+    // 单位得分及排名
+    function getFlawAll() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawAll", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    $("#flawCnt").text(re.data.flawCnt)
+                }
+            }
+        });
+    }
+
+
+    // 获取隐患上报排名Top5
+    function getFlawReportRanking() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawReportRanking", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    console.log(re.data)
+                    initCategoryChart($("#Top5")[0], 'Top5', ["张启超", "良有志", "苏小明", "郑智超", "韩雪峰"]
+                        , [78, 74, 63, 56, 54],
+                        {
+                            xAxis: {
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#40F3EF'
+                                    }
+                                }
+                            }
+                        }
+                    )
+                }
+            }
+        });
+    }
+
+    // 获取本期隐患趋势统计
+    function getFlawTrend(flawTrendType) {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawTrend", {pageIndex: 0, pageSize: 300, flawTrendType: flawTrendType} , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    console.log(re.data)
+                    var dates = []
+                    var data = []
+                    re.data.forEach(function (item) {
+                        dates.push(new Date(item.statDate).pattern('yyyy-MM-dd'))
+                        data.push(item.flawCnt)
+                    })
+                    initLineChart($("#Statistics")[0], 'Statistics', dates
+                        , data,
+                        {
+                            xAxis: {
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#40F3EF'
+                                    }
+                                }
+                            }
+                        }
+
+                    )
+                }
+            }
+        });
+    }
+    // 获取本期隐患专业情况
+    function getFlawProfessionalSituation() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawProfessionalSituation", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    var data = []
+                    re.data.forEach(function (item) {
+                        data.push({ name: item.profeName, value: item.flawCnt })
+                    })
+                    initPieChart($("#State")[0], "State",
+                        data,
+                        {
+                            itemGap: 12
+                        }
+                    )
+                }
+            }
+        });
+    }
+
+    // 获取本期含下属机构的隐患级别分布
+    function getFlawLevel() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/flawScreen/getFlawLevel", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    console.log(re.data)
+                    var data = []
+                    re.data.forEach(function (item) {
+                        data.push({ name: item.flawLevel, value: item.flawCnt })
+                    })
+
+
+                    initPieChart($("#Level")[0], "Level",
+                        data
+                    )
+                }
+            }
+        });
+    }
+
+
     $(function (){
+        getCompanyScore()
+        getFlawAll()
+
+        getFlawReportRanking()
+
+        getFlawTrend(1)
+
+        getFlawProfessionalSituation()
+
+        getFlawLevel()
+
+
         // initPie3DChart()
         initPieChart($("#MonthUpdate")[0], "MonthUpdate",
             [
@@ -234,52 +367,12 @@
             }
         )
 
-        initCategoryChart($("#Top5")[0], 'Top5', ["张启超", "良有志", "苏小明", "郑智超", "韩雪峰"]
-            , [78, 74, 63, 56, 54],
-            {
-                xAxis: {
-                    axisLabel: {
-                        textStyle: {
-                            color: '#40F3EF'
-                        }
-                    }
-                }
-            }
-        )
-
-        initPieChart($("#Level")[0], "Level",
-            [
-                {name: '一级', value: '6'},
-                {name: '二级', value: '7'},
-                {name: '三级', value: '11'},
-            ]
-        )
-        initPieChart($("#State")[0], "State",
-            [
-                {name: '隧道工程', value: '18'},
-                {name: '桥梁工程', value: '20'},
-                {name: '深基坑', value: '34'},
-                {name: '房屋建筑工程', value: '12'},
-            ],
-            {
-                itemGap: 12
-            }
-        )
 
 
-        initLineChart($("#Statistics")[0], 'Statistics', ["2021-11-23", "2021-11-24", "2021-11-24", "2021-11-25", "2021-11-26", "2021-11-27", "2021-11-28", "2021-11-29"]
-            , [60, 78,  63, 56, 25,84,87, 38],
-            {
-                xAxis: {
-                    axisLabel: {
-                        textStyle: {
-                            color: '#40F3EF'
-                        }
-                    }
-                }
-            }
 
-        )
+
+
+
     })
 
 

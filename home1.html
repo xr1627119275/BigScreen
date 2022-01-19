@@ -22,7 +22,7 @@
                 <div class="plate_til">劳务队伍</div>
                 <div class="plate_num">
                     <p>
-                        <span>3</span>
+                        <span id="laborNumber">0</span>
                         <span class="unit">/个</span>
                     </p>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="plate_til">累计进场</div>
                 <div class="plate_num">
                     <p>
-                        <span>56</span>
+                        <span id="entryCountTotal">0</span>
                         <span class="unit">/人</span>
                     </p>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="plate_til">当前在场</div>
                 <div class="plate_num">
                     <p>
-                        <span>56</span>
+                        <span id="entryCountCurrent">0</span>
                         <span class="unit">/个</span>
                     </p>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="plate_til">本月出勤</div>
                 <div class="plate_num">
                     <p>
-                        <span>56</span>
+                        <span id="attendCount">0</span>
                         <span class="unit">/人</span>
                     </p>
                 </div>
@@ -67,7 +67,7 @@
                 <div class="plate_til">本月缺勤</div>
                 <div class="plate_num">
                     <p>
-                        <span>0</span>
+                        <span id="abnormalCount">0</span>
                         <span class="unit">/人</span>
                     </p>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="plate_til">本月旷工</div>
                 <div class="plate_num">
                     <p>
-                        <span>4</span>
+                        <span id="offworkCount">0</span>
                         <span class="unit">/人</span>
                     </p>
                 </div>
@@ -89,7 +89,7 @@
                 <div class="plate_til">未培训</div>
                 <div class="plate_num">
                     <p>
-                        <span>4</span>
+                        <span id="trainOffCount">0</span>
                         <span class="unit">/人</span>
                     </p>
                 </div>
@@ -168,7 +168,7 @@
             <span>本地出勤</span>
             <i class="layui-icon layui-icon-close" onclick="closeModal()"></i>
         </div>
-        <div class="modal_body main_body_table">
+        <div class="modal_body main_body_table" id="Modal_Main_Body">
             <table id="modalTable"></table>
         </div>
     </div>
@@ -188,9 +188,14 @@
 <canvas id="canvas" ></canvas>
 
 <script src="./js/common.js"></script>
+
 <script>
     var form, table;
     var Charts = {}
+
+    var pieOptions = {
+        color: ['#173DAA', '#CE7525', '#18A89D', '#BF2E4A', '#BF23CC']
+    }
 
     $("#header").load('_header.html')
 
@@ -212,113 +217,162 @@
         $("#mark").hide()
     }
 
-    function renderModalTable() {
-        table.render({
-            elem: '#modalTable',
-            height: $("#modalTable").parent().height() - 20,
-            data: [
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-                {name: '东方华晨建筑工程有限公司-董永嘉', name2: '普工类型', name3: '班组长', 'name4':'林友康', num1: '340889654700000000',date: '2021-11-26' },
-            ],
-            cols: [
-                [
-                    {field: 'name', width: '40%', title: '劳务队伍'},
-                    {field: 'name2',title: '班组类型'},
-                    {field: 'name3',title: '班组长'},
-                    {field: 'name4',title: '工人姓名'},
-                    {field: 'num1',width: '20%', title: '身份证号'},
-                    {field: 'date',width: '15%', title: '进场日期'},
-                ]
-            ]
-        })
+
+    // 渲染头部数据
+    function renderHeaderData() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainTop", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data != null) {
+                    $("#laborNumber").text(re.data.laborNumber)
+                    $("#entryCountTotal").text(re.data.entryCountTotal)
+                    $("#entryCountCurrent").text(re.data.entryCountCurrent)
+                    $("#attendCount").text(re.data.attendCount)
+                    $("#abnormalCount").text(re.data.abnormalCount)
+                    $("#offworkCount").text(re.data.offworkCount)
+                    $("#trainOffCount").text(re.data.trainOffCount)
+                }
+            }
+        });
     }
 
+
+
+    function renderModalTable() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainLaborOnlinePeoplePageList", {  pageIndex:0 ,pageSize: 300 } , false, {}, function (re) {
+            if (re.code == 1) {
+                var data = re.data.list || []
+                table.render({
+                    elem: '#modalTable',
+                    height: $("#modalTable").parent().height() - 20,
+                    data: data,
+                    cols: [
+                        [
+                            {field: 'enterpriseLaborName', width: '30%', title: '劳务队伍', templet: function (d) {
+                                    return d.enterpriseLaborName + '-' + d.enterpriseAgentName
+                                }
+                            },
+                            {field: 'epTeamName',title: '班组类型'},
+                            {field: 'monitorName',title: '班组长'},
+                            {field: 'name',title: '工人姓名'},
+                            {field: 'idCard',width: '20%', title: '身份证号'},
+                            {field: 'entryTime',width: '15%', type:'date', title: '进场日期', templet: function (d) { return new Date(d.entryTime).pattern("yyyy-MM-dd")}},
+                        ]
+                    ],
+                    limit: data.length,
+                    done: function () {
+                        $("#Modal_Main_Body .layui-table-body").layTableScroll()
+                    }
+                })
+            }
+        })
+
+    }
+
+    // 劳务队伍人数及出勤率
     function renderTable() {
 
-        table.render({
-            elem: '#table',
-            height: $("#table").parent().height() - 20,
-            data: [
-                {name: '东方华晨建筑工程有限公司-董永嘉', num1: '40%', num2: 23},
-                {name: '天津复原建设工程有限公司-李建', num1: '40%', num2: 23},
-                {name: '天津三和雨神工程有限公司-郭玉娟', num1: '40%', num2: 23},
-                {name: '合肥东方工程有限公司-程晓明', num1: '40%', num2: 23},
-                {name: '华东建设工程施工有限公司-李明伟', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '珠江利好工程有限公司-周三畏', num1: '40%', num2: 23},
-                {name: '河南经开建设有限公司-胡海燕', num1: '40%', num2: 23},
-            ],
-            cols: [
-                [
-                    {field: 'name', width: '50%', title: '劳务队伍'},
-                    {field: 'num1', width: '28%', title: '本期出勤率（%）'},
-                    {field: 'num2', width: '20%',title: '劳务人数'},
-                ]
-            ],
-            done: function () {
-                $("#TeamTable .layui-table-body").layTableScroll()
-            }
-        })
+            parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainMidRateChart", undefined , true, {}, function (re) {
+                if (re.code == 1) {
+                    table.render({
+                        elem: '#table',
+                        height: $("#table").parent().height() - 20,
+                        data: re.data,
+                        cols: [
+                            [
+                                {field: 'name', width: '50%', title: '劳务队伍'},
+                                {field: 'rate', width: '28%', title: '本期出勤率（%）'},
+                                {field: 'peopleCount', width: '20%',title: '劳务人数'},
+                            ]
+                        ],
+                        limit: re.data.length,
+                        done: function () {
+                            $("#TeamTable .layui-table-body").layTableScroll()
+                        }
+                    })
+
+                }
+            })
     }
 
+    // 工种统计top5
+    function gainWorkerTypeChart() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainWorkerTypeChart", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                initPieChart($("#JobStatistics")[0], "JobStatistics",
+                    re.data,
+                    Object.assign(pieOptions, {
+
+                        series: {
+                            radius: '60%'
+                        },
+                        itemGap: 15,
+
+                    })
+                )
+            }
+        });
+    }
+
+    // 年龄统计top5
+    function gainAgeChart() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainAgeChart", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                initPieChart($("#AgeStatistics")[0], "AgeStatistics",
+                    re.data,
+                    Object.assign(pieOptions, {
+                        series: {
+                            radius: '60%'
+                        },
+                        itemGap: 15
+                    })
+                )
+            }
+        });
+    }
+
+    // 近7期出勤率
+    function gainProjRateChart() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainProjRateChart", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', re.data.map(function (item) {return item.name.replace(",", "\n")})
+                    , re.data.map(function (item) {return item.value}))
+            }
+        });
+    }
+    // 所属区域top5
+    function gainRegionChart() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainRegionChart", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                initCategoryChart($("#AreaStatistics")[0], 'AreaStatistics', re.data.map(function (item){ return item.name })
+                    , re.data.map(function (item){ return item.value }))
+            }
+        });
+    }
+    // 近30天劳务队伍进退场
+    function gainMidEntryExitChart() {
+        parentPublic.publicPostAjax(parentPublic.middleURL + "/laborScreen/gainMidEntryExitChart", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                initBarChart($("#InOutTeamTop5")[0], 'InOutTeamTop5',
+                    re.data.map(function (item){return item.name.replace("-", "\n")})
+                , {name: '进场', data:  re.data.map(function (item){return item.entryCount}) }, {name: '退场', data: re.data.map(function (item){return item.exitCount})})
+            }
+        });
+    }
     $(function () {
-        // initPie3DChart()
-        initPieChart($("#JobStatistics")[0], "JobStatistics",
-            [
-                {name: '钢筋工', value: '18'},
-                {name: '木工', value: '20'},
-                {name: '普工', value: '34'},
-                {name: '防水工', value: '12'},
-                {name: '泥瓦工', value: '12'},
-            ],
-            {
-                series: {
-                    radius: '60%'
-                },
-                itemGap: 15
-            }
-        )
-        initPieChart($("#AgeStatistics")[0], "AgeStatistics",
-            [
-                {name: '18-25岁', value: '18'},
-                {name: '26-45岁', value: '20'},
-                {name: '46-50岁', value: '34'},
-                {name: '51-55岁', value: '12'},
-                {name: '56-60岁', value: '12'},
-            ],
-            {
-                series: {
-                    radius: '60%'
-                },
-                itemGap: 15
-            }
-        )
+        // 渲染头部数据
+        renderHeaderData()
 
-        initCategoryChart($("#AreaStatistics")[0], 'AreaStatistics', ["安徽省", "河北省", "河南省", "山东省", "四川省"]
-            , [78, 74, 63, 56, 54])
+        gainWorkerTypeChart()
 
-        initLineChart($("#CurrentPeriodStatistics")[0], 'CurrentPeriodStatistics', ["11-01 \n11-07", "11-08 \n11-14", "11-15 \n11-21", "11-22 \n11-28", "11-29 \n12-05", "12-06 \n12-12", "12-13 \n12-19"]
-            , [60, 78, 74, 63, 56, 54, 38])
+        gainAgeChart()
 
-        initBarChart($("#InOutTeamTop5")[0], 'InOutTeamTop5', [
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-            '安徽省安品\n王帅',
-        ], {name: '进场', data: [78, 74, 63, 56, 54]}, {name: '退场', data: [68, 64, 53, 46, 44]})
+        gainProjRateChart()
+
+
+        gainRegionChart()
+
+        gainMidEntryExitChart()
+
     })
 
     function initPie3DChart() {
@@ -371,12 +425,7 @@
     function initBarChart(ele, name, xdata, data1, data2, opt) {
         var chart = echarts.init(ele);
 
-        var emphasisStyle = {
-            itemStyle: {
-                shadowBlur: 10,
-                shadowColor: 'rgba(0,0,0,0.3)'
-            }
-        };
+
         var option = {
             tooltip: {},
             color: ['#37D1CE', '#FF9125'],
@@ -431,7 +480,6 @@
                     type: 'bar',
                     stack: 'one',
                     barWidth: 30,
-                    emphasis: emphasisStyle,
                     data: data1.data
                 },
                 {
@@ -439,7 +487,6 @@
                     type: 'bar',
                     stack: 'one',
                     barWidth: 30,
-                    emphasis: emphasisStyle,
                     data: data2.data,
                 },
             ]
@@ -453,6 +500,11 @@
                     textStyle: {
                         fontSize: 16,
                         color: '#FEFFFF'
+                    },
+                    formatter: function (params) {
+                        // console.log(params)
+                        if (params.data == 0) return ''
+                        return params.data
                     }
                 },
             }

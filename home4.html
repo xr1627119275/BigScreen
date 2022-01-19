@@ -26,7 +26,7 @@
                 <div class="plate_til">设备总数</div>
                 <div class="plate_num">
                     <p>
-                        <span>123</span>
+                        <span id="devTotalCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="plate_til">租赁设备</div>
                 <div class="plate_num">
                     <p>
-                        <span>3</span>
+                        <span id="leaseDevCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                 <div class="plate_til">分包自带</div>
                 <div class="plate_num">
                     <p>
-                        <span>3</span>
+                        <span id="laborDevCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="plate_til">闲置设备</div>
                 <div class="plate_num">
                     <p>
-                        <span>23</span>
+                        <span id="unuseDevCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="plate_til">大型设备</div>
                 <div class="plate_num">
                     <p>
-                        <span>23</span>
+                        <span id="bigDevCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <div class="plate_til">特种设备</div>
                 <div class="plate_num">
                     <p>
-                        <span>3</span>
+                        <span id="specialDevCnt">0</span>
                     </p>
                 </div>
             </div>
@@ -279,7 +279,38 @@
         renderTable3()
     })
 
+    // 设备数量统计
+    function getMachDeviceStat() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/machScreen/getMachDeviceStat", undefined , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+                    $("#devTotalCnt").text(re.data.devTotalCnt)
+                    $("#leaseDevCnt").text(re.data.leaseDevCnt)
+                    $("#laborDevCnt").text(re.data.laborDevCnt)
+                    $("#unuseDevCnt").text(re.data.unuseDevCnt)
+                    $("#bigDevCnt").text(re.data.bigDevCnt)
+                    $("#specialDevCnt").text(re.data.specialDevCnt)
+                }
+            }
+        });
+    }
+
+    // 获取设备列表（租赁|分包）
+    function getMachDevList() {
+        parentPublic.publicGetAjax(parentPublic.middleURL + "/machScreen/getMachDevList",  {  pageIndex:0 ,pageSize: 300 }  , true, {}, function (re) {
+            if (re.code == 1) {
+                if (re.data) {
+
+                }
+            }
+        });
+    }
+
     $(function () {
+
+        getMachDeviceStat()
+
+
         initPieChart($("#SettlementFee")[0], "SettlementFee",
             [
                 {name: '设备租赁结算', value: '2345355'},

@@ -1,5 +1,4 @@
 var splitLineColor = 'rgba(54,192,197,0.3)' // 图标分割线颜色
-
 var global_config = {
     needHeader: false, // 是否需要头部
     headerHeight: 101, // 头部高度
@@ -13,18 +12,14 @@ var global_config = {
 }
 
 
-// let txt = ''
-// document.querySelectorAll("header a").forEach(item=>{
-//     let href = item.getAttribute("href")
-//     if (href) {
-//         txt += item.innerHTML + "\t"  + location.href.replace("_header.html",href) + '\n'
-//     }
-// })
+window.parentPublic = parent
 
 if (global_config) {
     if (!global_config.needHeader) {
         global_config.screen.height -= global_config.headerHeight || $("#header").height()
         $("#header").hide()
+    } else  {
+        loadHeaderPage()
     }
     
     if (global_config.backGroupCanvas) {
@@ -38,6 +33,7 @@ if (global_config) {
     if (global_config.markBackGroup) {
         $("body").append($(`<div id="MarkBg"></div>`))
     }
+
 }
 
 document.write(`<script src="./js/moment.min.js"></script>`)
@@ -58,6 +54,8 @@ function scroll(target, child) {
         }
     }, 25)
 }
+
+setTimeout(function () {
 
 jQuery.fn.extend({
     layTableScroll:function (_ul, _li, timeout){
@@ -90,19 +88,22 @@ jQuery.fn.extend({
         })
     }
 });
+})
 
 // 加载首页
-$("#header").load('_header.html',undefined, function (response, status) {
-    if (status == 'success') {
-        var pathname = location.pathname.substring(1)
-        if (pathname == '') {
-            return
+function loadHeaderPage() {
+    $("#header").load('_header.html',undefined, function (response, status) {
+        if (status == 'success') {
+            var pathname = location.pathname.substring(1)
+            if (pathname == '') {
+                return
+            }
+            $("header .nav_item").siblings().removeClass("active")
+            $(`a[href='${pathname}']`).parent().addClass("active")
+            // .eq(1).addClass("active")
         }
-        $("header .nav_item").siblings().removeClass("active")
-        $(`a[href='${pathname}']`).parent().addClass("active")
-        // .eq(1).addClass("active")
-    }
-})
+    })
+}
 
 
 // 图表上标题导航 tab
@@ -186,7 +187,7 @@ function doHandleMonth(month) {
 }
 
 publicUrl = 'http://61.190.7.13:9410/mdm/'
-var publicAjax = function (types, urls, params, asyncs, header, callback, error) {
+var _publicAjax = function (types, urls, params, asyncs, header, callback, error) {
     var async_val = true, header_val = {"Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiMSIsImxvZ2luTmFtZSI6IkFkbWluaXN0cmF0b3IiLCJpc3MiOiJjdGNlYWRtaW5zdHJhdG9yIn0.4ztrsoEczkasFe2meS5oASG372rc8zsdFaPG8FjH8Ho"}, type_val = 'post';
     if (asyncs != null) {
         async_val = asyncs;
@@ -259,7 +260,6 @@ function fmoney(s,n) {
 }
 
 // 左右滚动
-
 function _scrollItem(direction) {
     var _content = $(".scroll_main_content")
     var scrollWidth = _content[0].scrollWidth

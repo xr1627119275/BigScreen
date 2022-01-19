@@ -722,6 +722,7 @@ main #map_container .statistics .right .filter_header .btn-search {
   z-index: 11;
   top: 50%;
   left: 50%;
+  box-sizing: border-box;
   transform: translate(-50%, -50%);
   width: 1220px;
   height: 593px;
