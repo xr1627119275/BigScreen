@@ -174,6 +174,15 @@
     <div id="header2" style="width: 100%; height: 101px; vertical-align: middle" ></div>
 
     <main class="main_left_right" style="margin-top: -20px;">
+        <div class="page_nav" style="display: none;">
+            <a class="page_nav_item " href="home7-2.html#nav">三分部</a>
+            <a class="page_nav_item page_nav_item_active" href="#nav">四分部</a>
+        </div>
+        <script>
+            if (location.hash == '#nav') {
+                $(".page_nav").show()
+            }
+        </script>
         <div class="main_left" style="display: flex; flex-direction: column">
             <div class="top" style="display: flex; flex-direction: column; justify-content: space-between; flex: 2">
 
@@ -190,14 +199,8 @@
                         <span class="ch-tit">原材料消耗动态</span>
                     </div>
                     <div class="main_body">
-                        <div class="custom_progress_chart">
-                            <div class="progress_chart">
-                                <div class="progress_num">123.34吨</div>
-                                <div class="progress_body">
-                                    <span class="progress_value" style="height: 50%"></span>
-                                </div>
-                                <div class="progress_desc">水泥</div>
-                            </div>
+                        <div id="progressChart" class="custom_progress_chart">
+                            
                             <div class="progress_chart">
                                 <div class="progress_num">165.32吨</div>
                                 <div class="progress_body">
@@ -245,7 +248,8 @@
         </div>
         <div class="main_right" style="display: flex; flex-direction: column">
             <div class="top" style="flex: 2">
-                <div id="map_container" class="charts_content_box charts_content_box_632">
+                <iframe style="width: 100%; height: 100%; border: none; " src="http://61.190.7.13:9410/mdm/CTCE/jyMapAutologin.html?projectId=8100000000005769" frameborder="0"></iframe>
+                <div id="map_container" style="display: none;" class="charts_content_box charts_content_box_632">
                     <div class="map">
                         <div class="map_wrap1">
                             <form class="layui-form" lay-filter="formDemo">
@@ -445,7 +449,7 @@
             <div class="bottom" style="flex: 1; margin-top: 15px; display: flex; justify-content: space-between">
                 <div class="charts_content_box" style="width: 817px; height: 308px; background-image: url('img/817x308.png')">
                     <div class="content-header">
-                        <span class="ch-tit">混淋土浇筑任务</span>
+                        <span class="ch-tit">混凝土浇筑任务</span>
                     </div>
                     <div class="main_body" >
                         <div id="TeamTable" class="main_body_table">
@@ -1003,11 +1007,16 @@
             elem: '#table',
             height: $("#table").parent().height() - 20,
             data: [
-                {name1: '20001', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分1' },
-                {name1: '20002', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分2' },
-                {name1: '20003', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分3' },
-                {name1: '20004', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分4' },
-                {name1: '20005', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分5' },
+                {name1: '20001', name2: 'C20', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '1#渝CC1318', name7: '临建' },
+                {name1: '20002', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2021-12-27', name6: '2#川AQ6185', name7: '临建' },
+                {name1: '20003', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2021-12-27', name6: '3#渝CC1635', name7: '临建' },
+                {name1: '20004', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '4#豫A2895X', name7: '临建' },
+                {name1: '20005', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2021-12-27', name6: '5#豫A0391U', name7: '临建' },
+                {name1: '20006', name2: 'C20', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '1#渝CC1318', name7: '临建' },
+                {name1: '20007', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2021-12-27', name6: '2#川AQ6185', name7: '临建' },
+                {name1: '20008', name2: 'C20', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '3#渝CC1635', name7: '临建' },
+                {name1: '20009', name2: 'C20', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '4#豫A2895X', name7: '临建' },
+                {name1: '20010', name2: 'C20', name3: '非泵送', name4: '3.4', name5: '2021-12-27', name6: '5#豫A0391U', name7: '临建' },
             ],
             cols: [
                 [
@@ -1015,8 +1024,8 @@
                     { field: 'name2', title: '强度等级', width: '12%' },
                     { field: 'name3', title: '浇筑方式', width: '17.5%' },
                     { field: 'name4', title: '施工配合比', width: '14%' },
-                    { field: 'name5', title: '搅拌时间', width: '20.5%'  },
-                    { field: 'name6', title: '运输车辆',width: '15%' },
+                    { field: 'name5', title: '搅拌时间', width: '15.5%'  },
+                    { field: 'name6', title: '运输车辆',width: '20%' },
                     { field: 'name7', title: '施工部分',width: '12%' },
                 ]
             ],
@@ -1026,6 +1035,28 @@
         })
     }
     $(function (){
+        $("#progressChart").html("")
+        var progressChartData = [
+            { title: '水泥', inValue: '1603.8', useValue: '927.7737'},
+            { title: '粉煤灰', inValue: '553.38', useValue: '168.3053'},
+            { title: '外加剂', inValue: '33.28', useValue: '10.70133'},
+            { title: '砂子', inValue: '4190.83', useValue: '3359.4506'},
+            { title: '碎石', inValue: '7242.08', useValue: '3002.101'},
+        ]
+        progressChartData.forEach(function(item) {
+            $("#progressChart").append(`
+                <div class="progress_chart">
+                    <div class="progress_num">${item.useValue}吨</div>
+                    <div class="progress_body">
+                        <span class="progress_value" style="height: ${ (item.useValue / item.inValue) * 100 }%"></span>
+                    </div>
+                    <div class="progress_desc">${item.title}</div>
+                </div>
+            `)
+        })
+        
+
+
         // initPie3DChart()
         initBrokenLineChart($("#MonthOutPutValue")[0], "MonthOutPutValue",
             [
@@ -1034,16 +1065,20 @@
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: [788.1, 1970.3,129.0,0,0,0,0,0,0,0,0,0]
                 },
             ]
-        ,)
+        , {
+            xAxis: {
+                data: ["12月", '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月']
+            }
+        })
 
         initPieChart($("#ProductState")[0], 'ProductState',[
-            {name: 'C20', value: '18'},
-            {name: 'C30', value: '20'},
-            {name: 'C40', value: '34'},
-            {name: 'C15', value: '12'},
+            {name: 'C20', value: '1204.8'},
+            {name: 'C30', value: '1276.1'},
+            {name: 'C40', value: '331.5'},
+            {name: 'M10', value: '75'},
         ], {
             color: ['#BF23CC','#CE7525', '#173DAA', '#18A89D' ],
             series: {

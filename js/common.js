@@ -1,6 +1,6 @@
 var splitLineColor = 'rgba(54,192,197,0.3)' // 图标分割线颜色
 
-var global_config = {
+var global_config = Object.assign({
     needHeader: false, // 是否需要头部
     headerHeight: 101, // 头部高度
     markBackGroup: false, // 背景遮罩图片
@@ -10,7 +10,7 @@ var global_config = {
         width: 1920,
         height: 1080
     }
-}
+}, window.pageConfig || {})
 
 
 // let txt = ''

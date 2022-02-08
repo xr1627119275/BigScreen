@@ -174,6 +174,15 @@
     <div id="header2" style="width: 100%; height: 101px; vertical-align: middle" ></div>
 
     <main class="main_left_right" style="margin-top: -20px;">
+        <div class="page_nav" style="display: none;">
+            <a class="page_nav_item page_nav_item_active" href="#nav">三分部</a>
+            <a class="page_nav_item " href="home7-1.html#nav">四分部</a>
+        </div>
+        <script>
+            if (location.hash == '#nav') {
+                $(".page_nav").show()
+            }
+        </script>
         <div class="main_left" style="display: flex; flex-direction: column">
             <div class="top" style="display: flex; flex-direction: column; justify-content: space-between; flex: 2">
 
@@ -190,14 +199,8 @@
                         <span class="ch-tit">原材料消耗动态</span>
                     </div>
                     <div class="main_body">
-                        <div class="custom_progress_chart">
-                            <div class="progress_chart">
-                                <div class="progress_num">123.34吨</div>
-                                <div class="progress_body">
-                                    <span class="progress_value" style="height: 50%"></span>
-                                </div>
-                                <div class="progress_desc">水泥</div>
-                            </div>
+                        <div id="progressChart" class="custom_progress_chart">
+                            
                             <div class="progress_chart">
                                 <div class="progress_num">165.32吨</div>
                                 <div class="progress_body">
@@ -245,7 +248,8 @@
         </div>
         <div class="main_right" style="display: flex; flex-direction: column">
             <div class="top" style="flex: 2">
-                <div id="map_container" class="charts_content_box charts_content_box_632">
+                <iframe style="width: 100%; height: 100%; border: none; " src="http://61.190.7.13:9410/mdm/CTCE/jyMapAutologin.html?projectId=8100000000005737" frameborder="0"></iframe>
+                <div id="map_container" style="display: none;" class="charts_content_box charts_content_box_632">
                     <div class="map">
                         <div class="map_wrap1">
                             <form class="layui-form" lay-filter="formDemo">
@@ -445,7 +449,7 @@
             <div class="bottom" style="flex: 1; margin-top: 15px; display: flex; justify-content: space-between">
                 <div class="charts_content_box" style="width: 817px; height: 308px; background-image: url('img/817x308.png')">
                     <div class="content-header">
-                        <span class="ch-tit">混淋土浇筑任务</span>
+                        <span class="ch-tit">混凝土浇筑任务</span>
                     </div>
                     <div class="main_body" >
                         <div id="TeamTable" class="main_body_table">
@@ -1003,11 +1007,16 @@
             elem: '#table',
             height: $("#table").parent().height() - 20,
             data: [
-                {name1: '20001', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分1' },
-                {name1: '20002', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分2' },
-                {name1: '20003', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分3' },
-                {name1: '20004', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分4' },
-                {name1: '20005', name2: 'C15', name3: '水下混淋土浇筑', name4: '1:5', name5: '2021-12-03 10:30', name6: '皖AN89734', name7: '部分5' },
+                {name1: '20001', name2: 'C35', name3: '非泵送', name4: '3.4', name5: '2022-02-04', name6: '2拌和机', name7: '洞口附属截水天沟60-90m侧墙' },
+                {name1: '20002', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2022-02-04', name6: '2拌和机', name7: '初期支护H2+398-397上台阶' },
+                {name1: '20003', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2022-02-04', name6: '2拌和机', name7: 'X1+650.2-X1+649.4' },
+                {name1: '20004', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2022-02-04', name6: '2拌和机', name7: 'X1+650.2-X1+649.4' },
+                {name1: '20005', name2: 'C30', name3: '非泵送', name4: '3.9', name5: '2022-02-03', name6: '2拌和机', name7: 'H0+836-H0+835上台阶' },
+                {name1: '20006', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2022-02-03', name6: '2拌和机', name7: 'X1+651-X1+650.2上台阶' },
+                {name1: '20007', name2: 'C35', name3: '非泵送', name4: '3.9', name5: '2022-01-30', name6: '2拌和机', name7: '洞口附属截水天沟30-60m侧墙' },
+                {name1: '20008', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2022-01-30', name6: '2拌和机', name7: 'H2+399-398上台阶' },
+                {name1: '20009', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2022-01-30', name6: '2拌和机', name7: 'H2+399-398上台阶' },
+                {name1: '20010', name2: 'C30', name3: '非泵送', name4: '3.4', name5: '2022-01-30', name6: '2拌和机', name7: '多木格1#横洞H0+837-H0+836上台阶' },
             ],
             cols: [
                 [
@@ -1015,9 +1024,9 @@
                     { field: 'name2', title: '强度等级', width: '12%' },
                     { field: 'name3', title: '浇筑方式', width: '17.5%' },
                     { field: 'name4', title: '施工配合比', width: '14%' },
-                    { field: 'name5', title: '搅拌时间', width: '20.5%'  },
-                    { field: 'name6', title: '运输车辆',width: '15%' },
-                    { field: 'name7', title: '施工部分',width: '12%' },
+                    { field: 'name5', title: '搅拌时间', width: '15.5%'  },
+                    { field: 'name6', title: '运输车辆',width: '12%' },
+                    { field: 'name7', title: '施工部分',width: '20%' },
                 ]
             ],
             done: function() {
@@ -1026,24 +1035,49 @@
         })
     }
     $(function (){
+        $("#progressChart").html("")
+        var progressChartData = [
+            { title: '水泥', inValue: '233.7526', useValue: '175.6151'},
+            { title: '粉煤灰', inValue: '4.35825', useValue: '2.74687'},
+            { title: '外加剂', inValue: '1.8726', useValue: '1.0605'},
+            { title: '砂子', inValue: '885.231', useValue: '538.134'},
+            { title: '碎石', inValue: '611.3976', useValue: '467.3753'},
+        ]
+        progressChartData.forEach(function(item) {
+            $("#progressChart").append(`
+                <div class="progress_chart">
+                    <div class="progress_num">${item.useValue}吨</div>
+                    <div class="progress_body">
+                        <span class="progress_value" style="height: ${ (item.useValue / item.inValue) * 100 }%"></span>
+                    </div>
+                    <div class="progress_desc">${item.title}</div>
+                </div>
+            `)
+        })
+        
+
+
         // initPie3DChart()
         initBrokenLineChart($("#MonthOutPutValue")[0], "MonthOutPutValue",
             [
                 {
-                    name: '4号搅拌站',
+                    name: '3号搅拌站',
                     type: 'line',
                     stack: 'Total',
                     smooth: true,
-                    data: new Array(12).fill(0).map(item=> parseInt(Math.random() * 1000))
+                    data: [583.21, 62,0,0,0,0,0,0,0,0,0, 0]
                 },
             ]
-        ,)
+        , {
+            xAxis: {
+                data: [ '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            }
+        })
 
         initPieChart($("#ProductState")[0], 'ProductState',[
-            {name: 'C20', value: '18'},
-            {name: 'C30', value: '20'},
-            {name: 'C40', value: '34'},
-            {name: 'C15', value: '12'},
+            {name: 'C20', value: '67.16'},
+            {name: 'C30', value: '448.05'},
+            {name: 'C35', value: '74'},
         ], {
             color: ['#BF23CC','#CE7525', '#173DAA', '#18A89D' ],
             series: {
